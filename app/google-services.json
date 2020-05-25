@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1078254331747",
+    "firebase_url": "https://justvega-aacaa.firebaseio.com",
+    "project_id": "justvega-aacaa",
+    "storage_bucket": "justvega-aacaa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078254331747:android:f522fa2ef982ce7540d556",
+        "android_client_info": {
+          "package_name": "com.example.android.vegaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078254331747-tkfjr5u8t3rp91at2vpm1aa8tcdpci47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6mk2JwfacjEmql6b7VLjs3N39tVr7RnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078254331747-tkfjr5u8t3rp91at2vpm1aa8tcdpci47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
