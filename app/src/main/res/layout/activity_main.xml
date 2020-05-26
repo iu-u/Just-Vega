@@ -67,5 +67,6 @@
         android:onClick="registerActivity"
         android:text="registerActivity"
          />
+
 </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

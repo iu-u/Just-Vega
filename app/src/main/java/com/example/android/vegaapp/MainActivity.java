@@ -6,19 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.activities.LoginActivity;
 import com.example.android.vegaapp.activities.ProfileActivity;
 import com.example.android.vegaapp.activities.RecipeActivity;
 import com.example.android.vegaapp.activities.RecipeDetailActivity;
 import com.example.android.vegaapp.activities.RegisterActivity;
+import com.example.android.vegaapp.activities.WelcomeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_main);
     }
 
     public void loginActivity(View view){
@@ -42,4 +42,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent= new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
+
+//    public void welcomeActivity(View view){
+//        Intent intent= new Intent(MainActivity.this, WelcomeActivity.class);
+//        startActivity(intent);
+//}
 }
