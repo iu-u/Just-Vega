@@ -37,6 +37,7 @@ public class ReadWriteActivityDatabaseTest extends AppCompatActivity {
 
         Log.d(TAG, "Value in database +" + database.getReference());
 
+        writeToDatabase();
         readFromDatabase();
 
         write = (TextView) findViewById(R.id.editText2);
