@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1078254331747-r1ql26oj2b29jjme9vfgfsn0718jqmfs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.vegaapp",
+            "certificate_hash": "43e9f614910a70ad4a89387869e58dc20cfffcb4"
+          }
+        },
+        {
           "client_id": "1078254331747-tkfjr5u8t3rp91at2vpm1aa8tcdpci47.apps.googleusercontent.com",
           "client_type": 3
         }
