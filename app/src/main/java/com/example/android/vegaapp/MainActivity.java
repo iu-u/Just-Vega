@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void welcomeActivity(View view){
-//        Intent intent= new Intent(MainActivity.this, WelcomeActivity.class);
-//        startActivity(intent);
-//}
+    public void welcomeActivity(View view){
+        Intent intent= new Intent(MainActivity.this, WelcomeActivity.class);
+        startActivity(intent);
+}
 }

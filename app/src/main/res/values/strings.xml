@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VegaApp</string>
+    <string name="app_name"> </string>
 
     <string name="facebook_application_id" translatable="false">2536657096587121</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb2536657096587121</string>

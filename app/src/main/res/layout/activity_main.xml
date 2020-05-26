@@ -76,5 +76,13 @@
         android:text="registerActivity"
          />
 
+    <Button
+        android:id="@+id/welcomeActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="welcomeActivity"
+        android:text="welcomeActivity"
+        />
+
 </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
