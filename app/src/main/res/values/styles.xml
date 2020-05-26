@@ -11,4 +11,19 @@
         <item name="android:windowBackground">@android:color/white</item>
     </style>
 
+    <style name="Divider">
+        <item name="android:background">@color/colorDividerGreen</item>
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="WelcomePage_longText">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginRight">30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorTextLightGrey</item>
+    </style>
+
 </resources>

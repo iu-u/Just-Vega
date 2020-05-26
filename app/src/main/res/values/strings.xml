@@ -3,4 +3,23 @@
 
     <string name="facebook_application_id" translatable="false">2536657096587121</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb2536657096587121</string>
+
+<!-- Welcome Page -->
+    <string name="welcome_Welcome">Welcome!</string>
+    <string name="welcome_MeetJustVega">Meet Just Vega</string>
+    <string name="welcome_AboutUs">ABOUT US</string>
+    <string name="welcome_AboutUs_text">Lorem ipsum dolor sit amet,
+        cotidieque disputando vix at, cum ea saepe vitae ocurreret.
+        Vocibus molestiae scribentur ea his, ceteros omittantur neglegentur ne has.
+        Alii primis gubergren sed ei, debitis molestiae splendide et duo. Duo no assentior neglegentur.
+        No sea velit suscipit, ut discere luptatum probatus eos. Sed bonorum explicari
+        quaerendum te, an eius inermis nam, eam eu natum menandri disputation
+    </string>
+    <string name="welcome_Purpose">WHY WE DO THIS</string>
+    <string name="welcome_Purpose_text">An sea ferri labores nostrum, mea nusquam fierent cu.
+        Est oporteat necessitatibus cu, mei verear intellegam necessitatibus ne.
+        Vide consulatu ne usu. Ei mel pertinax reformidans accommodare. Ei sint idque signiferumque
+        eam, an iusto definiebas assueverit est. Est at reque vivendo scriptorem. Ei amet dolores
+        deserunt duo.
+    </string>
 </resources>

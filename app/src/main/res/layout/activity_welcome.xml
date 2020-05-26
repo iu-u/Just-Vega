@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/welcomePage_Welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:textSize="30sp"
+            android:text="@string/welcome_Welcome"
+            android:gravity="center"
+            android:textColor="@color/colorTextWhite">
+        </TextView>
+
+        <TextView
+            android:id="@+id/welcomePage_MeetUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/welcome_MeetJustVega"
+            android:textColor="@color/colorTextGreen"
+            android:gravity="center">
+        </TextView>
+
+        <View style="@style/Divider"
+            android:layout_marginTop="10dp">
+
+        </View>
+
+        <TextView
+            android:id="@+id/welcomePage_AboutUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/colorTextLightGrey"
+            android:text="@string/welcome_AboutUs"
+            android:textSize="17sp"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/welcomePage_AboutUs_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_AboutUs_text"
+            style="@style/WelcomePage_longText">
+        </TextView>
+
+        <View style="@style/Divider"
+            android:layout_marginTop="20dp">
+        </View>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_Purpose"
+            android:layout_marginTop="20dp"
+            android:textSize="17sp"
+            android:textColor="@color/colorTextLightGrey"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/welcomePage_Purpose_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_Purpose_text"
+            style="@style/WelcomePage_longText"
+            >
+        </TextView>
+
+    </LinearLayout>
+
+</ScrollView>
