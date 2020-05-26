@@ -1,85 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBlack"
     android:orientation="vertical">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBlack"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/welcomePage_Welcome"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="300dp"
-            android:textSize="30sp"
-            android:text="@string/welcome_Welcome"
-            android:gravity="center"
-            android:textColor="@color/colorTextWhite">
-        </TextView>
+            android:layout_height="match_parent"
+            android:background="@color/colorBlack"
+            android:orientation="vertical"
+            android:paddingBottom="90dp">
 
-        <TextView
-            android:id="@+id/welcomePage_MeetUs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:text="@string/welcome_MeetJustVega"
-            android:textColor="@color/colorTextGreen"
-            android:gravity="center">
-        </TextView>
+            <TextView
+                android:id="@+id/welcomePage_Welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="300dp"
+                android:textSize="30sp"
+                android:text="@string/welcome_Welcome"
+                android:gravity="center"
+                android:textColor="@color/colorTextWhite">
+            </TextView>
 
-        <View style="@style/Divider"
-            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/welcomePage_MeetUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="@string/welcome_MeetJustVega"
+                android:textColor="@color/colorTextGreen"
+                android:gravity="center">
+            </TextView>
 
-        </View>
+            <View style="@style/Divider"
+                android:layout_marginTop="10dp">
 
-        <TextView
-            android:id="@+id/welcomePage_AboutUs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/colorTextLightGrey"
-            android:text="@string/welcome_AboutUs"
-            android:textSize="17sp"
-            android:gravity="center">
-        </TextView>
+            </View>
 
-        <TextView
-            android:id="@+id/welcomePage_AboutUs_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_AboutUs_text"
-            style="@style/WelcomePage_longText">
-        </TextView>
+            <TextView
+                android:id="@+id/welcomePage_AboutUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorTextLightGrey"
+                android:text="@string/welcome_AboutUs"
+                android:textSize="17sp"
+                android:gravity="center">
+            </TextView>
 
-        <View style="@style/Divider"
-            android:layout_marginTop="20dp">
-        </View>
+            <TextView
+                android:id="@+id/welcomePage_AboutUs_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_AboutUs_text"
+                style="@style/WelcomePage_longText">
+            </TextView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_Purpose"
-            android:layout_marginTop="20dp"
-            android:textSize="17sp"
-            android:textColor="@color/colorTextLightGrey"
-            android:gravity="center">
-        </TextView>
+            <View style="@style/Divider"
+                android:layout_marginTop="20dp">
+            </View>
 
-        <TextView
-            android:id="@+id/welcomePage_Purpose_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/welcome_Purpose_text"
-            style="@style/WelcomePage_longText"
-            >
-        </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_Purpose"
+                android:layout_marginTop="20dp"
+                android:textSize="17sp"
+                android:textColor="@color/colorTextLightGrey"
+                android:gravity="center"
+                >
+            </TextView>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/welcomePage_Purpose_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/welcome_Purpose_text"
+                style="@style/WelcomePage_longText">
+            </TextView>
 
-</ScrollView>
+        </LinearLayout>
+
+    </ScrollView>
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+
+<!--        android:id="@+id/close_WelcomePage"-->
+<!--        android:text="@string/fab_label"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center|bottom"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:background="@color/colorBackgroundGreen">-->
+
+<!--    </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        android:id="@+id/close_WelcomePage"
+        android:text="@string/fab_label"
+        android:textColor="@color/colorTextWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="16dp"
+        android:background="@color/colorBackgroundGreen"
+        android:src="@drawable/ic_arrow_up">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
