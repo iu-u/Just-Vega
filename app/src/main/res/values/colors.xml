@@ -5,7 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
 
 <!-- Background -->
-    <color name="colorBlack">#161716</color>
+    <color name="colorBlack">#000000</color>
 
     <color name="colorDividerGreen">#b9c4bb</color>
     <color name="colorBackgroundGreen">#4cc248</color>

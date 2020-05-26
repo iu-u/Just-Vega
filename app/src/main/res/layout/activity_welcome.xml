@@ -17,25 +17,52 @@
             android:orientation="vertical"
             android:paddingBottom="90dp">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/fade_welcome_image"
+                    android:paddingBottom="50dp">
+                </ImageView>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="103dp"
+                    android:layout_marginBottom="0dp"
+                    android:src="@drawable/JustVegaLogoBig">
+
+                </ImageView>
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/welcomePage_Welcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
-                android:textSize="30sp"
-                android:text="@string/welcome_Welcome"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/poppins_light"
                 android:gravity="center"
-                android:textColor="@color/colorTextWhite">
+                android:text="@string/welcome_Welcome"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="26sp">
+
             </TextView>
 
             <TextView
                 android:id="@+id/welcomePage_MeetUs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:fontFamily="@font/poppins_light"
+                android:gravity="center"
                 android:text="@string/welcome_MeetJustVega"
                 android:textColor="@color/colorTextGreen"
-                android:gravity="center">
+                android:textSize="16sp">
+
             </TextView>
 
             <View style="@style/Divider"
@@ -56,10 +83,13 @@
 
             <TextView
                 android:id="@+id/welcomePage_AboutUs_text"
+                style="@style/WelcomePage_longText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/welcome_AboutUs_text"
-                style="@style/WelcomePage_longText">
+                android:textSize="11sp">
+
             </TextView>
 
             <View style="@style/Divider"
@@ -79,32 +109,18 @@
 
             <TextView
                 android:id="@+id/welcomePage_Purpose_text"
+                style="@style/WelcomePage_longText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/welcome_Purpose_text"
-                style="@style/WelcomePage_longText">
-            </TextView>
+                android:textSize="11sp">
 
-<!--            <Button-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:onClick="recipeActivity"></Button>-->
+            </TextView>
 
         </LinearLayout>
 
     </ScrollView>
-
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-
-<!--        android:id="@+id/close_WelcomePage"-->
-<!--        android:text="@string/fab_label"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center|bottom"-->
-<!--        android:layout_margin="16dp"-->
-<!--        android:background="@color/colorBackgroundGreen">-->
-
-<!--    </com.google.android.material.floatingactionbutton.FloatingActionButton>-->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
 
