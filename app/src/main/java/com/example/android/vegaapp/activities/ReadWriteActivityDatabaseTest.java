@@ -27,8 +27,16 @@ public class ReadWriteActivityDatabaseTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_write_database_test);
+
+        Log.d(TAG, "GO INTO DATABASE CLASS ");
+
         database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("test");
+        myRef = database.getReference();
+        myRef = database.getReference().child("test");
+
+
+        Log.d(TAG, "Value in database +" + database.getReference());
+
         readFromDatabase();
 
         write = (TextView) findViewById(R.id.editText2);
@@ -47,8 +55,10 @@ public class ReadWriteActivityDatabaseTest extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+
                 String value = dataSnapshot.getValue(String.class);
                 Log.d(TAG, "Value is: " + value);
+                write.setText(value);
             }
 
             @Override
