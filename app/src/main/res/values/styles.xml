@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
     <style name="MyTheme" parent="AppTheme">
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">#0f0f0f</item>
     </style>
 
     <style name="Divider">
