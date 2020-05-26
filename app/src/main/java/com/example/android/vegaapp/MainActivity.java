@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.android.vegaapp.activities.LoginActivity;
 import com.example.android.vegaapp.activities.ProfileActivity;
+import com.example.android.vegaapp.activities.ReadWriteActivityDatabaseTest;
 import com.example.android.vegaapp.activities.RecipeActivity;
 import com.example.android.vegaapp.activities.RecipeDetailActivity;
 import com.example.android.vegaapp.activities.RegisterActivity;
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void registerActivity(View view){
         Intent intent= new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void databasetestingActivity(View view){
+        Intent intent= new Intent(MainActivity.this, ReadWriteActivityDatabaseTest.class);
         startActivity(intent);
     }
 

@@ -53,11 +53,19 @@
          />
 
     <Button
-        android:id="@+id/recipedetailActivity"
+    android:id="@+id/recipedetailActivity"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:onClick="recipeDetailActivity"
+    android:text="recipeDetailActivity"
+    />
+
+    <Button
+        android:id="@+id/databasetestingActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="recipeDetailActivity"
-        android:text="recipeDetailActivity"
+        android:onClick="databasetestingActivity"
+        android:text="databasetestingActivity"
         />
 
     <Button
