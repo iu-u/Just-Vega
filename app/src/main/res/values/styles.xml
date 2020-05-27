@@ -11,7 +11,9 @@
 
 
     <style name="MyTheme" parent="AppTheme">
-        <item name="android:windowBackground">#0f0f0f</item>
+        <item name="android:windowBackground">#110F0E</item>
+        <item name="android:textColor">@color/colorTextLightGrey</item>
+
     </style>
 
     <style name="Divider">
