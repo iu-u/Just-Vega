@@ -34,12 +34,15 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        try {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            email = (TextView)findViewById(R.id.showEmail);
+            email.setSelected(true);
 
-        email = (TextView)findViewById(R.id.showEmail);
-        email.setSelected(true);
-
-        email.setText(user.getEmail());
+            email.setText(user.getEmail());
+        } catch (Exception e){
+            Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+        }
 
         btn_sign_out = (Button)findViewById(R.id.logoutButton);
         btn_sign_out.setOnClickListener(new View.OnClickListener(){
