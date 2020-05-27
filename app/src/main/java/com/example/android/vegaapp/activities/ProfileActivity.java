@@ -38,7 +38,6 @@ public class ProfileActivity extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             email = (TextView)findViewById(R.id.showEmail);
             email.setSelected(true);
-
             email.setText(user.getEmail());
         } catch (Exception e){
             Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
@@ -65,8 +64,6 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
-
-
 
 
     @Override
