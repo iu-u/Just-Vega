@@ -23,4 +23,8 @@
         deserunt duo.
     </string>
     <string name="fab_label">Start Using the App</string>
+
+
+    <!--  Recipe List Page  -->
+    <string name="recipeList_recipe">Recipes</string>
 </resources>
