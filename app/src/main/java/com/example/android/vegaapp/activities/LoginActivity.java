@@ -2,9 +2,12 @@ package com.example.android.vegaapp.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.MainActivity;
@@ -36,6 +39,15 @@ public class LoginActivity extends AppCompatActivity {
         );
         
         ShowSignInOptions();
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     private void ShowSignInOptions() {
