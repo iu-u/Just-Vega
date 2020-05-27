@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.MainActivity;
@@ -18,10 +19,13 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
 
     Button btn_sign_out;
+    TextView email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,16 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+
+        try {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            email = (TextView)findViewById(R.id.showEmail);
+            email.setSelected(true);
+
+            email.setText(user.getEmail());
+        } catch (Exception e){
+            Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+        }
 
         btn_sign_out = (Button)findViewById(R.id.logoutButton);
         btn_sign_out.setOnClickListener(new View.OnClickListener(){
