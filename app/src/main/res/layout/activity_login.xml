@@ -9,42 +9,44 @@
     android:background="@color/colorBlack"
     android:orientation="vertical">
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlack"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBlack"
-            android:orientation="vertical">
+            android:paddingBottom="0dp">
 
-
-
-
-            <RelativeLayout
+            <ImageView
                 android:layout_width="match_parent"
+                android:layout_height="265dp"
+                android:contentDescription="TODO"
+                android:src="@drawable/fade_login_register_logo">
+
+            </ImageView>
+
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="0dp"
-                >
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="265dp"
-                    android:src="@drawable/fade_login_register_logo"
-                    android:contentDescription="TODO">
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:contentDescription="TODO"
+                android:minWidth="50dp"
+                android:src="@drawable/justvegalogo">
 
-                </ImageView>
+            </ImageView>
+        </RelativeLayout>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="100dp"
-                    android:minWidth="50dp"
-                    android:src="@drawable/justvegalogo"
-                    android:contentDescription="TODO">
-
-                </ImageView>
-            </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/welcomePage_Welcome"
@@ -151,8 +153,10 @@
                     android:text="Button" />
             </LinearLayout>
 
-
         </LinearLayout>
+
+
+    </LinearLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
