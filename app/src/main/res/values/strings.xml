@@ -27,4 +27,6 @@
 
     <!--  Recipe List Page  -->
     <string name="recipeList_recipe">Recipes</string>
+    <string name="recipeList_filter">FILTERS</string>
+    <string name="recipeList_sort">Sort</string>
 </resources>

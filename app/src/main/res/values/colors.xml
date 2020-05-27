@@ -13,6 +13,7 @@
 
 <!-- Text -->
     <color name="colorTextWhite">#ffffff</color>
-    <color name="colorTextGreen">#b0cfc0</color>
+    <color name="colorTextLightGreen">#b0cfc0</color>
+    <color name="colorTextGreen">#469E49</color>
     <color name="colorTextLightGrey">#b0b0b0</color>
 </resources>
