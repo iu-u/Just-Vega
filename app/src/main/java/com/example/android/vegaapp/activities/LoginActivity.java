@@ -38,9 +38,9 @@ public class LoginActivity extends AppCompatActivity {
 
         );
         
-        ShowSignInOptions();
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-        setSupportActionBar(mToolbar);
+//        ShowSignInOptions();
+//        Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+//        setSupportActionBar(mToolbar);
     }
 
     @Override
