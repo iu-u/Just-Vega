@@ -14,7 +14,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@drawable/justvegalogo_toolbar"
+        android:src="@drawable/justvegalogo"
         android:layout_gravity="center">
     </ImageView>
 
