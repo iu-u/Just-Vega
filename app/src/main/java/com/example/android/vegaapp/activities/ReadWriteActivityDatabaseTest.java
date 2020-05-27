@@ -32,12 +32,18 @@ public class ReadWriteActivityDatabaseTest extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
-        myRef = database.getReference().child("test");
-
+        myRef = database.getReference().child("Amuse");
+        Log.d(TAG, "Value in Amuse +" + database.getReference().child("Amuse"));
+        myRef = database.getReference().child("Pastinaak poffertje, shiitake & daslook");
+        myRef = database.getReference().child("Ingrediënten");
+        myRef = database.getReference().child("Soezenbeslag");
+        myRef = database.getReference().child("gr Zout");
+        Log.d(TAG, "ENDDVALUE +" + database.getReference().child("Amuse").child("Pastinaak poffertje, shiitake & daslook").child("Ingrediënten").child("Soezenbeslag"));
+        //voor sprint 2 moet dit gedaan worden
 
         Log.d(TAG, "Value in database +" + database.getReference());
 
-        writeToDatabase();
+//        writeToDatabase();
         readFromDatabase();
 
         write = (TextView) findViewById(R.id.editText2);
