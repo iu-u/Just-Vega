@@ -46,10 +46,8 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final int MY_REQUEST_CODE = 3030;
     private static final String TAG ="";
     private static final int RC_SIGN_IN = 1;
-    List<AuthUI.IdpConfig> providers;
     private CallbackManager callbackManager;
     private FirebaseAuth mFirebaseAuth;
     private GoogleSignInClient mGoogleSignInClient;
@@ -165,6 +163,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private void signInWithGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -233,29 +232,4 @@ public class LoginActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
-
-//    private void ShowSignInOptions() {
-//        startActivityForResult(
-//                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers)
-//                .setTheme(R.style.MyTheme)
-//                .build(),MY_REQUEST_CODE
-//        );
-//    }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == MY_REQUEST_CODE){
-//            IdpResponse response = IdpResponse.fromResultIntent(data);
-//            if(resultCode == RESULT_OK){
-//                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//
-//                Toast.makeText(this,""+user.getEmail(),Toast.LENGTH_SHORT).show();
-//                Intent intent= new Intent(LoginActivity.this, WelcomeActivity.class);
-//                startActivity(intent);
-//            }else{
-//                Toast.makeText(this,""+response.getError().getMessage(),Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    }
 }
