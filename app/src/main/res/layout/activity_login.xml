@@ -67,8 +67,12 @@
                 android:textColorHint="#FFFFFF"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true">
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/holo_green_dark"/>
                 <com.google.android.material.textfield.TextInputEditText
+                    android:background="@android:color/transparent"
                     android:id="@+id/txt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,8 +86,12 @@
                 android:textColorHint="#FFFFFF"
                 app:passwordToggleDrawable="@android:drawable/ic_menu_view"
                 app:passwordToggleEnabled="true">
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/holo_green_dark"/>
                 <com.google.android.material.textfield.TextInputEditText
+                    android:background="@android:color/transparent"
                     android:id="@+id/txt_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,14 +112,23 @@
 
             <Button
                 android:id="@+id/btn_email_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Login" />
+                android:text="Login"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5" />
 
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/forgot_password_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
                 android:text="FORGOT PASSWORD"
                 android:textColor="#4CAF50" />
 
@@ -122,17 +139,20 @@
 
                 <Button
                     android:id="@+id/btn_g_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SIGN IN G" />
+                    style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+
+                    android:text="SIGN IN" />
 
                 <Button
                     android:id="@+id/btn_fb_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SIGN IN FB" />
+                    style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="50dp"
+                    android:text="SIGN IN" />
 
             </LinearLayout>
 
@@ -143,17 +163,26 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="match_parent"
+                    android:id="@+id/login_account_text"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="130dp"
                     android:text="Don't have an account?"
                     android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/btn_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sign up" />
+                    android:text="Sign up"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/loginbuttonshape"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5" />
             </LinearLayout>
 
         </LinearLayout>
