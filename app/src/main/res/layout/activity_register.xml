@@ -137,10 +137,11 @@
                 android:background="@android:color/holo_green_dark"/>
             <CheckBox
                 android:id="@+id/checkBox_register"
+                android:buttonTint="@color/colorTextGreen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
-                android:text="I accept TERMS &amp; Conditions" />
+                android:text="I accept TERMS &amp; conditions" />
 
             <Button
                 android:id="@+id/btn_email_sign_up"
