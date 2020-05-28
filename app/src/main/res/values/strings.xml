@@ -27,9 +27,9 @@
 
 
     <!--  Recipe List Page  -->
-<!--    <string name="recipeList_recipe">Recipes</string>-->
-<!--    <string name="recipeList_filter">FILTERS</string>-->
-<!--    <string name="recipeList_sort">Sort</string>-->
+    <string name="recipeList_recipe">Recipes</string>
+    <string name="recipeList_filter">FILTERS</string>
+    <string name="recipeList_sort">Sort</string>
     <string name="en_de_fr">EN | DE | FR</string>
     <string name="language_">LANGUAGE</string>
     <string name="add_allergenen_">ADD ALLERGENEN</string>

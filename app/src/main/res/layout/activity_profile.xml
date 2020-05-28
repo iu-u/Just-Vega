@@ -326,38 +326,19 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="15dp">
 
-                <TextView
-                    android:id="@+id/language_textview_1"
+                <Button
+                    android:id="@+id/language_button_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="15dp"
                     android:clickable="true"
                     android:gravity="left"
-                    android:text="EN |"
+                    android:text="EN | DE | FR"
+                    android:background="@color/colorBlack"
                     android:textColor="@color/colorTextLightGrey" />
 
-                <TextView
-                    android:id="@+id/language_textview_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:clickable="true"
-                    android:layout_marginTop="15dp"
-                    android:gravity="left"
-                    android:text="DE |"
-                    android:textColor="@color/colorTextLightGrey" />
 
-                <TextView
-                    android:id="@+id/language_textview_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FR"
-                    android:clickable="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="left"
-                    android:textColor="@color/colorTextLightGrey" />
 
 
             </LinearLayout>
@@ -369,22 +350,22 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_height="70dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/logoutButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="7dp"
+                    android:layout_height="37dp"
                     android:layout_marginLeft="30dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_weight="1"
-
-                    android:gravity="left"
+                    android:background="@drawable/logoutbuttonshape2"
+                    android:gravity="center"
                     android:text="LOG OUT"
-                    android:background="@color/colorBlack"
                     android:textColor="@color/colorBackgroundGreen" />
+
 
                 <Button
                     android:id="@+id/deleteAccountButton"
@@ -396,7 +377,6 @@
                     android:gravity="center_horizontal"
                     android:text="DELETE ACCOUNT"
                     android:textColor="@color/colorBackgroundGreen" />
-
 
 
             </LinearLayout>

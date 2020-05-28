@@ -28,13 +28,10 @@
 
 
     <!--  Recipe List Page  -->
-<!--    <string name="recipeList_recipe">Lorem ipsum</string>-->
-<!--    <string name="recipeList_filter">Lorem ipsum</string>-->
-<!--    <string name="recipeList_sort">Lorem ipsum</string>-->
-<!--    &lt;!&ndash;  Recipe List Page  &ndash;&gt;-->
-<!--    <string name="recipeList_recipe">Lorem ipsum</string>-->
-<!--    <string name="recipeList_filter">Lorem ipsum</string>-->
-<!--    <string name="recipeList_sort">Lorem ipsum</string>-->
+    <string name="recipeList_recipe">Lorem ipsum</string>
+    <string name="recipeList_filter">Lorem ipsum</string>
+    <string name="recipeList_sort">Lorem ipsum</string>
+    <!--  Recipe List Page  -->
     <string name="en_de_fr">Lorem ipsum</string>
     <string name="language_">Lorem ipsum</string>
     <string name="add_allergenen_">Lorem ipsum</string>
