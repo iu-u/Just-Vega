@@ -10,6 +10,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:textColor="#FFFFFF"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Dessert and Delicatesse"
@@ -24,6 +25,7 @@
             android:src="@drawable/pieter_de_hoop" />
 
         <TextView
+            android:textColor="#FFFFFF"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Lorem Ibsum"
@@ -31,6 +33,7 @@
             />
 
         <TextView
+            android:textColor="#FFFFFF"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Lorem Ibsum"

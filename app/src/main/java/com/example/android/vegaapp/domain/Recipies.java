@@ -9,9 +9,9 @@ public class Recipies {
     private String recipeName;
     private String ingredients;
     private String kindOfFood;
-    private Image image;
+    private String image;
 
-    public Recipies(String recipeName, String ingredients, String kindOfFood, Image image) {
+    public Recipies(String recipeName, String ingredients, String kindOfFood, String image) {
         this.recipeName = recipeName;
         this.ingredients = ingredients;
         this.kindOfFood = kindOfFood;
@@ -42,11 +42,11 @@ public class Recipies {
         this.kindOfFood = kindOfFood;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

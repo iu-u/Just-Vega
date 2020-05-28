@@ -42,23 +42,24 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         /* maakt een nieuwe view aan
            set xml view*/
         View recipieListItem = inflator.inflate(R.layout.recipe_show_in_recyclerview, parent, false);
-        RecipeAdapter.ViewHolder viewHolder2 = new ViewHolder(recipieListItem);
+        RecipeAdapter.ViewHolder viewHolder = new ViewHolder(recipieListItem);
 
-        return viewHolder2;
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         //TODO moet gedaan worden
+        Recipies recipies = this.recipies.get(position);
 
 
-        holder.sortFood.setText(recipies.get(position).getKindOfFood());
+        holder.sortFood.setText(this.recipies.get(position).getKindOfFood());
 
         //TODO correct image must be set.
         //holder.imageFood.setText(mSeeList.get(position).getReview());
-        holder.titleFood.setText(recipies.get(position).getRecipeName());
-        holder.ingredients.setText(recipies.get(position).getIngredients());
+        holder.titleFood.setText(this.recipies.get(position).getRecipeName());
+        holder.ingredients.setText(this.recipies.get(position).getIngredients());
     }
 
 
