@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.MainActivity;
@@ -54,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private boolean mgooglesignin=false;
     private boolean mfacebooksignin=false;
+    private EditText txt_email;
+    private EditText txt_password;
 
 
 
@@ -63,16 +66,35 @@ public class LoginActivity extends AppCompatActivity {
 
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+        if(currentUser!=null){
+            Intent intent= new Intent(LoginActivity.this, WelcomeActivity.class);
+            startActivity(intent);
+        }
         FacebookSdk.sdkInitialize(this.getApplicationContext());
 
         callbackManager = CallbackManager.Factory.create();
 
-
         setContentView(R.layout.activity_login);
 
+        txt_email = (EditText)findViewById(R.id.txt_email);
+        txt_password = (EditText)findViewById(R.id.txt_password);
         Button btn_fb_login = (Button)findViewById(R.id.btn_fb_login);
         Button btn_g_login = (Button)findViewById(R.id.btn_g_login);
         Button btn_register = (Button)findViewById(R.id.btn_register);
+        Button btn_email_login = (Button)findViewById(R.id.btn_email_login);
+
+        btn_email_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txt_email.getText().toString().equals("")||txt_password.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this, "empty fields", Toast.LENGTH_SHORT).show();
+                }else{
+                    signInWithEmail();
+                }
+
+            }
+        });
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +145,26 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    private void signInWithEmail(){
+        mFirebaseAuth.signInWithEmailAndPassword(txt_email.getText().toString(), txt_password.getText().toString())
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mFirebaseAuth.getCurrentUser();
+                            Intent intent= new Intent(LoginActivity.this, WelcomeActivity.class);
+                            startActivity(intent);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Wrong email or password",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
     private void signInWithGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
