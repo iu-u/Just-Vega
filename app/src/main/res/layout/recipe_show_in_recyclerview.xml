@@ -2,13 +2,12 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="100dp"
@@ -17,27 +16,28 @@
             android:id="@+id/typeOfFood"
             />
 
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="257dp"
+            android:layout_gravity="center"
+            android:src="@drawable/pieter_de_hoop" />
 
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Lorem Ibsum"
+            android:id="@+id/TitleFOod"
+            />
 
-        <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Lorem Ibsum"
+            android:id="@+id/ingredients"
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
-                android:layout_gravity="center"
-                android:src="@drawable/pieter_de_hoop" />
-
-
-        </LinearLayout>
-
-
-
-
+            />
     </LinearLayout>
-
 
 
 
