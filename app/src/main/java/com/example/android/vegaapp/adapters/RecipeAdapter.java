@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,9 +28,6 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         this.recipies = recipies;
         this.RecipeClicker = recipeClicker;
     }
-
-
-
 
     @NonNull
     @Override
@@ -55,9 +53,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         //TODO moet gedaan worden
 
 
-//        holder.movie.setText(mSeeList.get(position).getMovie());
-//        holder.review.setText(mSeeList.get(position).getReview());
-//        holder.rating.setText(mSeeList.get(position).getRating());
+        holder.sortFood.setText(recipies.get(position).getKindOfFood());
+
+        //TODO correct image must be set.
+        //holder.imageFood.setText(mSeeList.get(position).getReview());
+        holder.titleFood.setText(recipies.get(position).getRecipeName());
+        holder.ingredients.setText(recipies.get(position).getIngredients());
     }
 
 
@@ -71,16 +72,23 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //TODO moet gedaan worden
-//        private TextView movie;
-//        private TextView review;
-//        private TextView rating;
+        private TextView sortFood;
+        private ImageView imageFood;
+        private TextView titleFood;
+        private TextView ingredients;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-//            movie = (TextView) itemView.findViewById(R.id.movie_title_a);
-//            review = (TextView) itemView.findViewById(R.id.review);
-//            rating = (TextView) itemView.findViewById(R.id.movie_rating);
+            sortFood = (TextView) itemView.findViewById(R.id.typeOfFood);
+            imageFood = (ImageView) itemView.findViewById(R.id.image);
+            titleFood = (TextView) itemView.findViewById(R.id.TitleFOod);
+            ingredients = (TextView) itemView.findViewById(R.id.ingredients);
+
+            sortFood.setOnClickListener(this);
+            imageFood.setOnClickListener(this);
+            titleFood.setOnClickListener(this);
+            ingredients.setOnClickListener(this);
 //
 //            rating.setOnClickListener(this);
 //            movie.setOnClickListener(this);
