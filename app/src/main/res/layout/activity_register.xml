@@ -145,7 +145,7 @@
 
             <Button
                 android:id="@+id/btn_email_sign_up"
-                android:text="Sign up"
+                android:text="Sign Up"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:layout_width="350dp"
@@ -153,8 +153,6 @@
                 android:layout_gravity="center"
                 android:background="@drawable/buttonshape"
                 android:shadowColor="#A8A8A8"
-                android:shadowDx="0"
-                android:shadowDy="0"
                 android:shadowRadius="5" />
 
 
