@@ -8,7 +8,10 @@
     tools:context=".activities.LoginActivity"
     android:background="@color/colorBlack"
     android:orientation="vertical">
-
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll_view_layout">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,13 +72,20 @@
                 app:hintEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:background="@android:color/transparent"
+
                     android:id="@+id/txt_email_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/holo_green_dark"/>
             <com.google.android.material.textfield.TextInputLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Password"
@@ -84,6 +94,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:background="@android:color/transparent"
                     android:id="@+id/txt_password_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,7 +105,12 @@
                     android:textColorLink="#4CAF50" />
 
             </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/holo_green_dark"/>
             <com.google.android.material.textfield.TextInputLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Repeat password"
@@ -103,6 +119,8 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:background="@android:color/transparent"
+
                     android:id="@+id/txt_repeat_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -113,7 +131,10 @@
                     android:textColorLink="#4CAF50" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/holo_green_dark"/>
             <CheckBox
                 android:id="@+id/checkBox_register"
                 android:layout_width="match_parent"
@@ -123,30 +144,42 @@
 
             <Button
                 android:id="@+id/btn_email_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="sign up" />
+                android:text="Sign up"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5" />
 
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="1.0"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_g_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SIGN IN G" />
+                    style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+
+                    android:text="SIGN IN" />
 
                 <Button
                     android:id="@+id/btn_fb_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SIGN IN FB" />
+                    style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+                    android:text="SIGN IN" />
 
             </LinearLayout>
 
@@ -158,22 +191,32 @@
 
                 <TextView
                     android:id="@+id/already_account"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="125dp"
                     android:text="Already have an account?"
                     android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/btn_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Log in" />
+                    android:text="Login"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:layout_width="350dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/loginbuttonshape"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    android:shadowRadius="5" />
             </LinearLayout>
 
         </LinearLayout>
 
 
     </LinearLayout>
+    </ScrollView>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

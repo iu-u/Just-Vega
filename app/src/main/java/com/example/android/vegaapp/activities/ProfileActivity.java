@@ -1,9 +1,5 @@
 package com.example.android.vegaapp.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,12 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.vegaapp.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.android.vegaapp.R;
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -59,28 +53,22 @@ public class ProfileActivity extends AppCompatActivity {
                 } catch (Exception e){
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         deleteAccount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO moet nog testen of de delete functie correct werkt dat kan pas nadat login klaar is.
                 try {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    user.delete();
+                    mFirebaseAuth.getCurrentUser().delete();
                     mFirebaseAuth.signOut();
                     Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
                     startActivity(intent);
                 } catch (Exception e){
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
-
     }
 
 

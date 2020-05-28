@@ -21,12 +21,21 @@ public class WelcomeActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+
     }
 
     public void recipeActivity(View view){
         Intent intent= new Intent(WelcomeActivity.this, RecipeActivity.class);
         startActivity(intent);
     }
+
+    //click on toolbar to go to profile
+    public void goToProfile(View view){
+        Intent intent= new Intent(WelcomeActivity.this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
