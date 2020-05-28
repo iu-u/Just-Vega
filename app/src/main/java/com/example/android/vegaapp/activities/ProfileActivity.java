@@ -26,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     Button btn_sign_out;
     TextView email;
+    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
         try {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -47,19 +49,15 @@ public class ProfileActivity extends AppCompatActivity {
         btn_sign_out.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                AuthUI.getInstance().signOut(ProfileActivity.this)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProfileActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                try {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    mFirebaseAuth.signOut();
+                    Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
