@@ -81,6 +81,29 @@ public class LoginActivity extends AppCompatActivity {
         Button btn_g_login = (Button)findViewById(R.id.btn_g_login);
         Button btn_register = (Button)findViewById(R.id.btn_register);
         Button btn_email_login = (Button)findViewById(R.id.btn_email_login);
+        Button btn_forgot = (Button) findViewById(R.id.btn_forgot_password) ;
+
+        btn_forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txt_email.getText().toString().equals("")){
+                    Toast.makeText(LoginActivity.this, "enter email", Toast.LENGTH_SHORT).show();
+                }else{
+                    mFirebaseAuth.sendPasswordResetEmail(txt_email.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(LoginActivity.this, "email sent", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        Toast.makeText(LoginActivity.this, "email does not exist", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+
+            }
+        });
 
         btn_email_login.setOnClickListener(new View.OnClickListener() {
             @Override
