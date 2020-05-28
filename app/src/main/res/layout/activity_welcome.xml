@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activities.WelcomeActivity"
-    android:background="@color/colorBlack"
+    android:background="@color/colorBackgroundBlack"
     android:orientation="vertical">
 
 
@@ -17,7 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorBlack"
+            android:background="@color/colorBackgroundBlack"
             android:orientation="vertical"
             android:paddingBottom="90dp">
 
@@ -45,7 +45,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginEnd="102dp"
                     android:layout_marginBottom="-42dp"
-                    android:src="@drawable/justvegalogobig">
+                    android:src="@drawable/justvegalogo_transparent">
 
                 </ImageView>
             </RelativeLayout>
@@ -54,7 +54,7 @@
                 android:id="@+id/welcomePage_Welcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/poppins_light"
                 android:gravity="center"
                 android:text="@string/welcome_Welcome"
