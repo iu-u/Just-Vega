@@ -62,8 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //TODO moet nog testen of de delete functie correct werkt dat kan pas nadat login klaar is.
                 try {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    user.delete();
+                    mFirebaseAuth.getCurrentUser().delete();
                     mFirebaseAuth.signOut();
                     Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
                     startActivity(intent);
