@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Just Vega</string>
+
+    <string name="facebook_application_id" translatable="false">2536657096587121</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb2536657096587121</string>
+
+    <!-- Welcome Page -->
+    <string name="welcome_Welcome">Lorem ipsum</string>
+    <string name="welcome_MeetJustVega">Lorem ipsum</string>
+    <string name="welcome_AboutUs">Lorem ipsum</string>
+    <string name="welcome_AboutUs_text">Lorem ipsum dolor sit amet,
+        cotidieque disputando vix at, cum ea saepe vitae ocurreret.
+        Vocibus molestiae scribentur ea his, ceteros omittantur neglegentur ne has.
+        Alii primis gubergren sed ei, debitis molestiae splendide et duo. Duo no assentior neglegentur.
+        No sea velit suscipit, ut discere luptatum probatus eos. Sed bonorum explicari
+        quaerendum te, an eius inermis nam, eam eu natum menandri disputation
+    </string>
+    <string name="welcome_Purpose">WHY WE DO THIS</string>
+    <string name="welcome_Purpose_text">An sea ferri labores nostrum, mea nusquam fierent cu.
+        Est oporteat necessitatibus cu, mei verear intellegam necessitatibus ne.
+        Vide consulatu ne usu. Ei mel pertinax reformidans accommodare. Ei sint idque signiferumque
+        eam, an iusto definiebas assueverit est. Est at reque vivendo scriptorem. Ei amet dolores
+        deserunt duo.
+    </string>
+    <string name="fab_label">Lorem ipsump</string>
+    <string name="welcome_back">Lorem ipsum</string>
+
+
+    <!--  Recipe List Page  -->
+<!--    <string name="recipeList_recipe">Lorem ipsum</string>-->
+<!--    <string name="recipeList_filter">Lorem ipsum</string>-->
+<!--    <string name="recipeList_sort">Lorem ipsum</string>-->
+<!--    &lt;!&ndash;  Recipe List Page  &ndash;&gt;-->
+<!--    <string name="recipeList_recipe">Lorem ipsum</string>-->
+<!--    <string name="recipeList_filter">Lorem ipsum</string>-->
+<!--    <string name="recipeList_sort">Lorem ipsum</string>-->
+    <string name="en_de_fr">Lorem ipsum</string>
+    <string name="language_">Lorem ipsum</string>
+    <string name="add_allergenen_">Lorem ipsum</string>
+    <string name="hazel_nut_milk">Lorem ipsum</string>
+    <string name="allergens">Lorem ipsum</string>
+    <string name="subscribe_">Lorem ipsum</string>
+    <string name="free_">Lorem ipsum</string>
+    <string name="your_account_">Lorem ipsum</string>
+    <string name="subscription">Lorem ipsum</string>
+    <string name="photo1_jpg">Lorem ipsum</string>
+    <string name="your_photo">Lorem ipsum</string>
+    <string name="password_">Lorem ipsum</string>
+    <string name="johndoe_gmail_com__">vLorem ipsum</string>
+    <string name="email_">Lorem ipsum</string>
+    <string name="edit_">Lorem ipsum</string>
+    <string name="information_">Lorem ipsum</string>
+    <string name="delete_account">Lorem ipsum</string>
+    <string name="log_out">Lorem ipsum</string>
+</resources>
