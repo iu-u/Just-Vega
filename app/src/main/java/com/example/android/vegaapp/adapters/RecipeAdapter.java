@@ -82,7 +82,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
             sortFood = (TextView) itemView.findViewById(R.id.typeOfFood);
             imageFood = (ImageView) itemView.findViewById(R.id.image);
-            titleFood = (TextView) itemView.findViewById(R.id.TitleFOod);
+            titleFood = (TextView) itemView.findViewById(R.id.titleFood);
             ingredients = (TextView) itemView.findViewById(R.id.ingredients);
 
             sortFood.setOnClickListener(this);

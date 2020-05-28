@@ -16,6 +16,8 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.MainActivity;
@@ -60,6 +62,7 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+
     }
 
     @Override

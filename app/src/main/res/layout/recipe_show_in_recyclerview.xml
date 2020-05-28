@@ -1,46 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="300dp">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerInParent="false"
+        android:layout_gravity="center"
+        android:background="@color/colorBackgroundBlack"
+        android:src="@drawable/pieter_de_hoop" />
+
+
+    <TextView
+        android:id="@+id/typeOfFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="Dessert and Delicatesse"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="15sp">
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Dessert and Delicatesse"
-            android:id="@+id/typeOfFood"
-            />
+    </TextView>
 
-        <ImageView
-            android:id="@+id/image"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
+        >
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="257dp"
-            android:layout_gravity="center"
-            android:src="@drawable/pieter_de_hoop" />
-
-        <TextView
-            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Lorem Ibsum"
-            android:id="@+id/TitleFOod"
-            />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Lorem Ibsum"
-            android:id="@+id/ingredients"
+            <TextView
+                android:id="@+id/titleFood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:text="Lorem Ibsum"
+                android:textColor="@color/colorTextWhite"
+                android:textStyle="bold"
+                android:textSize="25sp"/>
 
-            />
+            <TextView
+                android:id="@+id/ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:text="Sugar-free, whole grain"
+                android:textColor="@color/colorTextLightGrey" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle_fave_icon"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="4dp"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="12dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_favorite_icon"
+                    />
+            </FrameLayout>
+        </RelativeLayout>
     </LinearLayout>
 
-
-
-
-
-</LinearLayout>
+</RelativeLayout>
