@@ -31,7 +31,8 @@
             android:layout_marginStart="10dp"
             app:layout_constraintEnd_toEndOf="@+id/textView22"
             app:layout_constraintHorizontal_bias="0.018"
-            app:srcCompat="@drawable/circle" />
+            app:srcCompat="@drawable/circle"
+            android:onClick="goToProfile"/>
 
         <TextView
             android:layout_toEndOf="@id/imageView2"
@@ -39,7 +40,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
-            android:text="Profile" />
+            android:text="Profile"
+            android:onClick="goToProfile"
+            android:clickable="true"/>
 
         <SearchView
             android:layout_toLeftOf="@id/heart"
