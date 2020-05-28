@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -80,6 +81,8 @@ public class RegisterActivity extends AppCompatActivity {
         mPassword=(EditText)findViewById(R.id.txt_password_register);
         mRPassword=(EditText)findViewById(R.id.txt_repeat_password);
 
+        Button b = (Button)findViewById(R.id.btn_email_sign_up);
+        b.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
 
 
         mLogin.setOnClickListener(new View.OnClickListener() {
