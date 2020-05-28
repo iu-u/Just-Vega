@@ -53,14 +53,12 @@ public class ProfileActivity extends AppCompatActivity {
                 } catch (Exception e){
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         deleteAccount.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //TODO moet nog testen of de delete functie correct werkt dat kan pas nadat login klaar is.
                 try {
                     mFirebaseAuth.getCurrentUser().delete();
                     mFirebaseAuth.signOut();
@@ -69,11 +67,8 @@ public class ProfileActivity extends AppCompatActivity {
                 } catch (Exception e){
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
-
     }
 
 
