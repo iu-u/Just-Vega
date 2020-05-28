@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class ProfileActivity extends AppCompatActivity {
 
     Button btn_sign_out;
+    Button deleteAccount;
     TextView email;
     private FirebaseAuth mFirebaseAuth;
 
@@ -34,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        deleteAccount = (Button) findViewById(R.id.deleteAccountButton);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         try {
@@ -60,6 +62,24 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        deleteAccount.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO moet nog testen of de delete functie correct werkt dat kan pas nadat login klaar is.
+                try {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    user.delete();
+                    mFirebaseAuth.signOut();
+                    Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
     }
 

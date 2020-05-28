@@ -28,6 +28,8 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
 
+        //TODO XML moet nog mooi gemaakt worden.
+
 //        btn_sign_out = (Button)findViewById(R.id.btn_sign_out);
 //        btn_sign_out.setOnClickListener(new View.OnClickListener(){
 //
