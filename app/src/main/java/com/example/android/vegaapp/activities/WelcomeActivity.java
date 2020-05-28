@@ -24,7 +24,7 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void recipeActivity(View view){
-        Intent intent= new Intent(WelcomeActivity.this, RecipeDetailActivity.class);
+        Intent intent= new Intent(WelcomeActivity.this, RecipeActivity.class);
         startActivity(intent);
     }
 

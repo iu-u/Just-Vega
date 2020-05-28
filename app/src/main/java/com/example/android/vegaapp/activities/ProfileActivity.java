@@ -25,7 +25,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class ProfileActivity extends AppCompatActivity {
 
     Button btn_sign_out;
+    Button deleteAccount;
     TextView email;
+    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,37 +35,53 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        deleteAccount = (Button) findViewById(R.id.deleteAccountButton);
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        email = (TextView)findViewById(R.id.showEmail);
-        email.setSelected(true);
-
-        email.setText(user.getEmail());
+        try {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            email = (TextView)findViewById(R.id.showEmail);
+            email.setSelected(true);
+            email.setText(user.getEmail());
+        } catch (Exception e){
+            Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+        }
 
         btn_sign_out = (Button)findViewById(R.id.logoutButton);
         btn_sign_out.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                AuthUI.getInstance().signOut(ProfileActivity.this)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
-                                startActivity(intent);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProfileActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                try {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    mFirebaseAuth.signOut();
+                    Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
+        deleteAccount.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                //TODO moet nog testen of de delete functie correct werkt dat kan pas nadat login klaar is.
+                try {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    user.delete();
+                    mFirebaseAuth.signOut();
+                    Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                } catch (Exception e){
+                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
     }
-
-
 
 
     @Override
