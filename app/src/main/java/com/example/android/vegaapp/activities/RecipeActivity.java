@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,6 +33,8 @@ import java.util.ArrayList;
 
 public class RecipeActivity extends AppCompatActivity implements View.OnClickListener, RecipeOnClickHandler {
 
+    private static String TAG = RecipeActivity.class.getName();
+
     ArrayList<Recipies> recipies = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -39,8 +42,10 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
 
     protected void onCreate(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        //super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_recipe);
+
+        Log.d(TAG, "THIS CLASS CALLED");
 
         View rootview = inflater.inflate(R.layout.activity_recipe, container, false);
         //TODO XML moet nog mooi gemaakt worden.
