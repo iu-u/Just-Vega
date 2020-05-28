@@ -10,11 +10,11 @@ public class RecipeNetworkUtils {
     }
     public ArrayList<Recipies> createRecipes(){
         ArrayList<Recipies> list = new ArrayList<>();
-        list.add(new Recipies("afrash","is","mad","gitdamo"));
-        list.add(new Recipies("afrash","is","mad","gitdamo1"));
-        list.add(new Recipies("afrash","is","mad","gitdamo2"));
-        list.add(new Recipies("afrash","is","mad","gitdamo3"));
-        list.add(new Recipies("afrash","is","mad","gitdamo4"));
+        list.add(new Recipies("s","is","blij","l"));
+        list.add(new Recipies("s","is","blij","l"));
+        list.add(new Recipies("s","is","blij","l"));
+        list.add(new Recipies("s","is","blij","l"));
+        list.add(new Recipies("s","is","blij","l"));
 
         return list;
     }

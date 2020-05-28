@@ -21,6 +21,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button btn_sign_out;
     Button deleteAccount;
     TextView email;
+    TextView allergenen;
+    Button addAllergenButton;
     private FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -30,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
         deleteAccount = (Button) findViewById(R.id.deleteAccountButton);
+        addAllergenButton = (Button) findViewById(R.id.add_allergen_button_id);
+        allergenen = (TextView) findViewById(R.id.all_allergenes_id);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         try {
@@ -69,7 +73,22 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+
+//
+//        addAllergenButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                    String OldAllergenen = allergenen.getText().toString();
+//                    allergenen.setText(OldAllergenen + "," +);
+//
+//                    Intent intent= new Intent(ProfileActivity.this, ProfileActivity.class);
+//                    startActivity(intent);
+//            }
+//        });
+
     }
+
+
 
 
     @Override
