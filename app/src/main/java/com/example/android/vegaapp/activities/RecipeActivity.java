@@ -95,11 +95,17 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onRecipeAvailable(ArrayList<Recipies> recipies) {
 
-        this.recipies.add(new Recipies("afrash","is","mad","gitdamo"));
-        this.recipies.add(new Recipies("afrash","is","mad","gitdamo1"));
-        this.recipies.add(new Recipies("afrash","is","mad","gitdamo2"));
-        this.recipies.add(new Recipies("afrash","is","mad","gitdamo3"));
-        this.recipies.add(new Recipies("afrash","is","mad","gitdamo4"));
+        this.recipies.add(new Recipies("g","is","g","k"));
+        this.recipies.add(new Recipies("g","is","g","k"));
+        this.recipies.add(new Recipies("g","is","g","k"));
+        this.recipies.add(new Recipies("g","is","g","k"));
+        this.recipies.add(new Recipies("g","is","g","k"));
         mAdapter.notifyDataSetChanged();
+    }
+
+    //click on toolbar to go to profile
+    public void goToProfile(View view){
+        Intent intent= new Intent(RecipeActivity.this, ProfileActivity.class);
+        startActivity(intent);
     }
 }

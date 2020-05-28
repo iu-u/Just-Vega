@@ -54,7 +54,7 @@
                     android:textColor="@color/colorTextLightGrey" />
 
                 <Button
-                    android:id="@+id/information_button_id"
+                    android:id="@+id/EditButton"
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="40dp"
@@ -87,10 +87,20 @@
                     android:layout_width="210dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="johndoe.gmail.com"
+                    android:text="example.gmail.com"
                     android:layout_marginTop="15dp"
                     android:textColor="@color/colorTextWhite"
-                    android:textSize="12dp" />
+                    android:textSize="12dp"
+
+
+                     />
+
+                <Button
+                    android:text="Comfirm"
+                    android:id="@+id/Comfirm_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:visibility="invisible"/>
 
             </LinearLayout>
 
