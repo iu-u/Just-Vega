@@ -191,10 +191,10 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 confirm.setVisibility(View.VISIBLE);
+                changePassword.setText("");
                 try {
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
 
                     //checks if user uses gmail or facebook email
                     if (!user.getProviderData().get(user.getProviderData().size() - 1).getProviderId().equals("password")) {
