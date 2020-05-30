@@ -52,7 +52,6 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadlocale();
         setContentView(R.layout.activity_profile);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
@@ -76,16 +75,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        changeLanguage = (Button) findViewById(R.id.language_button_id);
-        changeLanguage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFirebaseAuth.signOut();
-                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                startActivity(intent);
-                showChangeLanguageDialog();
-            }
-        });
 
 
         try {
@@ -244,49 +233,7 @@ public class ProfileActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showChangeLanguageDialog() {
-        final String[] listitems = {"French", "English", "Deutsche"};
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(ProfileActivity.this);
-        mBuilder.setTitle("Choose Language...");
-        mBuilder.setSingleChoiceItems(listitems, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (i == 0) {
-                    //English
-                    setLocale("EN");
-                    recreate();
-                } else if (i == 1) {
-                    setLocale("DE");
-                    recreate();
-                } else if (i == 2) {
-                    setLocale("FR");
-                    recreate();
-                }
-                dialogInterface.dismiss();
-            }
-        });
 
-        AlertDialog mDialog = mBuilder.create();
-        mDialog.show();
-
-    }
-
-    private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("my_Lang", lang);
-        editor.apply();
-    }
-
-    public void loadlocale() {
-        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
-        String language = prefs.getString("my_Lang", "");
-        setLocale(language);
-    }
 
 }
 
