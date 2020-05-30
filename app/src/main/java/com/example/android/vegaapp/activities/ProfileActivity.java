@@ -60,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
         allergenen = (TextView) findViewById(R.id.all_allergenes_id);
         comfirm = (Button) findViewById(R.id.Comfirm_button);
 
-        changeEmail = (EditText) findViewById(R.id.showEmail) ;
+        changeEmail = (EditText) findViewById(R.id.showEmail);
         changePassword = (EditText) findViewById(R.id.password_edittext_id);
 
         edit = (Button) findViewById(R.id.EditButton);
@@ -75,58 +75,54 @@ public class ProfileActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
 
 
-
-
-       ActionBar actionBar = getSupportActionBar();
-   //    actionBar.setTitle(getResources().getString(R.string.app_name));
-        changeLanguage = (Button)findViewById(R.id.language_button_id);
+        ActionBar actionBar = getSupportActionBar();
+        //    actionBar.setTitle(getResources().getString(R.string.app_name));
+        changeLanguage = (Button) findViewById(R.id.language_button_id);
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mFirebaseAuth.signOut();
-                Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
                 showChangeLanguageDialog();
             }
         });
 
 
-
-
         try {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            email = (TextView)findViewById(R.id.showEmail);
+            email = (TextView) findViewById(R.id.showEmail);
             email.setSelected(true);
             email.setText(user.getEmail());
-        } catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
         }
 
 
-        btn_sign_out = (Button)findViewById(R.id.logoutButton);
-        btn_sign_out.setOnClickListener(new View.OnClickListener(){
+        btn_sign_out = (Button) findViewById(R.id.logoutButton);
+        btn_sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     mFirebaseAuth.signOut();
-                    Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                     startActivity(intent);
-                } catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        deleteAccount.setOnClickListener(new View.OnClickListener(){
+        deleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     mFirebaseAuth.getCurrentUser().delete();
                     mFirebaseAuth.signOut();
-                    Intent intent= new Intent(ProfileActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                     startActivity(intent);
-                } catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -135,28 +131,28 @@ public class ProfileActivity extends AppCompatActivity {
 
         //TODO deze edit functie moet nog gefixd worden.
 
-        comfirm.setOnClickListener(new View.OnClickListener(){
+        comfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (email.getText().toString().equals("") || changePassword.getText().toString().equals("")){
+                if (email.getText().toString().equals("") || changePassword.getText().toString().equals("")) {
                     Toast.makeText(ProfileActivity.this, "Empty fields", Toast.LENGTH_SHORT).show();
-                }else{
-                    try{
+                } else {
+                    try {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                        if (user.getEmail().equals(email.getText().toString())){
+                        if (user.getEmail().equals(email.getText().toString())) {
 
-                        }else{
+                        } else {
                             user.updateEmail(email.getText().toString())
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(ProfileActivity.this, "Email is updated", Toast.LENGTH_SHORT).show();
-                                                Intent intent= new Intent(ProfileActivity.this, ProfileActivity.class);
+                                                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
                                                 startActivity(intent);
-                                            }else{
+                                            } else {
                                                 Toast.makeText(ProfileActivity.this, "Email is not updated", Toast.LENGTH_SHORT).show();
 
                                             }
@@ -165,20 +161,15 @@ public class ProfileActivity extends AppCompatActivity {
                         }
 
 
-                        user = FirebaseAuth.getInstance().getCurrentUser();
-
-
-                        //TODO password change does not work yet
-
                         user.updatePassword(changePassword.getText().toString())
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(ProfileActivity.this, "Passsword is updated", Toast.LENGTH_SHORT).show();
-                                            Intent intent= new Intent(ProfileActivity.this, ProfileActivity.class);
+                                            Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
                                             startActivity(intent);
-                                        }else{
+                                        } else {
                                             Toast.makeText(ProfileActivity.this, "Passsword is not updated", Toast.LENGTH_SHORT).show();
                                             Intent intent = getIntent();
                                             startActivity(intent);
@@ -187,9 +178,10 @@ public class ProfileActivity extends AppCompatActivity {
 
                                     }
                                 });
-                    }catch (Exception e){
+
+                    } catch (Exception e) {
                         Toast.makeText(ProfileActivity.this, "Did not work", Toast.LENGTH_SHORT).show();
-                        Intent intent= new Intent(ProfileActivity.this, ProfileActivity.class);
+                        Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
                         startActivity(intent);
                     }
                 }
@@ -198,7 +190,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //this can change the password or email in the profile page
-        edit.setOnClickListener(new View.OnClickListener(){
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comfirm.setVisibility(View.VISIBLE);
@@ -211,12 +203,12 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Log.d(TAG, "INFO IN EMAIL USER = " + user.getEmail());
 
-                    if(gmail || facebook){
+                    if (gmail || facebook) {
                         Toast.makeText(ProfileActivity.this, "You can not change the email or the password of your Facebook or Gmail.", Toast.LENGTH_SHORT).show();
                         Intent intent = getIntent();
                         startActivity(intent);
                         finish();
-                    }else{
+                    } else {
                         changeEmail.setEnabled(true);
                         changeEmail.setFocusableInTouchMode(true);
                         changeEmail.setClickable(true);
@@ -229,12 +221,11 @@ public class ProfileActivity extends AppCompatActivity {
                         Toast.makeText(ProfileActivity.this, "You can change your email and password now", Toast.LENGTH_SHORT).show();
                     }
 
-                } catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
 
 //
@@ -250,8 +241,6 @@ public class ProfileActivity extends AppCompatActivity {
 //        });
 
     }
-
-
 
 
     @Override
@@ -272,12 +261,10 @@ public class ProfileActivity extends AppCompatActivity {
                     //English
                     setLocale("EN");
                     recreate();
-                }
-                else if (i == 1) {
+                } else if (i == 1) {
                     setLocale("DE");
                     recreate();
-                }
-                else if (i == 2) {
+                } else if (i == 2) {
                     setLocale("FR");
                     recreate();
                 }
