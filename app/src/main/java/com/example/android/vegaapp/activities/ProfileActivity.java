@@ -203,7 +203,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Log.d(TAG, "INFO IN EMAIL USER = " + user.getEmail());
 
-                    if (gmail || facebook) {
+                    if (!user.getProviderId().equals("password")) {
                         Toast.makeText(ProfileActivity.this, "You can not change the email or the password of your Facebook or Gmail.", Toast.LENGTH_SHORT).show();
                         Intent intent = getIntent();
                         startActivity(intent);
