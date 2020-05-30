@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ import java.util.Locale;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private static String TAG = ProfileActivity.class.getName();
 
     Button changeLanguage;
 
@@ -144,6 +146,11 @@ public class ProfileActivity extends AppCompatActivity {
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
+
+
+
+
+
                         user.updateEmail(email.getText().toString())
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -191,17 +198,31 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 comfirm.setVisibility(View.VISIBLE);
                 try {
-                    changeEmail.setEnabled(true);
-                    changeEmail.setFocusableInTouchMode(true);
-                    changeEmail.setClickable(true);
 
-                    changePassword.setEnabled(true);
-                    changePassword.setFocusableInTouchMode(true);
-                    changePassword.setClickable(true);
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    //checks if user uses gmail or facebook email
+                    Boolean gmail = user.getEmail().endsWith("gmail.com");
+                    Boolean facebook = user.getProviderId().equals("facebook.com");
 
-                    Toast.makeText(ProfileActivity.this, "You can change your email and password now", Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "INFO IN EMAIL USER = " + user.getEmail());
+
+                    if(gmail || facebook){
+                        Toast.makeText(ProfileActivity.this, "You can not change the email or the password of your Facebook or Gmail.", Toast.LENGTH_SHORT).show();
+                        Intent intent = getIntent();
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        changeEmail.setEnabled(true);
+                        changeEmail.setFocusableInTouchMode(true);
+                        changeEmail.setClickable(true);
+
+                        changePassword.setEnabled(true);
+                        changePassword.setFocusableInTouchMode(true);
+                        changePassword.setClickable(true);
 
 
+                        Toast.makeText(ProfileActivity.this, "You can change your email and password now", Toast.LENGTH_SHORT).show();
+                    }
 
                 } catch (Exception e){
                     Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
