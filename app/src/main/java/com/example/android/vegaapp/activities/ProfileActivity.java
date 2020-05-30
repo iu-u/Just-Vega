@@ -36,6 +36,8 @@ public class ProfileActivity extends AppCompatActivity {
     private static String TAG = ProfileActivity.class.getName();
 
     Button changeLanguage;
+    Button changeLanguage2;
+    Button changeLanguage3;
 
     Button btn_sign_out;
     Button deleteAccount;
@@ -47,6 +49,8 @@ public class ProfileActivity extends AppCompatActivity {
     Button edit;
     Button confirm;
 
+
+
     private FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -56,6 +60,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        changeLanguage = (Button) findViewById(R.id.language_button_1);
+        changeLanguage2 = (Button) findViewById(R.id.language_button_2);
+        changeLanguage3 = (Button) findViewById(R.id.language_button_3);
+
         deleteAccount = (Button) findViewById(R.id.deleteAccountButton);
         addAllergenButton = (Button) findViewById(R.id.add_allergen_button_id);
         allergenen = (TextView) findViewById(R.id.all_allergenes_id);
@@ -209,6 +217,54 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        changeLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String languageToLoad  = "en";
+                Locale locale = new Locale(languageToLoad);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                Toast.makeText(ProfileActivity.this, "Language changed to English", Toast.LENGTH_SHORT).show();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        changeLanguage2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String languageToLoad  = "de";
+                Locale locale = new Locale(languageToLoad);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                Toast.makeText(ProfileActivity.this, "Language changed to Deutsche", Toast.LENGTH_SHORT).show();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+        changeLanguage3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String languageToLoad  = "fr";
+                Locale locale = new Locale(languageToLoad);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                Toast.makeText(ProfileActivity.this, "Language changed to French", Toast.LENGTH_SHORT).show();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
 
 
 //
@@ -226,12 +282,14 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
+
 
 
 
