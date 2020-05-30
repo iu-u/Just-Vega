@@ -145,30 +145,32 @@ public class ProfileActivity extends AppCompatActivity {
                     try{
                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+                        if (user.getEmail().equals(email.getText().toString())){
 
+                        }else{
+                            user.updateEmail(email.getText().toString())
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(ProfileActivity.this, "Email is updated", Toast.LENGTH_SHORT).show();
+                                                Intent intent= new Intent(ProfileActivity.this, ProfileActivity.class);
+                                                startActivity(intent);
+                                            }else{
+                                                Toast.makeText(ProfileActivity.this, "Email is not updated", Toast.LENGTH_SHORT).show();
 
-
-
-
-
-                        user.updateEmail(email.getText().toString())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(ProfileActivity.this, "Email is updated", Toast.LENGTH_SHORT).show();
-                                            Intent intent= new Intent(ProfileActivity.this, ProfileActivity.class);
-                                            startActivity(intent);
-                                        }else{
-                                            Toast.makeText(ProfileActivity.this, "Email is not updated", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
-                                    }
-                                });
-                        String newPassword = changePassword.getText().toString();
+                                    });
+                        }
+
 
                         user = FirebaseAuth.getInstance().getCurrentUser();
 
-                        user.updatePassword(newPassword)
+
+                        //TODO password change does not work yet
+
+                        user.updatePassword(changePassword.getText().toString())
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -178,6 +180,9 @@ public class ProfileActivity extends AppCompatActivity {
                                             startActivity(intent);
                                         }else{
                                             Toast.makeText(ProfileActivity.this, "Passsword is not updated", Toast.LENGTH_SHORT).show();
+                                            Intent intent = getIntent();
+                                            startActivity(intent);
+                                            finish();
                                         }
 
                                     }
