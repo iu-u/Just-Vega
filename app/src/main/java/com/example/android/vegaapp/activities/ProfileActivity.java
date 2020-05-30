@@ -43,7 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
     EditText changeEmail;
     EditText changePassword;
     Button edit;
-    Button comfirm;
+    Button confirm;
 
     private FirebaseAuth mFirebaseAuth;
 
@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
         deleteAccount = (Button) findViewById(R.id.deleteAccountButton);
         addAllergenButton = (Button) findViewById(R.id.add_allergen_button_id);
         allergenen = (TextView) findViewById(R.id.all_allergenes_id);
-        comfirm = (Button) findViewById(R.id.Comfirm_button);
+        confirm = (Button) findViewById(R.id.Comfirm_button);
 
         changeEmail = (EditText) findViewById(R.id.showEmail);
         changePassword = (EditText) findViewById(R.id.password_edittext_id);
@@ -74,9 +74,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-
-        ActionBar actionBar = getSupportActionBar();
-        //    actionBar.setTitle(getResources().getString(R.string.app_name));
         changeLanguage = (Button) findViewById(R.id.language_button_id);
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
         }
 
-
+        //sign out
         btn_sign_out = (Button) findViewById(R.id.logoutButton);
         btn_sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +111,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        //delete logged in account
         deleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,11 +125,8 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        //TODO deze edit functie moet nog gefixd worden.
-
-        comfirm.setOnClickListener(new View.OnClickListener() {
+        //after clicking confirm you look if you can change the user or the password
+        confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -193,16 +188,11 @@ public class ProfileActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                comfirm.setVisibility(View.VISIBLE);
+                confirm.setVisibility(View.VISIBLE);
                 try {
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     //checks if user uses gmail or facebook email
-                    Boolean gmail = user.getEmail().endsWith("gmail.com");
-                    Boolean facebook = user.getProviderId().equals("facebook.com");
-
-                    Log.d(TAG, "INFO IN EMAIL USER = " + user.getEmail());
-
                     if (!user.getProviderId().equals("password")) {
                         Toast.makeText(ProfileActivity.this, "You can not change the email or the password of your Facebook or Gmail.", Toast.LENGTH_SHORT).show();
                         Intent intent = getIntent();

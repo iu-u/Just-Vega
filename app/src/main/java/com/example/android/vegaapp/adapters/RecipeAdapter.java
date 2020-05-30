@@ -12,21 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.android.vegaapp.R;
-import com.example.android.vegaapp.domain.Recipies;
+import com.example.android.vegaapp.domain.Recipes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder>  {
 
     private final static String TAG = RecipeAdapter.class.getName();
-    private List<Recipies> recipies;
-    private final RecipeOnClickHandler RecipeClicker;
+    private List<Recipes> recipes;
+    private final RecipeOnClickHandler recipeOnClickHandler;
 
 
-    public RecipeAdapter(List<Recipies> recipies, RecipeOnClickHandler recipeClicker) {
-        this.recipies = recipies;
-        this.RecipeClicker = recipeClicker;
+    public RecipeAdapter(List<Recipes> recipes, RecipeOnClickHandler recipeOnClickHandler) {
+        this.recipes = recipes;
+        this.recipeOnClickHandler = recipeOnClickHandler;
     }
 
     @NonNull
@@ -51,23 +50,23 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         //TODO moet gedaan worden
-        Recipies recipies = this.recipies.get(position);
+        Recipes recipes = this.recipes.get(position);
 
 
-        holder.sortFood.setText(this.recipies.get(position).getKindOfFood());
+        holder.sortFood.setText(this.recipes.get(position).getTypeOfFood());
 
         //TODO correct image must be set.
         //holder.imageFood.setText(mSeeList.get(position).getReview());
-        holder.titleFood.setText(this.recipies.get(position).getRecipeName());
-        holder.ingredients.setText(this.recipies.get(position).getIngredients());
+        holder.titleFood.setText(this.recipes.get(position).getRecipeName());
+        holder.ingredients.setText(this.recipes.get(position).getIngredients());
     }
 
 
 
     @Override
     public int getItemCount() {
-        Log.v(TAG, "item count in Adapter = " + recipies.size());
-        return recipies.size();
+        Log.v(TAG, "item count in Adapter = " + recipes.size());
+        return recipes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -101,7 +100,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
         public void onClick(View v) {
             Log.v(RecipeAdapter.ViewHolder.class.getName(), "clicked on item");
             int itemIndex = getAdapterPosition();
-            RecipeClicker.onElementClick(v, itemIndex);
+            recipeOnClickHandler.onElementClick(v, itemIndex);
         }
     }
 
