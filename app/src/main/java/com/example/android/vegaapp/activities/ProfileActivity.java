@@ -192,8 +192,9 @@ public class ProfileActivity extends AppCompatActivity {
                 try {
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                     //checks if user uses gmail or facebook email
-                    if (!user.getProviderId().equals("password")) {
+                    if (!user.getProviderId().equals("firebase")) {
                         Toast.makeText(ProfileActivity.this, "You can not change the email or the password of your Facebook or Gmail.", Toast.LENGTH_SHORT).show();
                         Intent intent = getIntent();
                         startActivity(intent);
