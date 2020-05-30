@@ -1,6 +1,6 @@
 package com.example.android.vegaapp.domain;
 
-public class Recipes {
+public class Recipe {
 
     private String recipeName;
     private String ingredients;
@@ -11,7 +11,7 @@ public class Recipes {
 
 
 
-    public Recipes(String recipeName, String ingredients, String typeOfFood, String image) {
+    public Recipe(String recipeName, String ingredients, String typeOfFood, String image) {
         this.recipeName = recipeName;
         this.ingredients = ingredients;
         this.typeOfFood = typeOfFood;

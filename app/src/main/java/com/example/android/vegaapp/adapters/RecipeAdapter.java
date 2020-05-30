@@ -12,18 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.android.vegaapp.R;
-import com.example.android.vegaapp.domain.Recipes;
+import com.example.android.vegaapp.domain.Recipe;
 
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder>  {
 
     private final static String TAG = RecipeAdapter.class.getName();
-    private List<Recipes> recipes;
+    private List<Recipe> recipes;
     private final RecipeOnClickHandler recipeOnClickHandler;
 
 
-    public RecipeAdapter(List<Recipes> recipes, RecipeOnClickHandler recipeOnClickHandler) {
+    public RecipeAdapter(List<Recipe> recipes, RecipeOnClickHandler recipeOnClickHandler) {
         this.recipes = recipes;
         this.recipeOnClickHandler = recipeOnClickHandler;
     }
@@ -50,7 +50,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         //TODO moet gedaan worden
-        Recipes recipes = this.recipes.get(position);
+        Recipe recipe = this.recipes.get(position);
 
 
         holder.sortFood.setText(this.recipes.get(position).getTypeOfFood());

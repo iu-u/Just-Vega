@@ -16,7 +16,7 @@ import android.view.View;
 import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.adapters.RecipeAdapter;
 import com.example.android.vegaapp.adapters.RecipeOnClickHandler;
-import com.example.android.vegaapp.domain.Recipes;
+import com.example.android.vegaapp.domain.Recipe;
 import com.example.android.vegaapp.networkutils.RecipeNetworkUtils;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
     private static String TAG = RecipeActivity.class.getName();
 
-    ArrayList<Recipes> recipes = new ArrayList<>();
+    ArrayList<Recipe> recipes = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecipeAdapter mAdapter;
@@ -80,13 +80,13 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
 
     @Override
-    public void onRecipeAvailable(ArrayList<Recipes> recipes) {
+    public void onRecipeAvailable(ArrayList<Recipe> recipes) {
 
-        this.recipes.add(new Recipes("g","is","g","k"));
-        this.recipes.add(new Recipes("g","is","g","k"));
-        this.recipes.add(new Recipes("g","is","g","k"));
-        this.recipes.add(new Recipes("g","is","g","k"));
-        this.recipes.add(new Recipes("g","is","g","k"));
+        this.recipes.add(new Recipe("g","is","g","k"));
+        this.recipes.add(new Recipe("g","is","g","k"));
+        this.recipes.add(new Recipe("g","is","g","k"));
+        this.recipes.add(new Recipe("g","is","g","k"));
+        this.recipes.add(new Recipe("g","is","g","k"));
         mAdapter.notifyDataSetChanged();
     }
 
