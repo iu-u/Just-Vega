@@ -24,8 +24,10 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.android.vegaapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Locale;
 
@@ -193,8 +195,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+
                     //checks if user uses gmail or facebook email
-                    if (!user.getProviderId().equals("firebase")) {
+                    if (!user.getProviderData().get(user.getProviderData().size() - 1).getProviderId().equals("password")) {
                         Toast.makeText(ProfileActivity.this, "You can not change the email or the password of your Facebook or Gmail.", Toast.LENGTH_SHORT).show();
                         Intent intent = getIntent();
                         startActivity(intent);
