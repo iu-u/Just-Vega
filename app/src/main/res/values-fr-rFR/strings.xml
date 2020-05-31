@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Just Vega FR</string>
+
+    <string name="facebook_application_id" translatable="false">2536657096587121</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb2536657096587121</string>
+
+    <!-- Welcome Page -->
+    <string name="welcome_Welcome">Bienvenue!</string>
+    <string name="welcome_MeetJustVega">Rencontrer juste vega</string>
+    <string name="welcome_AboutUs">à propos de nous</string>
+    <string name="welcome_AboutUs_text">Lorem ipsum dolor sit amet,
+        cotidieque disputando vix at, cum ea saepe vitae ocurreret.
+        Vocibus molestiae scribentur ea his, ceteros omittantur neglegentur ne has.
+        Alii primis gubergren sed ei, debitis molestiae splendide et duo. Duo no assentior neglegentur.
+        No sea velit suscipit, ut discere luptatum probatus eos. Sed bonorum explicari
+        quaerendum te, an eius inermis nam, eam eu natum menandri disputation
+    </string>
+    <string name="welcome_Purpose">pourquoi on fait ça</string>
+    <string name="welcome_Purpose_text">An sea ferri labores nostrum, mea nusquam fierent cu.
+        Est oporteat necessitatibus cu, mei verear intellegam necessitatibus ne.
+        Vide consulatu ne usu. Ei mel pertinax reformidans accommodare. Ei sint idque signiferumque
+        eam, an iusto definiebas assueverit est. Est at reque vivendo scriptorem. Ei amet dolores
+        deserunt duo.
+    </string>
+    <string name="fab_label">commencer à utiliser lapplication</string>
+    <string name="welcome_back">Nous saluons le retour</string>
+
+
+    <!--  Recipe List Page  -->
+    <string name="recipeList_recipe">Recettes</string>
+    <string name="recipeList_filter">FILTRE</string>
+    <string name="recipeList_sort">Trier</string>
+    <string name="information_">INFORMATION</string>
+    <string name="edit_">Editer</string>
+    <string name="email_">email</string>
+    <string name="example_gmail_com_">example.gmail.com</string>
+    <string name="comfirm_">Comfirmer</string>
+    <string name="password_">password</string>
+    <string name="secretpassword">********</string>
+    <string name="your_photo">mot de passe</string>
+    <string name="photo1_jpg">photo1.jpg</string>
+    <string name="your_account">Votre: compte</string>
+    <string name="free">Gratuite</string>
+    <string name="subscribe_">SOUSCRIRE</string>
+    <string name="add_allergenen_">AJOUTER UN ALLERGENE</string>
+    <string name="language_">LANGUE</string>
+    <string name="log_out">Se déconnecter</string>
+    <string name="delete_account">SUPPRIMER LE COMPTE</string>
+</resources>
