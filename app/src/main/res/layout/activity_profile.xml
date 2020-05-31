@@ -95,8 +95,10 @@
 
                     />
 
+
+
                 <Button
-                    android:text="@string/comfirm_"
+                    android:text="change email"
                     android:id="@+id/Comfirm_button"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
@@ -116,7 +118,6 @@
                     android:layout_marginLeft="30dp"
                     android:text="@string/password_"
                     android:textColor="@color/colorTextLightGrey" />
-
                 <EditText
                     android:id="@+id/password_edittext_id"
                     android:layout_width="98dp"
@@ -125,6 +126,15 @@
                     android:text="@string/secretpassword"
                     android:textColor="@color/colorTextWhite"
                     android:textSize="12dp" />
+                <Button
+                    android:text="change password"
+                    android:id="@+id/change_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:visibility="invisible"/>
+
+
+
 
             </LinearLayout>
 

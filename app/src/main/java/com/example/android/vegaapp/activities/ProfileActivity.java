@@ -47,6 +47,9 @@ public class ProfileActivity extends AppCompatActivity {
     Button edit;
     Button confirm;
 
+    Button changeThePassword;
+
+    String mail = "";
     private FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -56,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        changeThePassword = (Button) findViewById(R.id.change_password);
         deleteAccount = (Button) findViewById(R.id.deleteAccountButton);
         addAllergenButton = (Button) findViewById(R.id.add_allergen_button_id);
         allergenen = (TextView) findViewById(R.id.all_allergenes_id);
@@ -74,7 +78,6 @@ public class ProfileActivity extends AppCompatActivity {
         changePassword.setClickable(false);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
-
 
 
         try {
@@ -117,69 +120,72 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         //after clicking confirm you look if you can change the user or the password
+
+
         confirm.setOnClickListener(new View.OnClickListener() {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             @Override
             public void onClick(View v) {
-
-                if (email.getText().toString().equals("") || changePassword.getText().toString().equals("")) {
-                    Toast.makeText(ProfileActivity.this, "Empty fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    try {
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                        if (user.getEmail().equals(email.getText().toString())) {
-
-                        } else {
-                            user.updateEmail(email.getText().toString())
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(ProfileActivity.this, "Email is updated", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
-                                                startActivity(intent);
-                                            } else {
-                                                Toast.makeText(ProfileActivity.this, "Email is not updated", Toast.LENGTH_SHORT).show();
-
-                                            }
-                                        }
-                                    });
-                        }
-
-
-                        user.updatePassword(changePassword.getText().toString())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(ProfileActivity.this, "Passsword is updated", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
-                                            startActivity(intent);
-                                        } else {
-                                            Toast.makeText(ProfileActivity.this, "Passsword is not updated", Toast.LENGTH_SHORT).show();
-                                            Intent intent = getIntent();
-                                            startActivity(intent);
-                                            finish();
-                                        }
-
-                                    }
-                                });
-
-                    } catch (Exception e) {
-                        Toast.makeText(ProfileActivity.this, "Did not work", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
-                        startActivity(intent);
-                    }
-                }
-
+                user.updateEmail(email.getText().toString())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(ProfileActivity.this, "updatet email + " + user.getEmail(), Toast.LENGTH_LONG).show();
+                                    email.setText(user.getEmail());
+                                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                }else{
+                                    Toast.makeText(ProfileActivity.this, "Not updatet email " + user.getEmail(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ProfileActivity.this, "Please login again. ", Toast.LENGTH_SHORT).show();
+                                    mFirebaseAuth.signOut();
+                                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                }
+                            }
+                        });
             }
         });
+
+        //change password
+        changeThePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (changePassword.getText().toString().equals("")){
+                    Toast.makeText(ProfileActivity.this, "please fill in your password ", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }else{
+                    user.updatePassword(changePassword.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(ProfileActivity.this, "Your password is updatet ", Toast.LENGTH_LONG).show();
+                                        mFirebaseAuth.signOut();
+                                        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                        startActivity(intent);
+                                    }else{
+                                        Toast.makeText(ProfileActivity.this, "Not updatet, Please login again. ", Toast.LENGTH_LONG).show();
+                                        mFirebaseAuth.signOut();
+                                        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                            });
+                }
+                }
+
+        });
+
 
         //this can change the password or email in the profile page
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 confirm.setVisibility(View.VISIBLE);
+                changeThePassword.setVisibility(View.VISIBLE);
                 changePassword.setText("");
                 try {
 
@@ -232,7 +238,6 @@ public class ProfileActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
-
 
 
 }
