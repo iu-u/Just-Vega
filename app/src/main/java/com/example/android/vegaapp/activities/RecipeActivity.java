@@ -82,11 +82,6 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onRecipeAvailable(ArrayList<Recipe> recipes) {
 
-        this.recipes.add(new Recipe("g","is","g","k"));
-        this.recipes.add(new Recipe("g","is","g","k"));
-        this.recipes.add(new Recipe("g","is","g","k"));
-        this.recipes.add(new Recipe("g","is","g","k"));
-        this.recipes.add(new Recipe("g","is","g","k"));
         mAdapter.notifyDataSetChanged();
     }
 

@@ -9,11 +9,6 @@ public class RecipeNetworkUtils {
     }
     public ArrayList<Recipe> createRecipes(){
         ArrayList<Recipe> list = new ArrayList<>();
-        list.add(new Recipe("s","is","blij","l"));
-        list.add(new Recipe("s","is","blij","l"));
-        list.add(new Recipe("s","is","blij","l"));
-        list.add(new Recipe("s","is","blij","l"));
-        list.add(new Recipe("s","is","blij","l"));
 
         return list;
     }

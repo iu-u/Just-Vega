@@ -1,7 +1,11 @@
 package com.example.android.vegaapp.domain;
 
+import java.util.List;
+
 public class Recipe {
 
+    private String category;
+    private List<TypeOfFood> tof;
     private String recipeName;
     private String ingredients;
     private String typeOfFood;
@@ -11,11 +15,8 @@ public class Recipe {
 
 
 
-    public Recipe(String recipeName, String ingredients, String typeOfFood, String image) {
-        this.recipeName = recipeName;
-        this.ingredients = ingredients;
-        this.typeOfFood = typeOfFood;
-        this.image = image;
+    public Recipe() {
+
     }
 
     public String getVideo() {
