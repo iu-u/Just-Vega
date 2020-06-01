@@ -44,10 +44,18 @@
             android:onClick="goToProfile"
             android:clickable="true"/>
 
-        <SearchView
-            android:layout_toLeftOf="@id/heart"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="50dp"
+            android:id="@+id/toolbarSearch"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/ic_search_black_24dp"
+            tools:ignore="VectorDrawableCompat"
+            android:onClick="goToSearchRecipe"
+            android:contentDescription="TODO" />
+
         <ImageView
             android:layout_marginTop="17dp"
             android:layout_marginRight="8dp"
@@ -55,7 +63,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
-            app:srcCompat="@drawable/favourite_logo"
+            app:srcCompat="@drawable/ic_favorite_icon"
             tools:ignore="VectorDrawableCompat"
             android:contentDescription="TODO" />
 
