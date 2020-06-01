@@ -31,6 +31,7 @@
     <string name="recipeList_filter">FILTERS</string>
     <string name="recipeList_sort">Sort</string>
     <string name="search_by_recipe">Search Recipe</string>
+    <string name="search_by_ingredient">Search By Ingredient</string>
 
     <!--  Profile page  -->
     <string name="information_">INFORMATION</string>

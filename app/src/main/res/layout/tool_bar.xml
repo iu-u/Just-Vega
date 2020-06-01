@@ -47,12 +47,13 @@
         <ImageView
             android:layout_marginTop="17dp"
             android:layout_marginRight="50dp"
-            android:id="@+id/search"
+            android:id="@+id/toolbarSearch"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             app:srcCompat="@drawable/ic_search_black_24dp"
             tools:ignore="VectorDrawableCompat"
+            android:onClick="goToSearchRecipe"
             android:contentDescription="TODO" />
 
         <ImageView

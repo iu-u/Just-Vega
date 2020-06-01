@@ -32,6 +32,7 @@
     <string name="recipeList_filter">FILTER</string>
     <string name="recipeList_sort">Sortieren</string>
     <string name="search_by_recipe">Rezept suchen</string>
+    <string name="search_by_ingredient">Suche nach Zutat</string>
 
     <string name="information_">INFORMATION</string>
     <string name="edit_">bearbeiten</string>

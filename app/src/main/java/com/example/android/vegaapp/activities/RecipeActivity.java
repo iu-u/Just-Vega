@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.R;
@@ -47,6 +49,8 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
     private List<Recipe> recipeList = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
 
+    ImageView toolbar_search;
+
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference mRecipeRef = mRootRef.child("recipe");
 
@@ -77,7 +81,6 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
-
     }
 
     @Override
@@ -85,6 +88,11 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    public void goToSearchRecipe(View view){
+        Intent intent= new Intent(RecipeActivity.this, SearchActivity.class);
+        startActivity(intent);
     }
 
     @Override
