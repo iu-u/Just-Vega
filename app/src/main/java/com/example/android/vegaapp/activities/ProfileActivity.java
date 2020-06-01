@@ -195,13 +195,8 @@ public class ProfileActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirm.setVisibility(View.VISIBLE);
-                changeThePassword.setVisibility(View.VISIBLE);
-                changePassword.setText("");
                 try {
-
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
                     //checks if user uses gmail or facebook email
                     if (!user.getProviderData().get(user.getProviderData().size() - 1).getProviderId().equals("password")) {
                         Toast.makeText(ProfileActivity.this, "You can not change the email or the password of your Facebook or Gmail.", Toast.LENGTH_SHORT).show();
@@ -209,6 +204,9 @@ public class ProfileActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
+                        confirm.setVisibility(View.VISIBLE);
+                        changeThePassword.setVisibility(View.VISIBLE);
+                        changePassword.setText("");
                         changeEmail.setEnabled(true);
                         changeEmail.setFocusableInTouchMode(true);
                         changeEmail.setClickable(true);
