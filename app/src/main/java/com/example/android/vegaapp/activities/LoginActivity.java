@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -55,13 +57,16 @@ public class LoginActivity extends AppCompatActivity {
     private boolean mfacebooksignin=false;
     private EditText txt_email;
     private EditText txt_password;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private CheckBox rememberMeCheckbox;
+    private Boolean rememberLogin;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
@@ -82,6 +87,21 @@ public class LoginActivity extends AppCompatActivity {
         Button btn_register = (Button)findViewById(R.id.btn_register);
         Button btn_email_login = (Button)findViewById(R.id.btn_email_login);
         Button btn_forgot = (Button) findViewById(R.id.btn_forgot_password) ;
+
+        //buttons for remember me
+        rememberMeCheckbox = (CheckBox) findViewById(R.id.checkBox);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+
+
+        rememberLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (rememberLogin == true) {
+            txt_email.setText(loginPreferences.getString("username", txt_email.getText().toString()));
+            txt_password.setText(loginPreferences.getString("password", txt_password.getText().toString()));
+            rememberMeCheckbox.setChecked(true);
+        }
+
+
 
         btn_forgot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +132,18 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "empty fields", Toast.LENGTH_SHORT).show();
                 }else{
                     signInWithEmail();
+
+
+                    //remember me
+                    if (rememberMeCheckbox.isChecked()) {
+                        loginPrefsEditor.putBoolean("saveLogin", true);
+                        loginPrefsEditor.putString("username", txt_email.getText().toString());
+                        loginPrefsEditor.putString("password", txt_password.getText().toString());
+                        loginPrefsEditor.commit();
+                    } else {
+                        loginPrefsEditor.clear();
+                        loginPrefsEditor.commit();
+                    }
                 }
 
             }
@@ -248,6 +280,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
