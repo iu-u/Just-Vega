@@ -12,9 +12,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.android.vegaapp.MainActivity;
 import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.adapters.RecipeAdapter;
+import com.example.android.vegaapp.adapters.RecipeOnClickHandler;
 import com.example.android.vegaapp.domain.Recipe;
 import com.example.android.vegaapp.domain.TypeOfFood;
 import com.google.firebase.database.DataSnapshot;
@@ -31,12 +34,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class RecipeActivity extends AppCompatActivity {
+public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHandler {
 
     private static String TAG = RecipeActivity.class.getName();
 
     private List<Recipe> recipeList = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
+
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -125,7 +129,8 @@ public class RecipeActivity extends AppCompatActivity {
             }
             private void initRecyclerView(){
                 RecyclerView recyclerView = findViewById(R.id.recipeRecyclerView);
-                RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this,recipeList);
+
+                RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this,recipeList, RecipeActivity.this);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(RecipeActivity.this));
             }
@@ -135,5 +140,14 @@ public class RecipeActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onElementClick(View view, int itemIndex) {
+        Intent intent= new Intent(RecipeActivity.this, RecipeDetailActivity.class);
+
+        //hier kan je data meegeven naar recepidetailactivity
+
+        startActivity(intent);
     }
 }
