@@ -57,4 +57,16 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@drawable/ic_search_black_24dp</item>
+        <item name="queryHint">@string/search_by_recipe</item>
+        <item name="backgroundColor">@color/colorBlack</item>
+    </style>
+
+    <style name="Search" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon">@drawable/ic_search_black_24dp</item>
+        <item name="queryHint">@string/search_by_recipe</item>
+        <item name="backgroundColor">@color/colorBlack</item>
+    </style>
+
 </resources>

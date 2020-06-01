@@ -30,6 +30,9 @@
     <string name="recipeList_recipe">Recipes</string>
     <string name="recipeList_filter">FILTERS</string>
     <string name="recipeList_sort">Sort</string>
+    <string name="search_by_recipe">Search Recipe</string>
+
+    <!--  Profile page  -->
     <string name="information_">INFORMATION</string>
     <string name="edit_">Edit</string>
     <string name="email_">email</string>

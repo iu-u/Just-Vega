@@ -31,6 +31,8 @@
     <string name="recipeList_recipe">Recettes</string>
     <string name="recipeList_filter">FILTRE</string>
     <string name="recipeList_sort">Trier</string>
+    <string name="search_by_recipe">Recherche de recette</string>
+
     <string name="information_">INFORMATION</string>
     <string name="edit_">Editer</string>
     <string name="email_">email</string>

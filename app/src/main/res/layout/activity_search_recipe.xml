@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBlack">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar">
+    </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@color/colorBlack">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/fade_search_by_recipe"
+            android:scaleType="fitXY">
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp">
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                style="@style/SearchViewStyle"
+                android:searchIcon="@drawable/ic_search_black_24dp"
+                android:queryHint="@string/search_by_recipe"
+                >
+            </SearchView>
+
+            <View
+                style="@style/Divider2"
+                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorBackgroundGreen">
+            </View>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
