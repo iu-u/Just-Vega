@@ -3,7 +3,6 @@ package com.example.android.vegaapp.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,14 +12,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.adapters.RecipeAdapter;
-import com.example.android.vegaapp.adapters.RecipeOnClickHandler;
 import com.example.android.vegaapp.domain.Recipe;
 import com.example.android.vegaapp.domain.TypeOfFood;
-import com.example.android.vegaapp.networkutils.RecipeNetworkUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,24 +27,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class RecipeActivity extends AppCompatActivity implements View.OnClickListener, RecipeOnClickHandler, RecipeNetworkUtils.OnRecipeApiListener {
+public class RecipeActivity extends AppCompatActivity {
 
     private static String TAG = RecipeActivity.class.getName();
 
-    ArrayList<Recipe> recipes = new ArrayList<>();
-    private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private RecipeAdapter mAdapter;
     private List<Recipe> recipeList = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference mRecipeRef = mRootRef.child("recipe");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,28 +46,9 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_recipe);
 
         Log.d(TAG, "THIS CLASS CALLED");
-        RecipeNetworkUtils networkUtils = new RecipeNetworkUtils();
-        networkUtils.createRecipes();
-
-//        View rootview = inflater.inflate(R.layout.activity_recipe, container, false);
-        //TODO XML moet nog mooi gemaakt worden.
-
-        mRecyclerView = findViewById(R.id.recipeRecyclerView);
-        //additemDecoration add een divider aan de recyclerview
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL));
-
-        //// Create adapter passing in the elements data
-        mAdapter = new RecipeAdapter(recipes, this);
-        // Attach the adapter to the recyclerview to populate items
-        mRecyclerView.setAdapter(mAdapter);
-        // Set layout manager to position the items
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
-
     }
 
     @Override
@@ -85,23 +56,6 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
-    }
-
-    @Override
-    public void onClick(View v) {
-
-    }
-
-    @Override
-    public void onElementClick(View view, int itemIndex) {
-
-    }
-
-
-    @Override
-    public void onRecipeAvailable(ArrayList<Recipe> recipes) {
-
-        mAdapter.notifyDataSetChanged();
     }
 
     //click on toolbar to go to profile
@@ -163,10 +117,17 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
                         Recipe recipes = new Recipe(category,typeOfFoods,recipeName,image,video);
                         recipeList.add(recipes);
                     }
+                    initRecyclerView();
                     Log.d(TAG, "onDataChange: "+receptList.get(2));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+            private void initRecyclerView(){
+                RecyclerView recyclerView = findViewById(R.id.recipeRecyclerView);
+                RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this,recipeList);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(RecipeActivity.this));
             }
 
             @Override

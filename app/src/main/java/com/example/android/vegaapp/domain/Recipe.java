@@ -13,6 +13,21 @@ public class Recipe {
     private String preperationMethod;
     private String video;
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public List<TypeOfFood> getTof() {
+        return tof;
+    }
+
+    public void setTof(List<TypeOfFood> tof) {
+        this.tof = tof;
+    }
 
     public Recipe(String category, List<TypeOfFood> tof, String recipeName, String image, String video) {
         this.category = category;
