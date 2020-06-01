@@ -57,6 +57,11 @@ public class RecipeActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
+    
+    public void goToSearchRecipe(View view){
+        Intent intent= new Intent(RecipeActivity.this, SearchActivity.class);
+        startActivity(intent);
+    }
 
     //click on toolbar to go to profile
     public void goToProfile(View view){
