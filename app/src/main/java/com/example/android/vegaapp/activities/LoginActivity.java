@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
 
-
+        //remember me if boolean is true set the password and email.
         rememberLogin = loginPreferences.getBoolean("saveLogin", false);
         if (rememberLogin == true) {
             txt_email.setText(loginPreferences.getString("username", txt_email.getText().toString()));
@@ -134,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                     signInWithEmail();
 
 
-                    //remember me
+                    //remember me, set boolean on true after login and set the username and password, commit after.
                     if (rememberMeCheckbox.isChecked()) {
                         loginPrefsEditor.putBoolean("saveLogin", true);
                         loginPrefsEditor.putString("username", txt_email.getText().toString());
