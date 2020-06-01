@@ -14,9 +14,12 @@ public class Recipe {
     private String video;
 
 
-
-    public Recipe() {
-
+    public Recipe(String category, List<TypeOfFood> tof, String recipeName, String image, String video) {
+        this.category = category;
+        this.tof = tof;
+        this.recipeName = recipeName;
+        this.image = image;
+        this.video = video;
     }
 
     public String getVideo() {

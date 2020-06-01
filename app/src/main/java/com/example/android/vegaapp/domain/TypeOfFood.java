@@ -1,18 +1,16 @@
 package com.example.android.vegaapp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TypeOfFood {
     private String name;
-    private List<String> ingredients;
-    private List<Integer> amount;
-    private List<String> preperation;
+    private List<String> ingredients = new ArrayList<>();
+    private List<Integer> amount= new ArrayList<>();
+    private List<String> preperation=new ArrayList<>();
 
-    public TypeOfFood(String name, List<String> ingredients, List<Integer> amount, List<String> preperation) {
+    public TypeOfFood(String name) {
         this.name = name;
-        this.ingredients = ingredients;
-        this.amount = amount;
-        this.preperation = preperation;
     }
 
     public String getName() {
@@ -45,5 +43,15 @@ public class TypeOfFood {
 
     public void setPreperation(List<String> preperation) {
         this.preperation = preperation;
+    }
+
+    public void addAmount(int amount){
+        this.amount.add(amount);
+    }
+    public void addIngredient(String ingredient){
+        this.ingredients.add(ingredient);
+    }
+    public void addPrep(String prep){
+        this.preperation.add(prep);
     }
 }
