@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.android.vegaapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -256,6 +259,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+
         changeLanguage3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -273,6 +277,27 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+
+//        findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               // showTermsOfConditionDialog();
+//            }
+//        });
+
+        findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogoutDialog();
+            }
+        });
+
+        findViewById(R.id.deleteAccountButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteAccountDialog();
+            }
+        });
 
 //
 //        addAllergenButton.setOnClickListener(new View.OnClickListener(){
@@ -295,6 +320,98 @@ public class ProfileActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    //    private void showTermsOfConditionDialog(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+//        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+//                R.layout.custom_dialog_logout,
+//                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+//        );
+//        builder.setView(view);
+//
+//
+//
+//        final AlertDialog alertDialog = builder.create();
+//
+//        view.findViewById(R.id.buttonAction).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                alertDialog.dismiss();
+//            }
+//        });
+//
+//        if (alertDialog.getWindow() != null) {
+//            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+//        }
+//        alertDialog.show();
+//    }
+
+
+    private void showLogoutDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+                R.layout.custom_dialog_logout,
+                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+        );
+        builder.setView(view);
+
+
+
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.buttonYes_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
+        view.findViewById(R.id.buttonNo_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+
+
+    private void showDeleteAccountDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+                R.layout.custom_dialog_deleteaccount,
+                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+        );
+        builder.setView(view);
+
+
+
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.buttonYes_deleteaccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
+        view.findViewById(R.id.buttonNo_deleteaccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
     }
 
 
