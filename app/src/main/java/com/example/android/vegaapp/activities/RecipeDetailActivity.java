@@ -3,23 +3,49 @@ package com.example.android.vegaapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.android.vegaapp.R;
+import com.example.android.vegaapp.adapters.RecipeOnClickHandler;
 
-public class RecipeDetailActivity extends AppCompatActivity {
+public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnClickHandler {
+    private ImageView image;
+    private TextView name;
+    private Context mContext;
+    private static String TAG = RecipeDetailActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
+        Log.i(TAG, "Activity is started");
+
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+        Intent intent = getIntent();
+        String mname = intent.getExtras().getString("name");
+
+        image = findViewById(R.id.recipeimageview);
+        name = findViewById(R.id.recipeName);
+
+        name.setText(mname);
+//        Glide.with(mContext)
+//                .asBitmap().load("https://firebasestorage.googleapis.com/v0/b/justvega-aacaa.appspot.com/o/image.png?alt=media&token=a19b6709-8799-4a49-a1a2-1d0498b5111a")
+//                .into(image);
+
+
+
     }
+
 
     //click on toolbar to go to profile
     public void goToProfile(View view){
@@ -41,4 +67,9 @@ public class RecipeDetailActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onElementClick(View view, int itemIndex) {
+        Intent intent= new Intent(RecipeDetailActivity.this, RecipeDetailActivity.class);
+        startActivity(intent);
+    }
 }
