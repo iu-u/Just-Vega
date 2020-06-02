@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.domain.Recipe;
+import com.facebook.appevents.suggestedevents.ViewOnClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +27,12 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
 
     private List<Recipe> mRecipes = new ArrayList<>();
     private Context mContext;
+    private final RecipeOnClickHandler recipeOnClickHandler;
 
-    public RecipeAdapter(Context mContext, List<Recipe> mRecipes) {
+    public RecipeAdapter(Context mContext, List<Recipe> mRecipes, RecipeOnClickHandler recipeOnClickHandler) {
         this.mRecipes = mRecipes;
         this.mContext = mContext;
+        this.recipeOnClickHandler = recipeOnClickHandler;
     }
 
     @NonNull
@@ -57,7 +60,9 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView image;
         TextView category;
@@ -72,6 +77,17 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
             recipeName = itemView.findViewById(R.id.recipeName);
             allergy = itemView.findViewById(R.id.allergy);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+
+            //set onclick
+            parentLayout.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            Log.v(ViewHolder.class.getName(), "clicked on item");
+            int itemIndex = getAdapterPosition();
+            recipeOnClickHandler.onElementClick(view, itemIndex);
         }
     }
 }
