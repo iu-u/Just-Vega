@@ -31,11 +31,11 @@
             android:layout_marginBottom="10dp">
 
             <SearchView
+                android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                style="@style/SearchViewStyle"
+                android:theme="@style/SearchViewStyle"
                 android:searchIcon="@drawable/ic_search_black_24dp"
-                android:queryHint="@string/search_by_recipe"
                 >
             </SearchView>
 
@@ -47,6 +47,8 @@
                 android:layout_marginRight="10dp"
                 android:background="@color/colorBackgroundGreen">
             </View>
+
+
 
             <Button
                 android:id="@+id/btn_search_ingredient"
@@ -61,5 +63,53 @@
             </Button>
         </LinearLayout>
     </RelativeLayout>
+
+    <View
+        style="@style/Divider2"
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#678a7b">
+    </View>
+
+    <LinearLayout
+        android:id="@+id/lastSearchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LAST SEARCH"
+            android:textColor="@color/colorTextWhite"
+            android:layout_margin="20dp">
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/recyclerViewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorBlack"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="results"
+            android:textColor="@color/colorTextWhite"
+            android:layout_margin="20dp">
+        </TextView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
 
 </LinearLayout>

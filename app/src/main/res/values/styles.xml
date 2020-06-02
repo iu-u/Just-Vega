@@ -59,8 +59,12 @@
 
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
         <item name="searchIcon">@drawable/ic_search_black_24dp</item>
-        <item name="queryHint">@string/search_by_recipe</item>
-        <item name="backgroundColor">@color/colorBlack</item>
+        <item name="android:queryHint">@string/search_by_recipe</item>
+        <item name="android:hint">@string/search_by_recipe</item>
+        <item name="android:editTextColor">@color/colorTextWhite</item>
+        <item name="android:textColorHint">@color/colorTextWhite</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:clickable">true</item>
     </style>
 
     <style name="Search" parent="Widget.AppCompat.SearchView">
