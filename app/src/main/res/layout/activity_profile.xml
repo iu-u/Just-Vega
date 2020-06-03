@@ -121,11 +121,13 @@
                     android:layout_marginLeft="30dp"
                     android:text="@string/password_"
                     android:textColor="@color/colorTextLightGrey" />
+
                 <EditText
                     android:id="@+id/password_edittext_id"
                     android:layout_width="98dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:inputType="textPassword"
                     android:text="@string/secretpassword"
                     android:textColor="@color/colorTextWhite"
                     android:textSize="12dp" />

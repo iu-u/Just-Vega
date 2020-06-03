@@ -5,8 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.android.vegaapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -69,8 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
         changeLanguage = (Button) findViewById(R.id.language_button_1);
         changeLanguage2 = (Button) findViewById(R.id.language_button_2);
         changeLanguage3 = (Button) findViewById(R.id.language_button_3);
-
-
+        btn_sign_out = (Button) findViewById(R.id.logoutButton);
         deleteAccount = (Button) findViewById(R.id.deleteAccountButton);
         addAllergenButton = (Button) findViewById(R.id.add_allergen_button_id);
         allergenen = (TextView) findViewById(R.id.all_allergenes_id);
@@ -90,7 +92,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-
         try {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             email = (TextView) findViewById(R.id.showEmail);
@@ -100,38 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
             Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
         }
 
-        //sign out
-        btn_sign_out = (Button) findViewById(R.id.logoutButton);
-        btn_sign_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    mFirebaseAuth.signOut();
-                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        //delete logged in account
-        deleteAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    mFirebaseAuth.getCurrentUser().delete();
-                    mFirebaseAuth.signOut();
-                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
         //after clicking confirm you look if you can change the user or the password
-
 
         confirm.setOnClickListener(new View.OnClickListener() {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -142,16 +112,12 @@ public class ProfileActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ProfileActivity.this, "updatet email + " + user.getEmail(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ProfileActivity.this, "updated email + " + user.getEmail(), Toast.LENGTH_LONG).show();
                                     email.setText(user.getEmail());
                                     Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                                     startActivity(intent);
                                 }else{
-                                    Toast.makeText(ProfileActivity.this, "Not updatet email " + user.getEmail(), Toast.LENGTH_LONG).show();
-                                    Toast.makeText(ProfileActivity.this, "Please login again. ", Toast.LENGTH_SHORT).show();
-                                    mFirebaseAuth.signOut();
-                                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                                    startActivity(intent);
+                                    Toast.makeText(ProfileActivity.this, "Not updated email " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -173,23 +139,17 @@ public class ProfileActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(ProfileActivity.this, "Your password is updatet ", Toast.LENGTH_LONG).show();
-                                        mFirebaseAuth.signOut();
+                                        Toast.makeText(ProfileActivity.this, "Your password is updated ", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                                         startActivity(intent);
                                     }else{
-                                        Toast.makeText(ProfileActivity.this, "Not updatet, Please login again. ", Toast.LENGTH_LONG).show();
-                                        mFirebaseAuth.signOut();
-                                        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                                        startActivity(intent);
+                                        Toast.makeText(ProfileActivity.this, "" +task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
+                    }
                 }
-                }
-
         });
-
 
         //this can change the password or email in the profile page
         edit.setOnClickListener(new View.OnClickListener() {
@@ -272,7 +232,26 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+//        findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//               // showTermsOfConditionDialog();
+//            }
+//        });
 
+        btn_sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogoutDialog();
+            }
+        });
+
+        deleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteAccountDialog();
+            }
+        });
 
 //
 //        addAllergenButton.setOnClickListener(new View.OnClickListener(){
@@ -288,8 +267,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -297,7 +274,110 @@ public class ProfileActivity extends AppCompatActivity {
         return true;
     }
 
+    //    private void showTermsOfConditionDialog(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+//        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+//                R.layout.custom_dialog_logout,
+//                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+//        );
+//        builder.setView(view);
+//
+//
+//
+//        final AlertDialog alertDialog = builder.create();
+//
+//        view.findViewById(R.id.buttonAction).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                alertDialog.dismiss();
+//            }
+//        });
+//
+//        if (alertDialog.getWindow() != null) {
+//            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+//        }
+//        alertDialog.show();
+//    }
 
+    private void showLogoutDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+                R.layout.custom_dialog_logout,
+                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+        );
+        builder.setView(view);
+
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.buttonYes_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                try {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    mFirebaseAuth.signOut();
+
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(ProfileActivity.this, "You have been logged out", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
+        view.findViewById(R.id.buttonNo_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    private void showDeleteAccountDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+                R.layout.custom_dialog_deleteaccount,
+                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+        );
+        builder.setView(view);
+
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.buttonYes_deleteaccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                try {
+                    mFirebaseAuth.getCurrentUser().delete();
+                    mFirebaseAuth.signOut();
+
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(ProfileActivity.this, "Account has been deleted", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(ProfileActivity.this, "Not logged in", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
+        view.findViewById(R.id.buttonNo_deleteaccount).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
 }
 
 

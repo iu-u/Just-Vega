@@ -132,19 +132,20 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
                     e.printStackTrace();
                 }
             }
-            private void initRecyclerView(){
-                RecyclerView recyclerView = findViewById(R.id.recipeRecyclerView);
 
-                RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this,recipeList, RecipeActivity.this);
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(RecipeActivity.this));
-            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+    }
+    private void initRecyclerView(){
+        RecyclerView recyclerView = findViewById(R.id.recipeRecyclerView);
+
+        RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this,recipeList, RecipeActivity.this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(RecipeActivity.this));
     }
 
     @Override
