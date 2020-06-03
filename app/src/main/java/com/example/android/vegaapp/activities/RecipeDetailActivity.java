@@ -37,6 +37,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         Intent intent = getIntent();
         String mname = intent.getExtras().getString("name");
         String mcategory = intent.getExtras().getString("category");
+        //String mimage = intent.getExtras().getString("image");
         image = findViewById(R.id.recipeimageview);
         name = findViewById(R.id.recipeName);
         category = findViewById(R.id.categoryrecipe);
@@ -44,9 +45,9 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
 
         category.setText(mcategory);
         name.setText(mname);
-//        Glide.with(mContext)
-//                .asBitmap().load("https://firebasestorage.googleapis.com/v0/b/justvega-aacaa.appspot.com/o/image.png?alt=media&token=a19b6709-8799-4a49-a1a2-1d0498b5111a")
-//                .into(image);
+        Glide.with(getApplicationContext())
+                .asBitmap().load("https://firebasestorage.googleapis.com/v0/b/justvega-aacaa.appspot.com/o/image.png?alt=media&token=a19b6709-8799-4a49-a1a2-1d0498b5111a")
+                .into(image);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -145,6 +145,7 @@ public class SearchActivity extends AppCompatActivity {
             }
 
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -153,6 +154,8 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.resultRecycleView);
+
+        Log.d(TAG, "onDataChange: "+this.typeOfFoods.size());
 
         mAdapter = new RecipeSmallAdapter(SearchActivity.this,recipeList);
         recyclerView.setAdapter(mAdapter);
