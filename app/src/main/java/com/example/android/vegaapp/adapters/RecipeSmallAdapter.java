@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,13 +27,12 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
     private static final String TAG = "RecipeSmallAdapter";
 
     private List<Recipe> mRecipes = new ArrayList<>();
+    private List<Recipe> mRecipeFull = new ArrayList<>();
     private Context mContext;
-    private final RecipeOnClickHandler recipeOnClickHandler;
 
-    public RecipeSmallAdapter(Context mContext, List<Recipe> mRecipes, RecipeOnClickHandler recipeOnClickHandler) {
+    public RecipeSmallAdapter(Context mContext, List<Recipe> mRecipes) {
         this.mRecipes = mRecipes;
         this.mContext = mContext;
-        this.recipeOnClickHandler = recipeOnClickHandler;
     }
 
     @NonNull
@@ -58,6 +58,54 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
         return mRecipes.size();
     }
 
+    public Filter getFilter(){
+        return objectFilter;
+    }
+
+    private Filter objectFilter = new Filter(){
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            Log.i(TAG, "performFiltering called");
+            List<Recipe> filteredList = new ArrayList<>();
+
+            String word = constraint.toString();
+
+            for(Recipe a: mRecipes){
+                mRecipeFull.add(a);
+            }
+
+            if(word == null || word.length() == 0){
+                filteredList.clear();
+            } else{
+                String filterPattern = word.toLowerCase();
+                Log.d(TAG, "filterPattern: " + filterPattern);
+
+                for(Recipe item: mRecipeFull){
+                    if(item.getRecipeName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            results.count = filteredList.size();
+
+            Log.i(TAG, "performFiltering List returned: " + results.values + " | Amount of items: " + results.count);
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            Log.i(TAG, "publishResults called");
+            mRecipes.clear();
+            mRecipes.addAll((List)results.values);
+
+            notifyDataSetChanged();
+        }
+    };
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView imageView;
@@ -79,7 +127,7 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
         public void onClick(View view) {
             Log.v(ViewHolder.class.getName(), "clicked on item");
             int itemIndex = getAdapterPosition();
-            recipeOnClickHandler.onElementClick(view, itemIndex);
+
         }
     }
 }
