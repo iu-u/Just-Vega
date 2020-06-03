@@ -62,14 +62,14 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         return true;
     }
 
-    public void goToSearchRecipe(View view){
-        Intent intent= new Intent(RecipeActivity.this, SearchActivity.class);
+    public void goToSearchRecipe(View view) {
+        Intent intent = new Intent(RecipeActivity.this, SearchActivity.class);
         startActivity(intent);
     }
 
     //click on toolbar to go to profile
-    public void goToProfile(View view){
-        Intent intent= new Intent(RecipeActivity.this, ProfileActivity.class);
+    public void goToProfile(View view) {
+        Intent intent = new Intent(RecipeActivity.this, ProfileActivity.class);
         startActivity(intent);
     }
 
@@ -89,7 +89,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
 
                     for (int i = 0; i < receptList.length(); i++) {
                         JSONObject recipe = (JSONObject) receptList.get(i);
-                        String recipeName =recipe.getString("name");
+                        String recipeName = recipe.getString("name");
                         String category = recipe.getString("category");
                         String image = recipe.getString("image");
                         String video = recipe.getString("video");
@@ -123,11 +123,11 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
                             }
                             typeOfFoods.add(tof);
                         }
-                        Recipe recipes = new Recipe(category,typeOfFoods,recipeName,image,video);
+                        Recipe recipes = new Recipe(category, typeOfFoods, recipeName, image, video);
                         recipeList.add(recipes);
                     }
                     initRecyclerView();
-                    Log.d(TAG, "onDataChange: "+receptList.get(2));
+                    Log.d(TAG, "onDataChange: " + receptList.get(2));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -140,27 +140,30 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
             }
         });
     }
-    private void initRecyclerView(){
+
+    private void initRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recipeRecyclerView);
 
-        RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this,recipeList, RecipeActivity.this);
+        RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this, recipeList, RecipeActivity.this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(RecipeActivity.this));
     }
 
     @Override
     public void onElementClick(View view, int itemIndex) {
-            Intent intent= new Intent(RecipeActivity.this, RecipeDetailActivity.class);
+        Intent intent = new Intent(RecipeActivity.this, RecipeDetailActivity.class);
 
-            //hier kan je data meegeven naar recepidetailactivity
-            String name =  recipeList.get(itemIndex).getRecipeName();
-            String image = recipeList.get(itemIndex).getImage();
+        //hier kan je data meegeven naar recepidetailactivity
+        String name = recipeList.get(itemIndex).getRecipeName();
+        String image = recipeList.get(itemIndex).getImage();
+        String video = recipeList.get(itemIndex).getVideo();
         String category = recipeList.get(itemIndex).getCategory();
-            intent.putExtra("image", image);
-            intent.putExtra("name", name );
-        intent.putExtra("category", category );
-            startActivity(intent);
-        }
+        intent.putExtra("image", image);
+        intent.putExtra("name", name);
+        intent.putExtra("category", category);
+        intent.putExtra("video", video);
+        startActivity(intent);
+    }
 
 
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +25,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
     private TextView name;
     private TextView category;
     private Context mContext;
+    private ImageView playButton;
     private static String TAG = RecipeDetailActivity.class.getName();
 
     @Override
@@ -37,10 +39,23 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         Intent intent = getIntent();
         String mname = intent.getExtras().getString("name");
         String mcategory = intent.getExtras().getString("category");
+        final String mvideo = intent.getExtras().getString("video");
         //String mimage = intent.getExtras().getString("image");
         image = findViewById(R.id.recipeimageview);
         name = findViewById(R.id.recipeName);
         category = findViewById(R.id.categoryrecipe);
+        playButton = findViewById(R.id.playButton);
+
+
+
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mvideo));
+                intent.setDataAndType(Uri.parse(mvideo), "video/mp4");
+                startActivity(intent);
+            }
+        });
 
 
         category.setText(mcategory);
