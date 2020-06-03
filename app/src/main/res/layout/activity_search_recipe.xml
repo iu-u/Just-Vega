@@ -12,8 +12,74 @@
     </include>
 
     <RelativeLayout
+        android:id="@+id/layout_search_ingredient"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.40"
+        android:background="@color/colorBlack">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/fade_search_ingredient"
+            android:scaleType="fitXY">
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <SearchView
+                    android:id="@+id/searchView_recipe"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.90"
+                    android:layout_height="50dp"
+                    android:theme="@style/SearchViewStyle"
+                    android:searchIcon="@drawable/ic_search_black_24dp"
+                    android:queryHint="Search Ingredient"
+                    >
+                </SearchView>
+
+                <ImageButton
+                    android:id="@+id/backToRecipe"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.10"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_arrow_left_green"
+                    android:layout_gravity="center_vertical">
+                </ImageButton>
+            </LinearLayout>
+
+            <View
+                style="@style/Divider2"
+                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorBackgroundGreen">
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_search_recipe"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.40"
         android:background="@color/colorBlack">
 
         <ImageView
@@ -48,8 +114,6 @@
                 android:background="@color/colorBackgroundGreen">
             </View>
 
-
-
             <Button
                 android:id="@+id/btn_search_ingredient"
                 android:layout_width="wrap_content"
@@ -76,7 +140,8 @@
     <LinearLayout
         android:id="@+id/lastSearchLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="0dp"
+        android:layout_weight="0.60"
 
         android:orientation="vertical">
 
@@ -93,7 +158,7 @@
         android:id="@+id/recyclerViewLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.60"
         android:background="@color/colorBlack"
         android:orientation="vertical">
 
