@@ -11,7 +11,7 @@
     android:padding="20dp">
 
     <Button
-        android:id="@+id/buttonYes_deleteaccount"
+        android:id="@+id/buttonNo_deleteaccount"
         android:layout_width="108dp"
         android:layout_height="29dp"
         android:layout_marginTop="15dp"
@@ -23,12 +23,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.939"
-        app:layout_constraintStart_toEndOf="@+id/buttonNo_deleteaccount"
+        app:layout_constraintStart_toEndOf="@+id/buttonYes_deleteaccount"
         app:layout_constraintTop_toBottomOf="@+id/layoutDialog"
         app:layout_constraintVertical_bias="0.739" />
 
     <Button
-        android:id="@+id/buttonNo_deleteaccount"
+
+        android:id="@+id/buttonYes_deleteaccount"
         android:layout_width="108dp"
         android:layout_height="29dp"
         android:layout_marginTop="16dp"

@@ -11,7 +11,7 @@
     android:padding="20dp">
 
     <Button
-        android:id="@+id/buttonYes_logout"
+        android:id="@+id/buttonNo_logout"
         android:layout_width="108dp"
         android:layout_height="29dp"
         android:layout_marginTop="15dp"
@@ -23,12 +23,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.939"
-        app:layout_constraintStart_toEndOf="@+id/buttonNo_logout"
+        app:layout_constraintStart_toEndOf="@+id/buttonYes_logout"
         app:layout_constraintTop_toBottomOf="@+id/layoutDialog"
         app:layout_constraintVertical_bias="0.739" />
 
     <Button
-        android:id="@+id/buttonNo_logout"
+        android:id="@+id/buttonYes_logout"
         android:layout_width="108dp"
         android:layout_height="29dp"
         android:layout_marginTop="16dp"
