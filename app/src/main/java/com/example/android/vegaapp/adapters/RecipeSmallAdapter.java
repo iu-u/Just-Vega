@@ -26,12 +26,13 @@ import java.util.List;
 public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.ViewHolder>{
     private static final String TAG = "RecipeSmallAdapter";
 
-    private List<Recipe> mRecipes = new ArrayList<>();
-    private List<Recipe> mRecipeFull = new ArrayList<>();
+    private List<Recipe> mRecipes;
+    private List<Recipe> mRecipeFull;
     private Context mContext;
 
-    public RecipeSmallAdapter(Context mContext, List<Recipe> mRecipes) {
+    public RecipeSmallAdapter(Context mContext, List<Recipe> mRecipes, List<Recipe> all) {
         this.mRecipes = mRecipes;
+        this.mRecipeFull = all;
         this.mContext = mContext;
     }
 
@@ -70,9 +71,6 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
 
             String word = constraint.toString();
 
-            for(Recipe a: mRecipes){
-                mRecipeFull.add(a);
-            }
 
             if(word == null || word.length() == 0){
                 filteredList.clear();

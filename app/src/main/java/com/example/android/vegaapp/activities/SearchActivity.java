@@ -47,6 +47,7 @@ public class SearchActivity extends AppCompatActivity {
     RelativeLayout searchRecipeView;
     RelativeLayout searchIngredientView;
     private List<Recipe> recipeList = new ArrayList<>();
+    private List<Recipe> recipeListAll = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
     private static String TAG = RecipeActivity.class.getName();
 
@@ -90,6 +91,7 @@ public class SearchActivity extends AppCompatActivity {
                 }else {
                     lastSearchedView.setVisibility(View.GONE);
                     searchResultView.setVisibility(View.VISIBLE);
+                    Log.d(TAG, "onQueryTextChange: "+recipeListAll.size());;
 
                     mAdapter.getFilter().filter(newText);
                 }
@@ -166,9 +168,9 @@ public class SearchActivity extends AppCompatActivity {
                         }
                         Recipe recipes = new Recipe(category,typeOfFoods,recipeName,image,video);
                         recipeList.add(recipes);
+                        recipeListAll.add(recipes);
                     }
                     initRecyclerView();
-                    Log.d(TAG, "onDataChange: "+receptList.get(2));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -185,9 +187,9 @@ public class SearchActivity extends AppCompatActivity {
     private void initRecyclerView(){
         RecyclerView recyclerView = findViewById(R.id.resultRecycleView);
 
-        Log.d(TAG, "onDataChange: "+this.typeOfFoods.size());
+        Log.d(TAG, "onDataChange: "+this.recipeList.size());
 
-        mAdapter = new RecipeSmallAdapter(SearchActivity.this,recipeList);
+        mAdapter = new RecipeSmallAdapter(SearchActivity.this,recipeList,recipeListAll);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
     }
