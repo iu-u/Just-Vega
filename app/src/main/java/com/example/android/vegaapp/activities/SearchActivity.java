@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,10 @@ public class SearchActivity extends AppCompatActivity {
     LinearLayout lastSearchedView;
     LinearLayout searchResultView;
     SearchView searchView;
+    Button goToSearchIngredients;
+    ImageButton backToRecipeSearch;
+    RelativeLayout searchRecipeView;
+    RelativeLayout searchIngredientView;
     private List<Recipe> recipeList = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
     private static String TAG = RecipeActivity.class.getName();
@@ -55,12 +61,20 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_recipe);
 
         searchView = findViewById(R.id.searchView);
+        goToSearchIngredients = findViewById(R.id.btn_search_ingredient);
+        backToRecipeSearch = findViewById(R.id.backToRecipe);
+
+        searchRecipeView = findViewById(R.id.layout_search_recipe);
+        searchIngredientView = findViewById(R.id.layout_search_ingredient);
 
         lastSearchedView = findViewById(R.id.lastSearchLayout);
         searchResultView = findViewById(R.id.recyclerViewLayout);
 
+        //Set visibility
         lastSearchedView.setVisibility(View.VISIBLE);
         searchResultView.setVisibility(View.GONE);
+        searchRecipeView.setVisibility(View.VISIBLE);
+        searchIngredientView.setVisibility(View.GONE);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -80,6 +94,22 @@ public class SearchActivity extends AppCompatActivity {
                     mAdapter.getFilter().filter(newText);
                 }
                 return false;
+            }
+        });
+
+        goToSearchIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchRecipeView.setVisibility(View.GONE);
+                searchIngredientView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        backToRecipeSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchRecipeView.setVisibility(View.VISIBLE);
+                searchIngredientView.setVisibility(View.GONE);
             }
         });
     }
