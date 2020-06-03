@@ -155,9 +155,13 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
             //hier kan je data meegeven naar recepidetailactivity
             String name =  recipeList.get(itemIndex).getRecipeName();
             String image = recipeList.get(itemIndex).getImage();
+        String category = recipeList.get(itemIndex).getCategory();
             intent.putExtra("image", image);
             intent.putExtra("name", name );
+        intent.putExtra("category", category );
             startActivity(intent);
         }
-    }
+
+
+}
 
