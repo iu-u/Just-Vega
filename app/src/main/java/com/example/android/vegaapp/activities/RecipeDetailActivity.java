@@ -47,7 +47,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         playButton = findViewById(R.id.playButton);
 
 
-
+        //start new intent when you click on the play button
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
