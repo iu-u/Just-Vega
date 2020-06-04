@@ -1,5 +1,6 @@
 package com.example.android.vegaapp.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -99,9 +100,13 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i(TAG, searchView_ingredient.getText().toString());
+                String ingredient = searchView_ingredient.getText().toString();
+                addIngredientToSearch(view, ingredient);
 
             }
         });
+
+
 
         searchView_recipe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -145,16 +150,19 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-//    public void addIngredientToSearch(View view){
-//        Log.i(TAG, "Called addIngredientToSearch" + ingredientAdapter.getItem());
-//        String ingredient = "Example";
-//        Button button = new Button(this);
-//        button.setTextSize(13);
-//        button.setBackgroundResource(R.drawable.ingredient_item_shape);
-//        button.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_close_green,0);
-//
-//        layout_ingredient_items.addView(button);
-//    }
+    public void addIngredientToSearch(View view, String ingredient){
+        Button button = new Button(this);
+        button.setTextSize(13);
+        button.setText(ingredient);
+        button.setTextColor(getResources().getColor(R.color.colorTextWhite));
+        button.setBackgroundResource(R.drawable.ingredient_item_shape);
+        button.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_close_green,0);
+
+        layout_ingredient_items.addView(button);
+        LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(10,5,10,5);
+        button.setLayoutParams(params);
+    }
 
     @Override
     protected void onStart() {
