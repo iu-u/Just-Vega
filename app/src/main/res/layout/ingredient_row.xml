@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorTextLightGrey"
         android:textSize="20sp"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
-        android:background="@color/colorDarkGrey"/>
+        android:background="@color/colorDarkGrey" />
     
     <Button
         android:layout_width="0dp"
