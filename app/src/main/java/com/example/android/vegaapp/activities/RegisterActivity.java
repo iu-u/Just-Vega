@@ -100,7 +100,12 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if(!mPassword.getText().toString().equals(mRPassword.getText().toString())){
                     Toast.makeText(RegisterActivity.this, "passwords doesnt match", Toast.LENGTH_SHORT).show();
                 }else{
-                    signUp();
+                    if(mPassword.length()<6){
+                        Toast.makeText(RegisterActivity.this, "password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                    }else{
+                        signUp();
+                    }
+
                 }
             }
         });
