@@ -16,7 +16,7 @@ import com.example.android.vegaapp.activities.RegisterActivity;
 import com.example.android.vegaapp.activities.WelcomeActivity;
 import com.example.android.vegaapp.adapters.RecipeOnClickHandler;
 
-public class MainActivity extends AppCompatActivity {
+public class  MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
