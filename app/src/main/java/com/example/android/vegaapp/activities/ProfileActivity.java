@@ -253,6 +253,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+
+
 //
 //        addAllergenButton.setOnClickListener(new View.OnClickListener(){
 //            @Override
@@ -337,6 +339,16 @@ public class ProfileActivity extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
+    }
+
+    public void goToSearchRecipe(View view) {
+        Intent intent = new Intent(ProfileActivity.this, SearchActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToProfile(View view){
+        Intent intent= new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 
     private void showDeleteAccountDialog(){

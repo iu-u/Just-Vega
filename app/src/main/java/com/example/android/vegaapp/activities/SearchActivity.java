@@ -1,5 +1,6 @@
 package com.example.android.vegaapp.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -247,6 +248,16 @@ public class SearchActivity extends AppCompatActivity {
         mAdapter = new RecipeSmallAdapter(SearchActivity.this,recipeList,recipeListAll);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+    }
+
+    public void goToProfile(View view){
+        Intent intent= new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSearchRecipe(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
     }
 
 //    @Override
