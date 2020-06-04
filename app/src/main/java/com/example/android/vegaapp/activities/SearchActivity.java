@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +46,10 @@ public class SearchActivity extends AppCompatActivity {
     LinearLayout searchResultView;
     LinearLayout layout_ingredient_items;
 
+    private static final String TAG = "SearchActivity";
+
     AutoCompleteTextView searchView_ingredient;
+    Button add_ingredient;
 
     SearchView searchView_recipe;
     Button goToSearchIngredients;
@@ -54,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
     private List<Recipe> recipeList = new ArrayList<>();
     private List<Recipe> recipeListAll = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
-    private static String TAG = RecipeActivity.class.getName();
+    private ArrayAdapter<String> ingredientAdapter;
 
     private RecipeSmallAdapter mAdapter;
 
@@ -72,8 +77,10 @@ public class SearchActivity extends AppCompatActivity {
 
         searchView_ingredient = findViewById(R.id.searchView_ingredient);
         String[] ingredients = getResources().getStringArray(R.array.ingredient_suggestions);
-        ArrayAdapter<String> ingredientAdapter = new ArrayAdapter<String>(this, R.layout.ingredient_row, R.id.ingredient_name, ingredients);
+        ingredientAdapter = new ArrayAdapter<String>(this, R.layout.ingredient_row, R.id.ingredient_name, ingredients);
         searchView_ingredient.setAdapter(ingredientAdapter);
+
+        add_ingredient =findViewById(R.id.btn_search_ingredient);
 
         searchRecipeView = findViewById(R.id.layout_search_recipe);
         searchIngredientView = findViewById(R.id.layout_search_ingredient);
@@ -88,6 +95,13 @@ public class SearchActivity extends AppCompatActivity {
         searchRecipeView.setVisibility(View.VISIBLE);
         searchIngredientView.setVisibility(View.GONE);
 
+        searchView_ingredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(TAG, searchView_ingredient.getText().toString());
+
+            }
+        });
 
         searchView_recipe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -128,18 +142,19 @@ public class SearchActivity extends AppCompatActivity {
                 searchIngredientView.setVisibility(View.GONE);
             }
         });
+
     }
 
-    public void addIngredientToSearch(View view){
-        Log.i(TAG, "Called addIngredientToSearch" + view.toString());
-        String ingredient = "Example";
-        Button button = new Button(this);
-        button.setTextSize(13);
-        button.setBackgroundResource(R.drawable.ingredient_item_shape);
-        button.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_close_green,0);
-
-        layout_ingredient_items.addView(button);
-    }
+//    public void addIngredientToSearch(View view){
+//        Log.i(TAG, "Called addIngredientToSearch" + ingredientAdapter.getItem());
+//        String ingredient = "Example";
+//        Button button = new Button(this);
+//        button.setTextSize(13);
+//        button.setBackgroundResource(R.drawable.ingredient_item_shape);
+//        button.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_close_green,0);
+//
+//        layout_ingredient_items.addView(button);
+//    }
 
     @Override
     protected void onStart() {
