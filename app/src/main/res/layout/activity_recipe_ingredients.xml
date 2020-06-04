@@ -19,30 +19,43 @@
         android:layout_weight="1"
         android:orientation="vertical"
         >
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
             android:id="@+id/recipe_ingredients_image"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:src="@drawable/faded_ingredients_image">
+
+        </ImageView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rectangle_back"
+            android:layout_marginLeft="-40dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            >
+        </ImageView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_left_green"
+            android:layout_marginTop="25dp"
             >
 
         </ImageView>
-        <Button
-            android:id="@+id/ingredients_return_button"
-            android:text="Back to recipe"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="130dp"
-            android:layout_marginTop="30dp"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/loginbuttonshape"
-            android:shadowColor="#A8A8A8"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextGreen"
+            android:fontFamily="@font/poppins_light"
+            android:textSize="12sp"
+            android:text="BACK TO THE RECIPE"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="50dp"
+            >
 
-        </Button>
+        </TextView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,8 +102,9 @@
                 android:text="2 People"
                 android:fontFamily="@font/poppins_light"
                 android:layout_marginTop="220dp"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/colorTextGreen"
-                android:textSize="20sp">
+                android:textSize="15sp">
             </TextView>
             <ImageView
                 android:layout_width="wrap_content"
@@ -98,6 +112,7 @@
                 android:id="@+id/ingredients_increase_people_butt"
                 android:src="@drawable/ic_add_circle_outline_black_24dp"
                 android:layout_marginTop="220dp"
+                android:layout_marginLeft="10dp"
                 android:clickable="true"
                 >
 
@@ -120,12 +135,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="270dp"
             android:layout_marginTop="190dp"
             android:fontFamily="@font/poppins_light"
-            android:text="add all \n to shopping \n list"
+            android:text="ADD ALL \n TO SHOPPING \n LIST"
             android:textColor="@color/colorTextGreen"
-            android:textSize="20sp"
+            android:textSize="13sp"
             android:gravity="center">
 
         </TextView>
