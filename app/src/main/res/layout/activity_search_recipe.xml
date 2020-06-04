@@ -37,16 +37,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <SearchView
-                    android:id="@+id/searchView_recipe"
+                <AutoCompleteTextView
+                    android:id="@+id/searchView_ingredient"
                     android:layout_width="0dp"
                     android:layout_weight="0.90"
                     android:layout_height="50dp"
-                    android:theme="@style/SearchViewStyle"
                     android:searchIcon="@drawable/ic_search_black_24dp"
-                    android:queryHint="Search Ingredient"
+                    android:layout_marginLeft="20dp"
+                    android:completionThreshold="1"
+                    android:theme="@style/AutoComplete"
                     >
-                </SearchView>
+                </AutoCompleteTextView>
+
 
                 <ImageButton
                     android:id="@+id/backToRecipe"
@@ -57,16 +59,9 @@
                     android:src="@drawable/ic_arrow_left_green"
                     android:layout_gravity="center_vertical">
                 </ImageButton>
-            </LinearLayout>
 
-            <View
-                style="@style/Divider2"
-                android:layout_height="2dp"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/colorBackgroundGreen">
-            </View>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,7 +103,7 @@
             android:layout_marginBottom="10dp">
 
             <SearchView
-                android:id="@+id/searchView"
+                android:id="@+id/searchView_recipe"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:theme="@style/SearchViewStyle"

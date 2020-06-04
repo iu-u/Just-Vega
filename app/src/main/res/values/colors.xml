@@ -7,6 +7,7 @@
 <!-- Background -->
     <color name="colorBlack">#000000</color>
     <color name="colorBackgroundBlack">#110E0D</color>
+    <color name="colorDarkGrey">#212121</color>
 
     <color name="colorDividerGreen">#b9c4bb</color>
     <color name="colorBackgroundGreen">#4cc248</color>

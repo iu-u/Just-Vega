@@ -67,6 +67,17 @@
         <item name="android:clickable">true</item>
     </style>
 
+    <style name="AutoComplete">
+        <item name="colorControlActivated">@color/colorBackgroundGreen</item>
+        <item name="colorControlNormal">@color/colorBackgroundGreen</item>
+        <item name="android:hint">@string/search_by_ingredient</item>
+        <item name="android:textColorHint">@color/colorTextWhite</item>
+        <item name="android:editTextColor">@color/colorTextWhite</item>
+        <item name="android:popupBackground">@color/colorDarkGrey</item>
+        <item name="android:textColor">@color/colorTextLightGrey</item>
+
+    </style>
+
     <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     </style>
