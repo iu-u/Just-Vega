@@ -34,6 +34,7 @@
     <!--  Search Activity  -->
     <string name="search_by_recipe">Search Recipe</string>
     <string name="search_by_ingredient">Search By Ingredient</string>
+    <string name="add_ingredient">ADD</string>
     <string-array name="ingredient_suggestions">
         <item>Melk</item>
         <item>Boter</item>

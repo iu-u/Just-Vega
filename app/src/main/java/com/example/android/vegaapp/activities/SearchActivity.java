@@ -71,7 +71,7 @@ public class SearchActivity extends AppCompatActivity {
 
         searchView_ingredient = findViewById(R.id.searchView_ingredient);
         String[] ingredients = getResources().getStringArray(R.array.ingredient_suggestions);
-        ArrayAdapter<String> ingredientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ingredients);
+        ArrayAdapter<String> ingredientAdapter = new ArrayAdapter<String>(this, R.layout.ingredient_row, R.id.ingredient_name, ingredients);
         searchView_ingredient.setAdapter(ingredientAdapter);
 
         searchRecipeView = findViewById(R.id.layout_search_recipe);

@@ -73,8 +73,8 @@
         <item name="android:hint">@string/search_by_ingredient</item>
         <item name="android:textColorHint">@color/colorTextWhite</item>
         <item name="android:editTextColor">@color/colorTextWhite</item>
-        <item name="android:popupBackground">@color/colorDarkGrey</item>
         <item name="android:textColor">@color/colorTextLightGrey</item>
+        <item name="android:drawableLeft">@drawable/ic_search_black_24dp</item>
 
     </style>
 
