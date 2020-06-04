@@ -1,17 +1,22 @@
 package com.example.android.vegaapp.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -55,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
     private boolean mGooglesignin=false;
     private boolean mFacebooksignin=false;
+    private CheckBox mCheckboxTermsOfCondition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +87,16 @@ public class RegisterActivity extends AppCompatActivity {
         mPassword=(EditText)findViewById(R.id.txt_password_register);
         mRPassword=(EditText)findViewById(R.id.txt_repeat_password);
 
+        mCheckboxTermsOfCondition=(CheckBox)findViewById(R.id.checkBox_register);
 
 
+        mCheckboxTermsOfCondition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean checked = ((CheckBox) v).isChecked();
+                showTermsOfConditionDialog();
+            }
+        });
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +116,13 @@ public class RegisterActivity extends AppCompatActivity {
                 }else{
                     if(mPassword.length()<6){
                         Toast.makeText(RegisterActivity.this, "password must be at least 6 characters", Toast.LENGTH_SHORT).show();
-                    }else{
-                        signUp();
-                    }
+
+                } else if (!mCheckboxTermsOfCondition.isChecked()) {
+                    Toast.makeText(RegisterActivity.this, "U need to accept Terms & Conditions to continue", Toast.LENGTH_SHORT).show();
+                } else {
+                    signUp();
+
+                }
 
                 }
             }
@@ -233,10 +251,39 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    private void showTermsOfConditionDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(RegisterActivity.this).inflate(
+                R.layout.custom_dialog_termsofcondition,
+                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+        );
+        builder.setView(view);
+
+
+
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.buttonAction).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
+
+
+
+
 }
