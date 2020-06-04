@@ -131,8 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (changePassword.getText().toString().equals("")){
                     Toast.makeText(ProfileActivity.this, "please fill in your password ", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                    startActivity(intent);
+
                 }else{
                     user.updatePassword(changePassword.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
