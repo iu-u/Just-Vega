@@ -30,8 +30,22 @@
     <string name="recipeList_recipe">Recipes</string>
     <string name="recipeList_filter">FILTERS</string>
     <string name="recipeList_sort">Sort</string>
+
+    <!--  Search Activity  -->
     <string name="search_by_recipe">Search Recipe</string>
     <string name="search_by_ingredient">Search By Ingredient</string>
+    <string name="add_ingredient">ADD</string>
+    <string-array name="ingredient_suggestions">
+        <item>Melk</item>
+        <item>Boter</item>
+        <item>Citroensap</item>
+        <item>Balsamico</item>
+        <item>Ricotta</item>
+        <item>Eieren</item>
+        <item>Zout</item>
+        <item>Mosterd</item>
+        <item>Rijstmeel</item>
+    </string-array>
 
     <!--  Profile page  -->
     <string name="information_">INFORMATION</string>
