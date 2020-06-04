@@ -65,8 +65,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layout_ingredient_items"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -42,6 +42,7 @@ public class SearchActivity extends AppCompatActivity {
 
     LinearLayout lastSearchedView;
     LinearLayout searchResultView;
+    LinearLayout layout_ingredient_items;
 
     AutoCompleteTextView searchView_ingredient;
 
@@ -79,6 +80,7 @@ public class SearchActivity extends AppCompatActivity {
 
         lastSearchedView = findViewById(R.id.lastSearchLayout);
         searchResultView = findViewById(R.id.recyclerViewLayout);
+        layout_ingredient_items = findViewById(R.id.layout_ingredient_items);
 
         //Set visibility
         lastSearchedView.setVisibility(View.VISIBLE);
@@ -126,6 +128,17 @@ public class SearchActivity extends AppCompatActivity {
                 searchIngredientView.setVisibility(View.GONE);
             }
         });
+    }
+
+    public void addIngredientToSearch(View view){
+        Log.i(TAG, "Called addIngredientToSearch" + view.toString());
+        String ingredient = "Example";
+        Button button = new Button(this);
+        button.setTextSize(13);
+        button.setBackgroundResource(R.drawable.ingredient_item_shape);
+        button.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_close_green,0);
+
+        layout_ingredient_items.addView(button);
     }
 
     @Override

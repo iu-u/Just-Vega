@@ -75,7 +75,14 @@
         <item name="android:editTextColor">@color/colorTextWhite</item>
         <item name="android:textColor">@color/colorTextLightGrey</item>
         <item name="android:drawableLeft">@drawable/ic_search_black_24dp</item>
+    </style>
 
+    <style name="IngredientItem" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:drawableRight">@drawable/ic_close_green</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">

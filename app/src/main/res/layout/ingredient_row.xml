@@ -26,6 +26,7 @@
         android:background="@color/fui_transparent"
         android:textColor="@color/colorBackgroundGreen"
         android:layout_marginLeft="10dp"
+        android:onClick="addIngredientToSearch"
         />
 
 </LinearLayout>
