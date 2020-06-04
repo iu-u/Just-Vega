@@ -162,6 +162,13 @@ public class SearchActivity extends AppCompatActivity {
         LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.setMargins(10,5,10,5);
         button.setLayoutParams(params);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout_ingredient_items.removeView(v);
+            }
+        });
     }
 
     @Override
