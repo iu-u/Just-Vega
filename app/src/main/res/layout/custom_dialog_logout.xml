@@ -61,7 +61,7 @@
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
             android:padding="10dp"
-            android:text="Terms and conditions"
+            android:text="Warning"
             android:textColor="@color/colorTextWhite"
             android:textSize="18sp"
             android:textStyle="bold"

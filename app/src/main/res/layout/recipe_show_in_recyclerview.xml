@@ -11,7 +11,7 @@
         android:layout_height="300dp"
         android:layout_centerInParent="false"
         android:layout_gravity="center"
-        android:background="@color/colorBackgroundBlack"
+        android:background="@color/colorBlack"
         android:src="@drawable/pieter_de_hoop" />
 
 

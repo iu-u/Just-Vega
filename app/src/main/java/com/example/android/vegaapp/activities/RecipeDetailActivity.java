@@ -82,7 +82,10 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         startActivity(intent);
     }
 
-
+    public void goToSearchRecipe(View view) {
+        Intent intent = new Intent(RecipeDetailActivity.this, SearchActivity.class);
+        startActivity(intent);
+    }
 
     public void recipeActivity(View view){
         Intent intent= new Intent(RecipeDetailActivity.this, RecipeActivity.class);

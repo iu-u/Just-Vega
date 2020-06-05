@@ -1,9 +1,12 @@
 package com.example.android.vegaapp.activities;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -12,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +48,10 @@ public class SearchActivity extends AppCompatActivity {
     LinearLayout searchResultView;
     LinearLayout layout_ingredient_items;
 
+    private static final String TAG = "SearchActivity";
+
     AutoCompleteTextView searchView_ingredient;
+    Button add_ingredient;
 
     SearchView searchView_recipe;
     Button goToSearchIngredients;
@@ -54,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
     private List<Recipe> recipeList = new ArrayList<>();
     private List<Recipe> recipeListAll = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
-    private static String TAG = RecipeActivity.class.getName();
+    private ArrayAdapter<String> ingredientAdapter;
 
     private RecipeSmallAdapter mAdapter;
 
@@ -72,8 +79,10 @@ public class SearchActivity extends AppCompatActivity {
 
         searchView_ingredient = findViewById(R.id.searchView_ingredient);
         String[] ingredients = getResources().getStringArray(R.array.ingredient_suggestions);
-        ArrayAdapter<String> ingredientAdapter = new ArrayAdapter<String>(this, R.layout.ingredient_row, R.id.ingredient_name, ingredients);
+        ingredientAdapter = new ArrayAdapter<String>(this, R.layout.ingredient_row, R.id.ingredient_name, ingredients);
         searchView_ingredient.setAdapter(ingredientAdapter);
+
+        add_ingredient =findViewById(R.id.btn_search_ingredient);
 
         searchRecipeView = findViewById(R.id.layout_search_recipe);
         searchIngredientView = findViewById(R.id.layout_search_ingredient);
@@ -87,6 +96,17 @@ public class SearchActivity extends AppCompatActivity {
         searchResultView.setVisibility(View.GONE);
         searchRecipeView.setVisibility(View.VISIBLE);
         searchIngredientView.setVisibility(View.GONE);
+
+        searchView_ingredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(TAG, searchView_ingredient.getText().toString());
+                String ingredient = searchView_ingredient.getText().toString();
+                addIngredientToSearch(view, ingredient);
+
+            }
+        });
+
 
 
         searchView_recipe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -128,17 +148,28 @@ public class SearchActivity extends AppCompatActivity {
                 searchIngredientView.setVisibility(View.GONE);
             }
         });
+
     }
 
-    public void addIngredientToSearch(View view){
-        Log.i(TAG, "Called addIngredientToSearch" + view.toString());
-        String ingredient = "Example";
+    public void addIngredientToSearch(View view, String ingredient){
         Button button = new Button(this);
         button.setTextSize(13);
+        button.setText(ingredient);
+        button.setTextColor(getResources().getColor(R.color.colorTextWhite));
         button.setBackgroundResource(R.drawable.ingredient_item_shape);
         button.setCompoundDrawablesWithIntrinsicBounds(0,0,R.drawable.ic_close_green,0);
 
         layout_ingredient_items.addView(button);
+        LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(10,5,10,5);
+        button.setLayoutParams(params);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout_ingredient_items.removeView(v);
+            }
+        });
     }
 
     @Override
@@ -217,6 +248,16 @@ public class SearchActivity extends AppCompatActivity {
         mAdapter = new RecipeSmallAdapter(SearchActivity.this,recipeList,recipeListAll);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
+    }
+
+    public void goToProfile(View view){
+        Intent intent= new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSearchRecipe(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
     }
 
 //    @Override

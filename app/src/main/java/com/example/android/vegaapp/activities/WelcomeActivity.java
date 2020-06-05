@@ -43,4 +43,9 @@ public class WelcomeActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
+
+    public void goToSearchRecipe(View view) {
+        Intent intent = new Intent(WelcomeActivity.this, SearchActivity.class);
+        startActivity(intent);
+    }
 }

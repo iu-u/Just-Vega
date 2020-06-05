@@ -42,13 +42,11 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.90"
                     android:layout_height="50dp"
-                    android:searchIcon="@drawable/ic_search_black_24dp"
-                    android:layout_marginLeft="20dp"
                     android:completionThreshold="1"
                     android:theme="@style/AutoComplete"
                     android:popupBackground="@color/colorDarkGrey"
-                    >
-                </AutoCompleteTextView>
+                    android:layout_marginLeft="20dp"
+                    />
 
 
                 <ImageButton
@@ -67,7 +65,10 @@
             <LinearLayout
                 android:id="@+id/layout_ingredient_items"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
 
             </LinearLayout>
         </LinearLayout>
