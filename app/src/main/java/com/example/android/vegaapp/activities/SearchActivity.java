@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,7 @@ public class SearchActivity extends AppCompatActivity {
 
     AutoCompleteTextView searchView_ingredient;
     Button add_ingredient;
+    TextView amountOfResults;
 
     SearchView searchView_recipe;
     Button goToSearchIngredients;
@@ -76,6 +78,7 @@ public class SearchActivity extends AppCompatActivity {
         searchView_recipe = findViewById(R.id.searchView_recipe);
         goToSearchIngredients = findViewById(R.id.btn_search_ingredient);
         backToRecipeSearch = findViewById(R.id.backToRecipe);
+        amountOfResults = findViewById(R.id.amountOfResults);
 
         searchView_ingredient = findViewById(R.id.searchView_ingredient);
         String[] ingredients = getResources().getStringArray(R.array.ingredient_suggestions);
@@ -97,13 +100,16 @@ public class SearchActivity extends AppCompatActivity {
         searchRecipeView.setVisibility(View.VISIBLE);
         searchIngredientView.setVisibility(View.GONE);
 
+
         searchView_ingredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.i(TAG, searchView_ingredient.getText().toString());
                 String ingredient = searchView_ingredient.getText().toString();
                 addIngredientToSearch(view, ingredient);
-
+                mAdapter.getFilter().filter(ingredient);
+                lastSearchedView.setVisibility(View.GONE);
+                searchResultView.setVisibility(View.VISIBLE);
             }
         });
 
@@ -124,7 +130,6 @@ public class SearchActivity extends AppCompatActivity {
                     lastSearchedView.setVisibility(View.GONE);
                     searchResultView.setVisibility(View.VISIBLE);
                     Log.d(TAG, "onQueryTextChange: "+recipeListAll.size());;
-
                     mAdapter.getFilter().filter(newText);
                 }
                 return false;
@@ -137,7 +142,10 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 searchRecipeView.setVisibility(View.GONE);
                 searchIngredientView.setVisibility(View.VISIBLE);
+                mAdapter.setTypeOfFilter("ingredient");
                 mAdapter.getFilter().filter("");
+
+
             }
         });
 
@@ -146,6 +154,9 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View v) {
                 searchRecipeView.setVisibility(View.VISIBLE);
                 searchIngredientView.setVisibility(View.GONE);
+                layout_ingredient_items.removeAllViews();
+                mAdapter.setTypeOfFilter("recipe");
+                searchView_ingredient.setText("");
             }
         });
 

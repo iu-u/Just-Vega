@@ -29,6 +29,7 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
     private List<Recipe> mRecipes;
     private List<Recipe> mRecipeFull;
     private Context mContext;
+    int typeOfFilter = 0;
 
     public RecipeSmallAdapter(Context mContext, List<Recipe> mRecipes, List<Recipe> all) {
         this.mRecipes = mRecipes;
@@ -52,6 +53,14 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
                 .into(holder.imageView);
         holder.recipeTitle.setText(mRecipes.get(position).getRecipeName());
         holder.recipeCategory.setText(mRecipes.get(position).getCategory());
+    }
+
+    public void setTypeOfFilter(String string){
+        if(string.equalsIgnoreCase("recipe")){
+            typeOfFilter = 0;
+        } else if(string.equalsIgnoreCase("ingredient")){
+            typeOfFilter = 1;
+        }
     }
 
     @Override
@@ -79,9 +88,18 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
                 Log.d(TAG, "filterPattern: " + filterPattern);
 
                 for(Recipe item: mRecipeFull){
-                    if(item.getRecipeName().toLowerCase().contains(filterPattern)){
-                        filteredList.add(item);
+                    if(typeOfFilter == 0){
+                        if(item.getRecipeName().toLowerCase().contains(filterPattern)){
+                            filteredList.add(item);
+                        }
+                        Log.i(TAG, "Recipe search called");
+                    } else if(typeOfFilter == 1){
+//                        if(item.getIngredients().toLowerCase().contains(filterPattern)){
+//                            filteredList.add(item);
+//                        }
+                        Log.i(TAG, "Ingredient search called");
                     }
+
                 }
             }
 
@@ -97,8 +115,13 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             Log.i(TAG, "publishResults called");
-            mRecipes.clear();
-            mRecipes.addAll((List)results.values);
+            if(typeOfFilter == 0){
+                mRecipes.clear();
+                mRecipes.addAll((List)results.values);
+            } else if(typeOfFilter == 1){
+                mRecipes.addAll((List)results.values);
+            }
+
 
             notifyDataSetChanged();
         }
