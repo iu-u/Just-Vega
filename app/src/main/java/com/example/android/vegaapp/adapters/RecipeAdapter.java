@@ -48,11 +48,11 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
         Glide.with(mContext)
-                .asBitmap().load("https://firebasestorage.googleapis.com/v0/b/justvega-aacaa.appspot.com/o/image.png?alt=media&token=a19b6709-8799-4a49-a1a2-1d0498b5111a")
+                .asBitmap().load(mRecipes.get(position).getImage())
                 .into(holder.image);
         holder.category.setText(mRecipes.get(position).getCategory());
         holder.recipeName.setText(mRecipes.get(position).getRecipeName());
-        holder.allergy.setText("asdas");
+        holder.allergy.setText(mRecipes.get(position).getAllergies().toString());
     }
 
     @Override
