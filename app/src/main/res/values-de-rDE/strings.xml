@@ -43,6 +43,22 @@
     <string name="search_by_ingredient">Suche nach Zutat</string>
     <string name="add_ingredient">Hinzufügen</string>
 
+    <string-array name="ingredient_suggestions">
+        <item>Melk</item>
+        <item>Boter</item>
+        <item>Citroensap</item>
+        <item>Balsamico</item>
+        <item>Ricotta</item>
+        <item>Eieren</item>
+        <item>Zout</item>
+        <item>Mosterd</item>
+        <item>Rijstmeel</item>
+        <item>Bloem</item>
+        <item>Crème fraîche</item>
+        <item>Ricotta</item>
+        <item>Daslook</item>
+    </string-array>
+
     <string name="information_">INFORMATION</string>
     <string name="edit_">bearbeiten</string>
     <string name="email_">email</string>

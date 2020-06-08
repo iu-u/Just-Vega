@@ -34,6 +34,22 @@
     <string name="dont_have_an_account">Vous n\'avez pas de compte?</string>
     <string name="sign_up">S\inscrire</string>
 
+    <string-array name="ingredient_suggestions">
+        <item>Melk</item>
+        <item>Boter</item>
+        <item>Citroensap</item>
+        <item>Balsamico</item>
+        <item>Ricotta</item>
+        <item>Eieren</item>
+        <item>Zout</item>
+        <item>Mosterd</item>
+        <item>Rijstmeel</item>
+        <item>Bloem</item>
+        <item>Crème fraîche</item>
+        <item>Ricotta</item>
+        <item>Daslook</item>
+    </string-array>
+
 
     <!--  Recipe List Page  -->
     <string name="recipeList_recipe">Recettes</string>
