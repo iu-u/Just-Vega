@@ -254,15 +254,22 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-//
+//        //custom_add_allergenen is de pop up scherm
 //        addAllergenButton.setOnClickListener(new View.OnClickListener(){
 //            @Override
 //            public void onClick(View v) {
-//                    String OldAllergenen = allergenen.getText().toString();
-//                    allergenen.setText(OldAllergenen + "," +);
+////                    String OldAllergenen = allergenen.getText().toString();
+////                    allergenen.setText(OldAllergenen + ",");
+//                // Initialize a new instance of LayoutInflater service
+//                Toast.makeText(ProfileActivity.this, "Works", Toast.LENGTH_SHORT).show();
 //
-//                    Intent intent= new Intent(ProfileActivity.this, ProfileActivity.class);
-//                    startActivity(intent);
+//
+//                // Initialize a new instance of LayoutInflater service
+//                LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+//
+//                // Inflate the custom layout/view
+//                View customView = inflater.inflate(R.layout.custom_add_allergenen,null);
+//
 //            }
 //        });
 
