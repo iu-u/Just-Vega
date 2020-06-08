@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -23,9 +23,10 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="265dp"
+                android:layout_height="wrap_content"
                 android:contentDescription="TODO"
-                android:src="@drawable/fade_login_register_logo">
+                android:src="@drawable/fade_login_page"
+                android:scaleType="centerCrop">
 
             </ImageView>
 
@@ -35,7 +36,7 @@
 
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="70dp"
                 android:contentDescription="TODO"
                 android:minWidth="50dp"
                 android:src="@drawable/justvegalogo">
@@ -45,6 +46,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -64,32 +66,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Email"
-                android:textColorHint="#FFFFFF"
+                android:textColorHint="@color/colorTextLightGrey"
                 app:hintAnimationEnabled="true"
-                app:hintEnabled="true">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/holo_green_dark"/>
-                <com.google.android.material.textfield.TextInputEditText
-                    android:background="@android:color/transparent"
-                    android:id="@+id/txt_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF" />
+                app:hintEnabled="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#226A29" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:background="@android:color/transparent"
+                android:id="@+id/txt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Password"
-                android:textColorHint="#FFFFFF"
+                android:textColorHint="@color/colorTextLightGrey"
                 app:passwordToggleDrawable="@android:drawable/ic_menu_view"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp">
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@android:color/holo_green_dark"/>
+                    android:background="#226A29"/>
                 <com.google.android.material.textfield.TextInputEditText
                     android:background="@android:color/transparent"
                     android:id="@+id/txt_password"
@@ -109,15 +116,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
-                android:text="REMEMBER ME" />
+                android:text="Remember me"
+                android:layout_marginLeft="40dp"/>
 
             <Button
                 android:id="@+id/btn_email_login"
                 android:text="Login"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:layout_width="350dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_gravity="center"
                 android:background="@drawable/buttonshape"
                 android:shadowColor="#A8A8A8"
@@ -128,45 +140,75 @@
             <Button
                 android:id="@+id/btn_forgot_password"
                 android:text="forgot password"
-                android:textColor="#4CAF50"
+                android:textColor="#469E49"
                 android:textSize="15sp"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/loginbuttonshape"
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="0"
-                android:shadowDy="0"
-                android:shadowRadius="5"  />
+                android:background="@color/fui_transparent" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:background="#212121"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_margin="10dp">
 
                 <Button
                     android:id="@+id/btn_g_login"
-                    style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="30dp"
-                    android:text="SIGN IN" />
+                    android:background="@drawable/facebook_shape"
+                    android:textColor="#3B5998"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SIGN IN"
+                    android:drawableLeft="@drawable/facebook_sign_in"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="1dp"/>
 
                 <Button
                     android:id="@+id/btn_fb_login"
-                    style="@style/FirebaseUI.Button.AccountChooser.FacebookButton"
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
+                    android:background="@drawable/google_shape"
+                    android:textColor="#DD4C39"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="50dp"
-                    android:text="SIGN IN" />
+                    android:text="SIGN IN"
+                    android:drawableLeft="@drawable/google_sign_in"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="1dp"/>
 
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#171717">
+            </View>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#1E1E1E">
+            </View>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#212121">
+            </View>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#212121"
+                android:layout_gravity="bottom">
 
                 <TextView
                     android:id="@+id/login_account_text"
@@ -179,16 +221,16 @@
                 <Button
                     android:id="@+id/btn_register"
                     android:text="Sign up"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#469E49"
                     android:textSize="20sp"
-                    android:layout_width="350dp"
-                    android:layout_height="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/loginbuttonshape"
-                    android:shadowColor="#A8A8A8"
-                    android:shadowDx="0"
-                    android:shadowDy="0"
-                    android:shadowRadius="5" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -197,7 +239,7 @@
     </LinearLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>
 
 
 <!--    tools:context=".activities.LoginActivity"-->
