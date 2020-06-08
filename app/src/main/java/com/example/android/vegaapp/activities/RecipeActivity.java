@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.MainActivity;
@@ -40,6 +42,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
 
     private List<Recipe> recipeList = new ArrayList<>();
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
+    private Spinner spinner;
 
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -53,6 +56,11 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+
+        spinner = findViewById(R.id.sortFunction);
+        ArrayAdapter<CharSequence> mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.sort_options, R.layout.custom_spinner);
+        mSpinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        spinner.setAdapter(mSpinnerAdapter);
     }
 
     @Override
