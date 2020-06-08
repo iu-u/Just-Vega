@@ -1,5 +1,6 @@
 package com.example.android.vegaapp.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Recipe {
@@ -20,6 +21,7 @@ public class Recipe {
     public void setCategory(String category) {
         this.category = category;
     }
+
 
     public List<TypeOfFood> getTof() {
         return tof;
@@ -57,9 +59,7 @@ public class Recipe {
         return recipeName;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
+
 
     public String getTypeOfFood() {
         return typeOfFood;

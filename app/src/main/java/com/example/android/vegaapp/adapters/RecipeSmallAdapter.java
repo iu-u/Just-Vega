@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.domain.Recipe;
+import com.example.android.vegaapp.domain.TypeOfFood;
 import com.facebook.appevents.suggestedevents.ViewOnClickListener;
 
 import java.util.ArrayList;
@@ -87,6 +88,13 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
                 String filterPattern = word.toLowerCase();
                 Log.d(TAG, "filterPattern: " + filterPattern);
 
+
+//                Log.d(TAG, mRecipeFull.get(0).getRecipeName());
+//                for(String s: mRecipeFull.get(0).getIngredientList()){
+//                    System.out.println(s);
+//                }
+
+
                 for(Recipe item: mRecipeFull){
                     if(typeOfFilter == 0){
                         if(item.getRecipeName().toLowerCase().contains(filterPattern)){
@@ -94,9 +102,10 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
                         }
                         Log.i(TAG, "Recipe search called");
                     } else if(typeOfFilter == 1){
-//                        if(item.getIngredients().toLowerCase().contains(filterPattern)){
-//                            filteredList.add(item);
-//                        }
+                        Log.d(TAG, "Recipe name: " + item.getRecipeName());
+                        for(TypeOfFood t: item.getTof()){
+                            System.out.println(t.getName());
+                        }
                         Log.i(TAG, "Ingredient search called");
                     }
 
