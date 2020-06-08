@@ -13,6 +13,9 @@ public class Recipe {
     private String image;
     private String preperationMethod;
     private String video;
+    private int difficulty;
+    private int preparationTime;
+    private List<String> allergies =new ArrayList<>();
 
     public String getCategory() {
         return category;
@@ -31,12 +34,42 @@ public class Recipe {
         this.tof = tof;
     }
 
-    public Recipe(String category, List<TypeOfFood> tof, String recipeName, String image, String video) {
+    public Recipe(String category, List<TypeOfFood> tof, String recipeName, String image, String video, int difficulty, int preparationTime) {
+        this.preparationTime = preparationTime;
+        this.difficulty = difficulty;
         this.category = category;
         this.tof = tof;
         this.recipeName = recipeName;
         this.image = image;
         this.video = video;
+    }
+
+    public void addAllergy(String allergy){
+        allergies.add(allergy);
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public int getPreparationTime() {
+        return preparationTime;
+    }
+
+    public void setPreparationTime(int preparationTime) {
+        this.preparationTime = preparationTime;
+    }
+
+    public List<String> getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(List<String> allergies) {
+        this.allergies = allergies;
     }
 
     public String getVideo() {

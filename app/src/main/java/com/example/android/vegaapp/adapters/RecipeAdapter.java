@@ -52,7 +52,7 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
                 .into(holder.image);
         holder.category.setText(mRecipes.get(position).getCategory());
         holder.recipeName.setText(mRecipes.get(position).getRecipeName());
-        holder.allergy.setText("asdas");
+        holder.allergy.setText(mRecipes.get(position).getAllergies().toString());
     }
 
     @Override
