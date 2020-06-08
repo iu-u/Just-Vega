@@ -50,7 +50,7 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder: called");
         Glide.with(mContext)
-                .asBitmap().load("https://firebasestorage.googleapis.com/v0/b/justvega-aacaa.appspot.com/o/image.png?alt=media&token=a19b6709-8799-4a49-a1a2-1d0498b5111a")
+                .asBitmap().load(mRecipes.get(position).getImage())
                 .into(holder.imageView);
         holder.recipeTitle.setText(mRecipes.get(position).getRecipeName());
         holder.recipeCategory.setText(mRecipes.get(position).getCategory());
