@@ -55,13 +55,13 @@
                 android:layout_marginRight="20dp"/>
 
             <Spinner
-                android:id="@+id/SortFunction"
+                android:id="@+id/sortFunction"
                 android:layout_width="0dp"
                 android:layout_weight="0.33"
                 android:layout_height="match_parent"
-                android:background="@color/colorBlack"
-                android:text="recently added"
-                android:textColor="@color/colorTextWhite" />
+                android:textColor="@color/colorTextWhite"
+                android:layout_marginBottom="5dp"
+                style="@style/Spinner"/>
         </LinearLayout>
 
 

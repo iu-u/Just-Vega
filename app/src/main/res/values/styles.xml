@@ -77,6 +77,12 @@
         <item name="android:drawableLeft">@drawable/ic_search_black_24dp</item>
     </style>
 
+    <style name="Spinner">
+        <item name="android:dropDownVerticalOffset">50dp</item>
+        <item name="dropdownListPreferredItemHeight">20dp</item>
+        <item name="android:popupBackground">@drawable/spinner_dropdown_background</item>
+    </style>
+
     <style name="IngredientItem" parent="Widget.AppCompat.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

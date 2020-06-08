@@ -37,6 +37,11 @@
     <string name="recipeList_recipe">Recipes</string>
     <string name="recipeList_filter">FILTERS</string>
     <string name="recipeList_sort">Sort</string>
+    <string-array name="sort_options">
+        <item>Most recent</item>
+        <item>Most Popular</item>
+        <item>Best Rated</item>
+    </string-array>
 
     <!--  Search Activity  -->
     <string name="search_by_recipe">Search Recipe</string>
