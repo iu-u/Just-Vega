@@ -65,7 +65,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Email"
+                android:hint="@string/email_"
                 android:textColorHint="@color/colorTextLightGrey"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
@@ -87,7 +87,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:textColorHint="@color/colorTextLightGrey"
                 app:passwordToggleDrawable="@android:drawable/ic_menu_view"
                 app:passwordToggleEnabled="true"
@@ -116,12 +116,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#FFFFFF"
-                android:text="Remember me"
+                android:text="@string/remember_me"
                 android:layout_marginLeft="40dp"/>
 
             <Button
                 android:id="@+id/btn_email_login"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:layout_width="match_parent"
@@ -139,7 +139,7 @@
 
             <Button
                 android:id="@+id/btn_forgot_password"
-                android:text="forgot password"
+                android:text="@string/forgot_password"
                 android:textColor="#469E49"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
@@ -215,12 +215,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="130dp"
-                    android:text="Don't have an account?"
+                    android:text="@string/dont_have_an_account"
                     android:textColor="#FFFFFF" />
 
                 <Button
                     android:id="@+id/btn_register"
-                    android:text="Sign up"
+                    android:text="@string/sign_up"
                     android:textColor="#469E49"
                     android:textSize="20sp"
                     android:layout_width="match_parent"

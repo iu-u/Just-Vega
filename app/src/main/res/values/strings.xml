@@ -23,8 +23,15 @@
         deserunt duo.
     </string>
     <string name="fab_label">Start Using the App</string>
-    <string name="welcome_back">Welcome back</string>
 
+    <!--  Login page  -->
+    <string name="welcome_back">Welcome back</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
 
     <!--  Recipe List Page  -->
     <string name="recipeList_recipe">Recipes</string>

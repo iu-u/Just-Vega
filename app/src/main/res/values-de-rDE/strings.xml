@@ -24,7 +24,15 @@
         deserunt duo.
     </string>
     <string name="fab_label">Starten Sie die App</string>
-    <string name="welcome_back">willkommen zurück</string>
+
+    <!--  Login page  -->
+    <string name="welcome_back">Willkommen zurück</string>
+    <string name="password">Passwort</string>
+    <string name="remember_me">Erinnere mich</string>
+    <string name="login">Anmeldung</string>
+    <string name="forgot_password">Passwort vergessen</string>
+    <string name="dont_have_an_account">Kein Account?</string>
+    <string name="sign_up">Registrieren</string>
 
 
     <!--  Recipe List Page  -->
