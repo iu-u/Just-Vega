@@ -16,6 +16,8 @@
 <!-- Text -->
     <color name="colorTextWhite">#ffffff</color>
     <color name="colorTextLightGreen">#b0cfc0</color>
+    <color name="colorVagueGreen">#303F2E</color>
     <color name="colorTextGreen">#469E49</color>
     <color name="colorTextLightGrey">#b0b0b0</color>
+    <color name="colorVeryLightGrey">#B6B9B7</color>
 </resources>

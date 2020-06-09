@@ -30,8 +30,8 @@ public class FilterPopUp extends AppCompatActivity {
         getWindow().setLayout(width, (int)(height*.85));
         getWindow().setGravity(Gravity.BOTTOM);
 
-        filterImage = findViewById(R.id.filterImageView);
-        Picasso.get().load(R.drawable.filter_background).into(filterImage);
+//        filterImage = findViewById(R.id.filterImageView);
+//        Picasso.get().load(R.drawable.filter_background).into(filterImage);
 
     }
 

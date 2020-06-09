@@ -100,4 +100,12 @@
         <item name="android:layout_alignParentBottom">true</item>
     </style>
 
+    <style name="checkBox">
+        <item name="android:textColor">@color/colorTextLightGrey</item>
+        <item name="android:textColorHighlight">@color/colorTextWhite</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>
