@@ -31,7 +31,7 @@
             android:layout_height="50dp"
             android:orientation="horizontal">
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/filterButton"
                 android:layout_width="0dp"
                 android:layout_weight="0.33"
                 android:layout_height="match_parent"
