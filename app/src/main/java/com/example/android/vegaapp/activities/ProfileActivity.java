@@ -11,9 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +37,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+
+    //String[] allergensList = { "Melk (Lactose)", "Gluten", "Ei", "Peper", "Mosterd", "Noten" };
 
     private static String TAG = ProfileActivity.class.getName();
 
@@ -51,11 +59,14 @@ public class ProfileActivity extends AppCompatActivity {
     EditText changePassword;
     Button edit;
     Button confirm;
+    //private Spinner spin;
 
 
     Button changeThePassword;
 
     String mail = "";
+
+    private ArrayList<String> allergensList;
 
     private FirebaseAuth mFirebaseAuth;
 
@@ -66,6 +77,8 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
+
+        addAllergenButton = (Button) findViewById(R.id.add_allergen_button_id);
 
         changeThePassword = (Button) findViewById(R.id.change_password);
 
@@ -92,6 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
+
         try {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             email = (TextView) findViewById(R.id.showEmail);
@@ -105,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         confirm.setOnClickListener(new View.OnClickListener() {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
             @Override
             public void onClick(View v) {
                 user.updateEmail(email.getText().toString())
@@ -116,7 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
                                     email.setText(user.getEmail());
                                     Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                                     startActivity(intent);
-                                }else{
+                                } else {
                                     Toast.makeText(ProfileActivity.this, "Not updated email " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -129,10 +144,10 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (changePassword.getText().toString().equals("")){
+                if (changePassword.getText().toString().equals("")) {
                     Toast.makeText(ProfileActivity.this, "please fill in your password ", Toast.LENGTH_SHORT).show();
 
-                }else{
+                } else {
                     user.updatePassword(changePassword.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -141,13 +156,13 @@ public class ProfileActivity extends AppCompatActivity {
                                         Toast.makeText(ProfileActivity.this, "Your password is updated ", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                                         startActivity(intent);
-                                    }else{
-                                        Toast.makeText(ProfileActivity.this, "" +task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(ProfileActivity.this, "" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
-                    }
                 }
+            }
         });
 
         //this can change the password or email in the profile page
@@ -186,7 +201,7 @@ public class ProfileActivity extends AppCompatActivity {
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String languageToLoad  = "en";
+                String languageToLoad = "en";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -202,7 +217,7 @@ public class ProfileActivity extends AppCompatActivity {
         changeLanguage2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String languageToLoad  = "de";
+                String languageToLoad = "de";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -218,7 +233,7 @@ public class ProfileActivity extends AppCompatActivity {
         changeLanguage3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String languageToLoad  = "fr";
+                String languageToLoad = "fr";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -251,7 +266,6 @@ public class ProfileActivity extends AppCompatActivity {
                 showDeleteAccountDialog();
             }
         });
-
 
 
 //        //custom_add_allergenen is de pop up scherm
@@ -307,7 +321,7 @@ public class ProfileActivity extends AppCompatActivity {
 //        alertDialog.show();
 //    }
 
-    private void showLogoutDialog(){
+    private void showLogoutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(ProfileActivity.this).inflate(
                 R.layout.custom_dialog_logout,
@@ -352,12 +366,12 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToProfile(View view){
-        Intent intent= new Intent(this, ProfileActivity.class);
+    public void goToProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
-    private void showDeleteAccountDialog(){
+    private void showDeleteAccountDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(ProfileActivity.this).inflate(
                 R.layout.custom_dialog_deleteaccount,
@@ -395,6 +409,69 @@ public class ProfileActivity extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
+    }
+
+
+//    private void addAllergenDialog(){
+//
+//
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+//        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+//                R.layout.custom_add_allergenen,
+//                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+//        );
+//        builder.setView(view);
+//
+//        final AlertDialog alertDialog = builder.create();
+//
+//        view.findViewById(R.id.add_allergen_ToEditText).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                alertDialog.dismiss();
+//
+//            }
+//        });
+//
+//        if (alertDialog.getWindow() != null) {
+//            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+//        }
+//        alertDialog.show();
+//
+//    }
+
+    public void popUpAllergens(View v) {
+        PopupMenu popupMenu = new PopupMenu(this, v);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.menu_allergens);
+        popupMenu.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.melk:
+                Toast.makeText(this, "Milk", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Noten:
+                Toast.makeText(this, "Noten", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Gluten:
+                Toast.makeText(this, "Gluten", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Ei:
+                Toast.makeText(this, "Ei", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Peper:
+                Toast.makeText(this, "Peper", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Mosterd:
+                Toast.makeText(this, "Mosterd", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return false;
+        }
     }
 }
 
