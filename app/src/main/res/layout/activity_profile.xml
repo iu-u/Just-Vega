@@ -300,6 +300,7 @@
                     android:layout_weight="1"
                     android:background="@color/colorBlack"
                     android:clickable="true"
+                    android:onClick="popUpAllergens"
                     android:text="@string/add_allergenen_"
                     android:textColor="@color/colorBackgroundGreen" />
 

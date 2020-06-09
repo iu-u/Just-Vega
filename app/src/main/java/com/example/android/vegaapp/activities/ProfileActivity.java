@@ -11,9 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupMenu;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +37,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+
+    //String[] allergensList = { "Melk (Lactose)", "Gluten", "Ei", "Peper", "Mosterd", "Noten" };
 
     private static String TAG = ProfileActivity.class.getName();
 
@@ -51,11 +59,15 @@ public class ProfileActivity extends AppCompatActivity {
     EditText changePassword;
     Button edit;
     Button confirm;
+    //private Spinner spin;
+
 
 
     Button changeThePassword;
 
     String mail = "";
+
+    private ArrayList<String> allergensList;
 
     private FirebaseAuth mFirebaseAuth;
 
@@ -63,6 +75,20 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+//        allergensList = new ArrayList<>();
+//        allergensList.add("Melk (Lactose)");
+//        allergensList.add("Gluten");
+//        allergensList.add("Ei");
+//        allergensList.add("Peper");
+//        allergensList.add("Mosterd");
+//        allergensList.add("Noten");
+
+//      dropdown allergens
+
+
+
+        //
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
@@ -93,6 +119,15 @@ public class ProfileActivity extends AppCompatActivity {
         changePassword.setClickable(false);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+
+
+//        spin = (Spinner)findViewById(R.id.spinner_testing);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, allergensList);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        Log.w(TAG, "SPINNER LOG : "+spin.getSelectedItem().toString());
+//        spin.setAdapter(adapter);
+//        spin.setOnItemSelectedListener(this);
+
 
         try {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -254,12 +289,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
     });
 
-        addAllergenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addAllergenDialog();
-            }
-        });
+
 
 
 
@@ -407,33 +437,67 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
-    private void addAllergenDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
-        View view = LayoutInflater.from(ProfileActivity.this).inflate(
-                R.layout.custom_add_allergenen,
-                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
-        );
-        builder.setView(view);
+//    private void addAllergenDialog(){
+//
+//
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+//        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+//                R.layout.custom_add_allergenen,
+//                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+//        );
+//        builder.setView(view);
+//
+//        final AlertDialog alertDialog = builder.create();
+//
+//        view.findViewById(R.id.add_allergen_ToEditText).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                alertDialog.dismiss();
+//
+//            }
+//        });
+//
+//        if (alertDialog.getWindow() != null) {
+//            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+//        }
+//        alertDialog.show();
+//
+//    }
 
-        final AlertDialog alertDialog = builder.create();
-
-        view.findViewById(R.id.add_allergen_ToEditText).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-                alertDialog.dismiss();
-
-            }
-        });
-
-        if (alertDialog.getWindow() != null) {
-            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        }
-        alertDialog.show();
-
+    public void popUpAllergens(View v){
+        PopupMenu popupMenu = new PopupMenu(this, v);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.menu_allergens);
+        popupMenu.show();
     }
 
-
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.melk:
+                Toast.makeText(this, "Milk", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Noten:
+                Toast.makeText(this, "Noten", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Gluten:
+                Toast.makeText(this, "Gluten", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Ei:
+                Toast.makeText(this, "Ei", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Peper:
+                Toast.makeText(this, "Peper", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.Mosterd:
+                Toast.makeText(this, "Mosterd", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return false;
+        }
+    }
 }
 
 

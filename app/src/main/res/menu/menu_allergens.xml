@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/melk"
+        android:title="Melk (Lactose)"/>
+    <item android:id="@+id/Noten"
+        android:title="Noten"/>
+    <item android:id="@+id/Gluten"
+        android:title="Gluten"/>
+    <item android:id="@+id/Ei"
+        android:title="Ei"/>
+    <item android:id="@+id/Peper"
+        android:title="Peper"/>
+    <item android:id="@+id/Mosterd"
+        android:title="Mosterd"/>
+
+</menu>
