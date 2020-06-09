@@ -90,4 +90,7 @@
     <string name="Category2_3">Roh</string>
     <string name="Category2_4">Whole</string>
     <string name="Category2_5">Vegan</string>
+
+    <string name="applyFilters">APPLY FILTERS</string>
+    <string name="filterReset">RESET</string>
 </resources>

@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class FilterPopUp extends AppCompatActivity {
     private ImageView filterImage;
+    private Button closePopUp;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,15 @@ public class FilterPopUp extends AppCompatActivity {
 
 //        filterImage = findViewById(R.id.filterImageView);
 //        Picasso.get().load(R.drawable.filter_background).into(filterImage);
+
+        closePopUp = findViewById(R.id.close_filterPopUp);
+
+        closePopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 
