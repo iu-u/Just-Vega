@@ -1,25 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl_custom_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutDialogContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="2dp"
-    android:background="@color/colorBlack"
-    >
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:padding="20dp">
 
-    <EditText
-        android:id="@+id/allergen_custom"
-        android:text="Add allgen"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutDialog"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:padding="25sp"
-        />
+        android:background="@color/colorBlack"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackgroundGreen"
+            android:padding="10dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="Add allergen to profile"
+            android:textColor="@color/colorTextWhite"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/app_name"
+            android:tint="@color/colorTextWhite"
+            app:layout_constraintBottom_toBottomOf="@id/textTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textTitle" />
+
+        <EditText
+            android:id="@+id/textMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type here..."
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTitle" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add"/>
+        android:id="@+id/add_allergen_ToEditText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/loginbuttonshape"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="14sp"
+        android:text="Add allergen"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_light"
+        app:layout_constraintBottom_toBottomOf="@id/layoutDialog"
+        app:layout_constraintTop_toBottomOf="@id/layoutDialog" />
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

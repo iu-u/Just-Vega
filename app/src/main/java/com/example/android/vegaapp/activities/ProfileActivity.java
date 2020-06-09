@@ -67,6 +67,8 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
 
+        addAllergenButton = (Button) findViewById(R.id.add_allergen_button_id);
+
         changeThePassword = (Button) findViewById(R.id.change_password);
 
         changeLanguage = (Button) findViewById(R.id.language_button_1);
@@ -250,6 +252,13 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 showDeleteAccountDialog();
             }
+    });
+
+        addAllergenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addAllergenDialog();
+            }
         });
 
 
@@ -396,6 +405,35 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void addAllergenDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(ProfileActivity.this).inflate(
+                R.layout.custom_add_allergenen,
+                (ConstraintLayout) findViewById(R.id.layoutDialogContainer)
+        );
+        builder.setView(view);
+
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.add_allergen_ToEditText).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+                alertDialog.dismiss();
+
+            }
+        });
+
+        if (alertDialog.getWindow() != null) {
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        alertDialog.show();
+
+    }
+
+
 }
 
 

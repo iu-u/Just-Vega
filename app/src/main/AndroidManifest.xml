@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.vegaapp">
+    package="com.example.android.vegaapp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity android:name=".activities.ReadWriteActivityDatabaseTest" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.RecipeDetailActivity" />
@@ -20,7 +20,7 @@
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.SearchActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
