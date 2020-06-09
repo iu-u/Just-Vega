@@ -40,7 +40,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     //String[] allergensList = { "Melk (Lactose)", "Gluten", "Ei", "Peper", "Mosterd", "Noten" };
 
@@ -62,7 +62,6 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
     //private Spinner spin;
 
 
-
     Button changeThePassword;
 
     String mail = "";
@@ -75,20 +74,6 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-//        allergensList = new ArrayList<>();
-//        allergensList.add("Melk (Lactose)");
-//        allergensList.add("Gluten");
-//        allergensList.add("Ei");
-//        allergensList.add("Peper");
-//        allergensList.add("Mosterd");
-//        allergensList.add("Noten");
-
-//      dropdown allergens
-
-
-
-        //
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
@@ -121,14 +106,6 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
         mFirebaseAuth = FirebaseAuth.getInstance();
 
 
-//        spin = (Spinner)findViewById(R.id.spinner_testing);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, allergensList);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        Log.w(TAG, "SPINNER LOG : "+spin.getSelectedItem().toString());
-//        spin.setAdapter(adapter);
-//        spin.setOnItemSelectedListener(this);
-
-
         try {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             email = (TextView) findViewById(R.id.showEmail);
@@ -142,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
 
         confirm.setOnClickListener(new View.OnClickListener() {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
             @Override
             public void onClick(View v) {
                 user.updateEmail(email.getText().toString())
@@ -153,7 +131,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
                                     email.setText(user.getEmail());
                                     Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                                     startActivity(intent);
-                                }else{
+                                } else {
                                     Toast.makeText(ProfileActivity.this, "Not updated email " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                 }
                             }
@@ -166,10 +144,10 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
             @Override
             public void onClick(View v) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                if (changePassword.getText().toString().equals("")){
+                if (changePassword.getText().toString().equals("")) {
                     Toast.makeText(ProfileActivity.this, "please fill in your password ", Toast.LENGTH_SHORT).show();
 
-                }else{
+                } else {
                     user.updatePassword(changePassword.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -178,13 +156,13 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
                                         Toast.makeText(ProfileActivity.this, "Your password is updated ", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                                         startActivity(intent);
-                                    }else{
-                                        Toast.makeText(ProfileActivity.this, "" +task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(ProfileActivity.this, "" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
-                    }
                 }
+            }
         });
 
         //this can change the password or email in the profile page
@@ -223,7 +201,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
         changeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String languageToLoad  = "en";
+                String languageToLoad = "en";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -239,7 +217,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
         changeLanguage2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String languageToLoad  = "de";
+                String languageToLoad = "de";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -255,7 +233,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
         changeLanguage3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String languageToLoad  = "fr";
+                String languageToLoad = "fr";
                 Locale locale = new Locale(languageToLoad);
                 Locale.setDefault(locale);
                 Configuration config = new Configuration();
@@ -287,10 +265,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
             public void onClick(View v) {
                 showDeleteAccountDialog();
             }
-    });
-
-
-
+        });
 
 
 //        //custom_add_allergenen is de pop up scherm
@@ -346,7 +321,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
 //        alertDialog.show();
 //    }
 
-    private void showLogoutDialog(){
+    private void showLogoutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(ProfileActivity.this).inflate(
                 R.layout.custom_dialog_logout,
@@ -391,12 +366,12 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
         startActivity(intent);
     }
 
-    public void goToProfile(View view){
-        Intent intent= new Intent(this, ProfileActivity.class);
+    public void goToProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
-    private void showDeleteAccountDialog(){
+    private void showDeleteAccountDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(ProfileActivity.this).inflate(
                 R.layout.custom_dialog_deleteaccount,
@@ -466,7 +441,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
 //
 //    }
 
-    public void popUpAllergens(View v){
+    public void popUpAllergens(View v) {
         PopupMenu popupMenu = new PopupMenu(this, v);
         popupMenu.setOnMenuItemClickListener(this);
         popupMenu.inflate(R.menu.menu_allergens);
@@ -475,7 +450,7 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.melk:
                 Toast.makeText(this, "Milk", Toast.LENGTH_SHORT).show();
                 return true;
