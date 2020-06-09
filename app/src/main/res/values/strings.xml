@@ -80,4 +80,19 @@
     <string name="language_">LANGUAGE</string>
     <string name="log_out">LOG OUT</string>
     <string name="delete_account">DELETE ACCOUNT</string>
+
+    <!--  Filter page  -->
+    <string name="Category1">Category 1</string>
+    <string name="Category1_1">Amuses</string>
+    <string name="Category1_2">Starters</string>
+    <string name="Category1_3">Entrees</string>
+    <string name="Category1_4">Main courses</string>
+    <string name="Category1_5">Desserts and delicatesses</string>
+
+    <string name="Category2">Category 2</string>
+    <string name="Category2_1">Sugar-free</string>
+    <string name="Category2_2">Dairy-free</string>
+    <string name="Category2_3">Raw</string>
+    <string name="Category2_4">Whole</string>
+    <string name="Category2_5">Vegan</string>
 </resources>

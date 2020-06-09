@@ -77,4 +77,19 @@
     <string name="language_">TAAL</string>
     <string name="log_out">UITLOGGEN</string>
     <string name="delete_account">DELETE ACCOUNT</string>
+
+    <!--  Filter page  -->
+    <string name="Category1">Category 1</string>
+    <string name="Category1_1">Amuses</string>
+    <string name="Category1_2">Voorgerechten</string>
+    <string name="Category1_3">Entrees</string>
+    <string name="Category1_4">Hoofdgerecht</string>
+    <string name="Category1_5">Desserts and delicatessen</string>
+
+    <string name="Category2">Category 2</string>
+    <string name="Category2_1">Suikervrij</string>
+    <string name="Category2_2">Zuivelvrij</string>
+    <string name="Category2_3">Rauw</string>
+    <string name="Category2_4">Whole</string>
+    <string name="Category2_5">Veganistisch</string>
 </resources>

@@ -75,4 +75,19 @@
     <string name="language_">LANGUE</string>
     <string name="log_out">Se déconnecter</string>
     <string name="delete_account">SUPPRIMER LE COMPTE</string>
+
+    <!--  Filter page  -->
+    <string name="Category1">Category 1</string>
+    <string name="Category1_1">Amuses</string>
+    <string name="Category1_2">Starters</string>
+    <string name="Category1_3">Plat principal</string>
+    <string name="Category1_4">PLat principal</string>
+    <string name="Category1_5">Desserts et épicerie fine</string>
+
+    <string name="Category2">Category 2</string>
+    <string name="Category2_1">Sans sucre</string>
+    <string name="Category2_2">Sans produits laitiers</string>
+    <string name="Category2_3">Brut</string>
+    <string name="Category2_4">Whole</string>
+    <string name="Category2_5">Végétalien</string>
 </resources>
