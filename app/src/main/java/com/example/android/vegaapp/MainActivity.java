@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.android.vegaapp.activities.IngredientActivity;
 import com.example.android.vegaapp.activities.LoginActivity;
 import com.example.android.vegaapp.activities.ProfileActivity;
 import com.example.android.vegaapp.activities.ReadWriteActivityDatabaseTest;
@@ -58,5 +59,11 @@ public class  MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
         startActivity(intent);
     }
+
+    public void ingredientActivity(View view) {
+        Intent intent = new Intent(MainActivity.this, IngredientActivity.class);
+        startActivity(intent);
+    }
+
 
 }
