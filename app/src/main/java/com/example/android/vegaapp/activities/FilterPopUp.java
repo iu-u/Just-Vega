@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,10 +31,11 @@ public class FilterPopUp extends AppCompatActivity {
     private ImageView filterImage;
     private Button closePopUp;
     private Button applyFilters;
-    private RecipeActivity recipeActivity;
+    private Button resetFilter;
+    private LinearLayout linearLayoutCategory1;
+    private LinearLayout linearLayoutCategory2;
     private CheckBox amuse, starters, entrees, mainCourse, dessertAndDelicatesses;
     private List<String> checkedList;
-    FilterPopUpListener filterPopUpListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +53,24 @@ public class FilterPopUp extends AppCompatActivity {
 //        filterImage = findViewById(R.id.filterImageView);
 //        Picasso.get().load(R.drawable.filter_background).into(filterImage);
 
+        linearLayoutCategory1 =findViewById(R.id.layout_Category1);
+        linearLayoutCategory1 = findViewById(R.id.layout_Category2);
+
         closePopUp = findViewById(R.id.close_filterPopUp);
+        resetFilter = findViewById(R.id.resetFilter);
         amuse= (CheckBox) findViewById(R.id.amuse);
         starters = findViewById(R.id.starter);
         entrees = findViewById(R.id.entree);
         mainCourse = findViewById(R.id.mainCourse);
         dessertAndDelicatesses = findViewById(R.id.dessert);
         applyFilters = findViewById(R.id.applyFilters);
+
+        resetFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetCheckboxes();
+            }
+        });
 
 
         applyFilters.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +79,6 @@ public class FilterPopUp extends AppCompatActivity {
                 checkedList = new ArrayList<>();
                 try {
                     if (amuse.isChecked()) {
-                        amuse.setChecked(true);
                         Log.d(TAG, amuse.getText().toString());
                         checkedList.add("Amuse");
                     }
@@ -94,11 +106,18 @@ public class FilterPopUp extends AppCompatActivity {
                     String joined = TextUtils.join(",", checkedList);
                     Log.d(TAG, "joinedList: " + joined);
 
-                    Intent returnIntent = new Intent();
+                    if(!checkedList.isEmpty()){
+                        Intent returnIntent = new Intent();
 //                    returnIntent.putStringArrayListExtra("result: ", checkedList);
-                    returnIntent.putExtra("result", joined);
-                    setResult(Activity.RESULT_OK, returnIntent);
-                    finish();
+                        returnIntent.putExtra("result", joined);
+                        setResult(Activity.RESULT_OK, returnIntent);
+                        finish();
+                    } else{
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_CANCELED, returnIntent);
+                        finish();
+                    }
+
 
                 }catch (NullPointerException e){
                     Log.d(TAG, "Nullpointer in catch block");
@@ -116,10 +135,12 @@ public class FilterPopUp extends AppCompatActivity {
 
     }
 
-
-
-    public interface FilterPopUpListener{
-        void getCheckedList(List<String> list);
+    public void resetCheckboxes(){
+        amuse.setChecked(false);
+        starters.setChecked(false);
+        entrees.setChecked(false);
+        mainCourse.setChecked(false);
+        dessertAndDelicatesses.setChecked(false);
     }
 
 

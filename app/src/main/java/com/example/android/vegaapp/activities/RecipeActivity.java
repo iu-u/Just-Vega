@@ -193,21 +193,19 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         super.onActivityResult(requestCode, resultCode, data);
 
 //        ArrayList<String> result=data.getStringArrayListExtra("result");
-        String result = data.getStringExtra("result");
-        Log.d(TAG, result);
 
-        ArrayList<String> categoryList = new ArrayList<>();
+        if(resultCode == Activity.RESULT_OK){
+            String result = data.getStringExtra("result");
+            Log.d(TAG, result);
 
-        String[] cols = result.split(",");
-        for(String s: cols){
-            adapter.getFilter().filter(s);
+            String[] cols = result.split(",");
+            for(String s: cols){
+                adapter.getFilter().filter(s);
+            }
         }
-    }
-
-    public void applyFilter(){
-        Log.d(TAG, "applyFilter called. Filter: " + filter);
-//        adapter.getFilter().filter(filter);
-//        filterPopUp.getCheckedList();
+        if(resultCode == Activity.RESULT_CANCELED){
+            onStart();
+        }
     }
 
 
