@@ -1,11 +1,13 @@
 package com.example.android.vegaapp.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +47,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
     private List<TypeOfFood> typeOfFoods = new ArrayList<>();
     private Spinner spinner;
     private Button filter;
+    private RecipeAdapter adapter;
+    FilterPopUp filterPopUp;
 
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
@@ -59,6 +63,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
 
+
+
         spinner = findViewById(R.id.sortFunction);
         ArrayAdapter<CharSequence> mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.sort_options, R.layout.custom_spinner);
         mSpinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
@@ -68,7 +74,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RecipeActivity.this,FilterPopUp.class));
+                startActivityForResult(new Intent(RecipeActivity.this, FilterPopUp.class), 1);
+//                startActivity(new Intent(RecipeActivity.this,FilterPopUp.class));
             }
         });
     }
@@ -93,6 +100,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
 
     @Override
     protected void onStart() {
+        Log.i(TAG, "onStart called");
         super.onStart();
 
         mRootRef.addValueEventListener(new ValueEventListener() {
@@ -171,12 +179,37 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
     }
 
     private void initRecyclerView() {
+        Log.i(TAG, "initRecyclerView called");
         RecyclerView recyclerView = findViewById(R.id.recipeRecyclerView);
 
-        RecipeAdapter adapter = new RecipeAdapter(RecipeActivity.this, recipeList, RecipeActivity.this);
+        adapter = new RecipeAdapter(RecipeActivity.this, recipeList, RecipeActivity.this, recipeList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(RecipeActivity.this));
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.d(TAG, "onActivityResult called");
+        super.onActivityResult(requestCode, resultCode, data);
+
+//        ArrayList<String> result=data.getStringArrayListExtra("result");
+        String result = data.getStringExtra("result");
+        Log.d(TAG, result);
+
+        ArrayList<String> categoryList = new ArrayList<>();
+
+        String[] cols = result.split(",");
+        for(String s: cols){
+            adapter.getFilter().filter(s);
+        }
+    }
+
+    public void applyFilter(){
+        Log.d(TAG, "applyFilter called. Filter: " + filter);
+//        adapter.getFilter().filter(filter);
+//        filterPopUp.getCheckedList();
+    }
+
 
     @Override
     public void onElementClick(View view, int itemIndex) {

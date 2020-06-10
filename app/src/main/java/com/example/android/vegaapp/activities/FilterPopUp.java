@@ -1,13 +1,18 @@
 package com.example.android.vegaapp.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +20,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.android.vegaapp.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class FilterPopUp extends AppCompatActivity {
+    private static final String TAG = "FilterPopUp";
+
     private ImageView filterImage;
     private Button closePopUp;
+    private Button applyFilters;
+    private RecipeActivity recipeActivity;
+    private CheckBox amuse, starters, entrees, mainCourse, dessertAndDelicatesses;
+    private List<String> checkedList;
+    FilterPopUpListener filterPopUpListener;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +52,60 @@ public class FilterPopUp extends AppCompatActivity {
 //        Picasso.get().load(R.drawable.filter_background).into(filterImage);
 
         closePopUp = findViewById(R.id.close_filterPopUp);
+        amuse= (CheckBox) findViewById(R.id.amuse);
+        starters = findViewById(R.id.starter);
+        entrees = findViewById(R.id.entree);
+        mainCourse = findViewById(R.id.mainCourse);
+        dessertAndDelicatesses = findViewById(R.id.dessert);
+        applyFilters = findViewById(R.id.applyFilters);
+
+
+        applyFilters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkedList = new ArrayList<>();
+                try {
+                    if (amuse.isChecked()) {
+                        amuse.setChecked(true);
+                        Log.d(TAG, amuse.getText().toString());
+                        checkedList.add("Amuse");
+                    }
+                    if (starters.isChecked()) {
+                        starters.setChecked(true);
+                        checkedList.add("Voorgerecht");
+                    }
+                    if (entrees.isChecked()) {
+                        entrees.setChecked(true);
+                        checkedList.add("Tussengerecht");
+                    }
+                    if (mainCourse.isChecked()) {
+                        mainCourse.setChecked(true);
+                        checkedList.add("Hoofdgerecht");
+                    }
+                    if (dessertAndDelicatesses.isChecked()) {
+                        dessertAndDelicatesses.setChecked(true);
+                        checkedList.add("Dessert");
+                        checkedList.add("Friandise");
+                    }
+
+                    for(String s: checkedList){
+                        Log.d(TAG, "checkList item: " + s);
+                    }
+                    String joined = TextUtils.join(",", checkedList);
+                    Log.d(TAG, "joinedList: " + joined);
+
+                    Intent returnIntent = new Intent();
+//                    returnIntent.putStringArrayListExtra("result: ", checkedList);
+                    returnIntent.putExtra("result", joined);
+                    setResult(Activity.RESULT_OK, returnIntent);
+                    finish();
+
+                }catch (NullPointerException e){
+                    Log.d(TAG, "Nullpointer in catch block");
+                    e.printStackTrace();
+                }
+            }
+        });
 
         closePopUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,5 +115,12 @@ public class FilterPopUp extends AppCompatActivity {
         });
 
     }
+
+
+
+    public interface FilterPopUpListener{
+        void getCheckedList(List<String> list);
+    }
+
 
 }

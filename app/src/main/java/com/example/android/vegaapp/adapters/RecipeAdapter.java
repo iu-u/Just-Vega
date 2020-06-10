@@ -27,13 +27,15 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
     private static final String TAG = "RecipeAdapter";
 
     private List<Recipe> mRecipes = new ArrayList<>();
+    private List<Recipe> mRecipeFull;
     private Context mContext;
     private final RecipeOnClickHandler recipeOnClickHandler;
 
-    public RecipeAdapter(Context mContext, List<Recipe> mRecipes, RecipeOnClickHandler recipeOnClickHandler) {
+    public RecipeAdapter(Context mContext, List<Recipe> mRecipes, RecipeOnClickHandler recipeOnClickHandler, List<Recipe> all) {
         this.mRecipes = mRecipes;
         this.mContext = mContext;
         this.recipeOnClickHandler = recipeOnClickHandler;
+        this.mRecipeFull = all;
     }
 
     @NonNull
@@ -62,7 +64,52 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
         return mRecipes.size();
     }
 
+    public Filter getFilter(){
+        return objectFilter;
+    }
 
+    private Filter objectFilter = new Filter(){
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            Log.i(TAG, "performFiltering called");
+            List<Recipe> filteredList = new ArrayList<>();
+
+            String word = constraint.toString();
+
+
+            if(word == null || word.length() == 0){
+                filteredList.clear();
+            } else{
+                String filterPattern = word.toLowerCase();
+                Log.d(TAG, "filterPattern: " + filterPattern);
+
+                for(Recipe item: mRecipeFull){
+                    //case-method change set de incoming String to dutch filterPattern
+                        if(item.getCategory().toLowerCase().contains(filterPattern)){
+                            filteredList.add(item);
+                        }
+                        Log.i(TAG, "Recipe search called");
+                    }
+                }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            results.count = filteredList.size();
+
+            Log.i(TAG, "performFiltering List returned: " + results.values + " | Amount of items: " + results.count);
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            Log.i(TAG, "publishResults called");
+            mRecipes.clear();
+            mRecipes.addAll((List)results.values);
+
+            notifyDataSetChanged();
+        }
+    };
 
 
 
