@@ -35,6 +35,7 @@ public class FilterPopUp extends AppCompatActivity {
     private LinearLayout linearLayoutCategory1;
     private LinearLayout linearLayoutCategory2;
     private CheckBox amuse, starters, entrees, mainCourse, dessertAndDelicatesses;
+    private CheckBox sugarFree, dairyFree, raw, whole, vegan;
     private List<String> checkedList;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,11 @@ public class FilterPopUp extends AppCompatActivity {
         entrees = findViewById(R.id.entree);
         mainCourse = findViewById(R.id.mainCourse);
         dessertAndDelicatesses = findViewById(R.id.dessert);
+        sugarFree = findViewById(R.id.sugarFree);
+        dairyFree = findViewById(R.id.dairyFree);
+        whole = findViewById(R.id.whole);
+        vegan = findViewById(R.id.vegan);
+        raw = findViewById(R.id.raw);
         applyFilters = findViewById(R.id.applyFilters);
 
         resetFilter.setOnClickListener(new View.OnClickListener() {
@@ -79,26 +85,25 @@ public class FilterPopUp extends AppCompatActivity {
                 checkedList = new ArrayList<>();
                 try {
                     if (amuse.isChecked()) {
-                        Log.d(TAG, amuse.getText().toString());
                         checkedList.add("Amuse");
                     }
                     if (starters.isChecked()) {
-                        starters.setChecked(true);
                         checkedList.add("Voorgerecht");
                     }
                     if (entrees.isChecked()) {
-                        entrees.setChecked(true);
                         checkedList.add("Tussengerecht");
                     }
                     if (mainCourse.isChecked()) {
-                        mainCourse.setChecked(true);
                         checkedList.add("Hoofdgerecht");
                     }
                     if (dessertAndDelicatesses.isChecked()) {
-                        dessertAndDelicatesses.setChecked(true);
                         checkedList.add("Dessert");
                         checkedList.add("Friandise");
                     }
+                    if(sugarFree.isChecked()){
+                        checkedList.add("");
+                    }
+
 
                     for(String s: checkedList){
                         Log.d(TAG, "checkList item: " + s);
@@ -141,6 +146,11 @@ public class FilterPopUp extends AppCompatActivity {
         entrees.setChecked(false);
         mainCourse.setChecked(false);
         dessertAndDelicatesses.setChecked(false);
+        sugarFree.setChecked(false);
+        dairyFree.setChecked(false);
+        raw.setChecked(false);
+        whole.setChecked(false);
+        vegan.setChecked(false);
     }
 
 

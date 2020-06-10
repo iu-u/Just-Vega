@@ -192,8 +192,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         Log.d(TAG, "onActivityResult called");
         super.onActivityResult(requestCode, resultCode, data);
 
-//        ArrayList<String> result=data.getStringArrayListExtra("result");
-
         if(resultCode == Activity.RESULT_OK){
             String result = data.getStringExtra("result");
             Log.d(TAG, result);

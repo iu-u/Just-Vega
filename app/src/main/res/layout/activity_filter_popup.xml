@@ -121,30 +121,35 @@
                     android:textSize="20sp"/>
 
                 <CheckBox
+                    android:id="@+id/sugarFree"
                     android:text="@string/Category2_1"
                     style="@style/checkBox"
                     android:buttonTint="@color/colorVagueGreen"
                     />
 
                 <CheckBox
+                    android:id="@+id/dairyFree"
                     android:text="@string/Category2_2"
                     style="@style/checkBox"
                     android:buttonTint="@color/colorVagueGreen"
                     />
 
                 <CheckBox
+                    android:id="@+id/raw"
                     android:text="@string/Category2_3"
                     style="@style/checkBox"
                     android:buttonTint="@color/colorVagueGreen"
                     />
 
                 <CheckBox
+                    android:id="@+id/whole"
                     android:text="@string/Category2_4"
                     style="@style/checkBox"
                     android:buttonTint="@color/colorVagueGreen"
                     />
 
                 <CheckBox
+                    android:id="@+id/vegan"
                     android:text="@string/Category2_5"
                     style="@style/checkBox"
                     android:buttonTint="@color/colorVagueGreen"

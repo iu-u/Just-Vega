@@ -84,6 +84,7 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
                 Log.d(TAG, "filterPattern: " + filterPattern);
 
                 for(Recipe item: mRecipeFull){
+                    Log.d(TAG, "item allergen: " + item.getAllergies());
                     //case-method change set de incoming String to dutch filterPattern
                         if(item.getCategory().toLowerCase().contains(filterPattern)){
                             filteredList.add(item);
