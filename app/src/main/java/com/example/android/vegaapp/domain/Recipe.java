@@ -106,6 +106,23 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "category='" + category + '\'' +
+                ", tof=" + tof +
+                ", recipeName='" + recipeName + '\'' +
+                ", ingredients='" + ingredients + '\'' +
+                ", typeOfFood='" + typeOfFood + '\'' +
+                ", image='" + image + '\'' +
+                ", preperationMethod='" + preperationMethod + '\'' +
+                ", video='" + video + '\'' +
+                ", difficulty=" + difficulty +
+                ", preparationTime=" + preparationTime +
+                ", allergies=" + allergies +
+                '}';
+    }
+
     public void setTypeOfFood(String typeOfFood) {
         this.typeOfFood = typeOfFood;
     }

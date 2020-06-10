@@ -121,7 +121,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
                         String video = recipe.getString("video");
                         int diff = recipe.getInt("Difficulty");
                         int prepTime = recipe.getInt("preparation time");
-                        Log.d(TAG, "onDataChange: "+diff+prepTime);
 
 
                         JSONArray allergensList = recipe.getJSONArray("allergens");
@@ -156,13 +155,14 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
                             typeOfFoods.add(tof);
                         }
                         Recipe recipes = new Recipe(category, typeOfFoods, recipeName, image, video,diff,prepTime);
+
+                        Log.d(TAG, "onDataChange: "+recipes.getTof());
                         for (int j = 0; j < allergensList.length(); j++) {
-                            Log.d(TAG, "onDataChange: "+allergensList.getString(j));
                             recipes.addAllergy(allergensList.getString(j));
                         }
                         recipeList.add(recipes);
+                        typeOfFoods.clear();
                     }
-                    Log.d(TAG, "onDataChange: " + receptList.get(2));
                     initRecyclerView();
 
                 } catch (JSONException e) {
