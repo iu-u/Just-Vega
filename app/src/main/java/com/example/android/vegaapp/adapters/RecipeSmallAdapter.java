@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,12 +31,14 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
     private List<Recipe> mRecipes;
     private List<Recipe> mRecipeFull;
     private Context mContext;
+    private final RecipeSmallOnClickHandler recipeSmallOnClickHandler;
     int typeOfFilter = 0;
 
-    public RecipeSmallAdapter(Context mContext, List<Recipe> mRecipes, List<Recipe> all) {
+    public RecipeSmallAdapter(Context mContext, List<Recipe> mRecipes, List<Recipe> all, RecipeSmallOnClickHandler recipeSmallOnClickHandler) {
         this.mRecipes = mRecipes;
         this.mRecipeFull = all;
         this.mContext = mContext;
+        this.recipeSmallOnClickHandler = recipeSmallOnClickHandler;
     }
 
     @NonNull
@@ -90,8 +93,8 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
 
 
 //                Log.d(TAG, mRecipeFull.get(0).getRecipeName());
-//                for(String s: mRecipeFull.get(0).getIngredientList()){
-//                    System.out.println(s);
+//                for(TypeOfFood s: mRecipeFull.get(0).getTof()){
+//                    System.out.println(s.getName());
 //                }
 
 
@@ -141,15 +144,17 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
         ImageView imageView;
         TextView recipeTitle;
         TextView recipeCategory;
+        LinearLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView= itemView.findViewById(R.id.imageSmall);
             recipeTitle = itemView.findViewById(R.id.recipeTitle);
             recipeCategory = itemView.findViewById(R.id.recipeType);
+            parentLayout = itemView.findViewById(R.id.smallRecipe_parent);
 
             //set onclick
-//            parentLayout.setOnClickListener(this);
+            parentLayout.setOnClickListener(this);
 
         }
 
@@ -157,7 +162,7 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
         public void onClick(View view) {
             Log.v(ViewHolder.class.getName(), "clicked on item");
             int itemIndex = getAdapterPosition();
-
+            recipeSmallOnClickHandler.onElementClick(view, itemIndex);
         }
     }
 }

@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.adapters.RecipeSmallAdapter;
+import com.example.android.vegaapp.adapters.RecipeSmallOnClickHandler;
 import com.example.android.vegaapp.domain.Recipe;
 import com.example.android.vegaapp.domain.TypeOfFood;
 import com.google.firebase.database.DataSnapshot;
@@ -43,7 +44,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements RecipeSmallOnClickHandler {
 
     LinearLayout lastSearchedView;
     LinearLayout searchResultView;
@@ -265,7 +266,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Log.d(TAG, "onDataChange: "+this.recipeList.size());
 
-        mAdapter = new RecipeSmallAdapter(SearchActivity.this,recipeList,recipeListAll);
+        mAdapter = new RecipeSmallAdapter(SearchActivity.this,recipeList,recipeListAll, SearchActivity.this);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(SearchActivity.this));
     }
@@ -280,15 +281,20 @@ public class SearchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    @Override
-//    public void onElementClick(View view, int itemIndex) {
-//        Intent intent= new Intent(SearchActivity.this, RecipeDetailActivity.class);
-//
-////        //hier kan je data meegeven naar recepidetailactivity
-////        String name =  recipeList.get(itemIndex).getRecipeName();
-////        String image = recipeList.get(itemIndex).getImage();
-////        intent.putExtra("image", image);
-////        intent.putExtra("name", name );
-//        startActivity(intent);
-//    }
+    @Override
+    public void onElementClick(View view, int itemIndex) {
+        Intent intent= new Intent(SearchActivity.this, RecipeDetailActivity.class);
+        Log.d(TAG, "onElementClick called");
+
+        //hier kan je data meegeven naar recepidetailactivity
+        String name = recipeList.get(itemIndex).getRecipeName();
+        String image = recipeList.get(itemIndex).getImage();
+        String video = recipeList.get(itemIndex).getVideo();
+        String category = recipeList.get(itemIndex).getCategory();
+        intent.putExtra("image", image);
+        intent.putExtra("name", name);
+        intent.putExtra("category", category);
+        intent.putExtra("video", video);
+        startActivity(intent);
+    }
 }
