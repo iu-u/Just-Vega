@@ -44,12 +44,11 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
     private static String TAG = RecipeActivity.class.getName();
 
     private List<Recipe> recipeList = new ArrayList<>();
-    private List<TypeOfFood> typeOfFoods = new ArrayList<>();
+
     private Spinner spinner;
     private Button filter;
     private RecipeAdapter adapter;
     FilterPopUp filterPopUp;
-
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -64,7 +63,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         setSupportActionBar(mToolbar);
 
 
-
         spinner = findViewById(R.id.sortFunction);
         ArrayAdapter<CharSequence> mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.sort_options, R.layout.custom_spinner);
         mSpinnerAdapter.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
@@ -75,7 +73,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(RecipeActivity.this, FilterPopUp.class), 1);
-//                startActivity(new Intent(RecipeActivity.this,FilterPopUp.class));
             }
         });
     }
@@ -109,11 +106,12 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
                 HashMap<String, String> m = (HashMap<String, String>) dataSnapshot.getValue();
                 JSONObject result = new JSONObject(m);
                 recipeList.clear();
-                typeOfFoods.clear();
+
                 try {
                     JSONArray receptList = result.getJSONArray("recipes");
 
                     for (int i = 0; i < receptList.length(); i++) {
+                        List<TypeOfFood> typeOfFoods = new ArrayList<>();
                         JSONObject recipe = (JSONObject) receptList.get(i);
                         String recipeName = recipe.getString("name");
                         String category = recipe.getString("category");
@@ -121,7 +119,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
                         String video = recipe.getString("video");
                         int diff = recipe.getInt("Difficulty");
                         int prepTime = recipe.getInt("preparation time");
-
 
                         JSONArray allergensList = recipe.getJSONArray("allergens");
                         JSONArray typeList = recipe.getJSONArray("type");
@@ -137,31 +134,24 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
 
                             TypeOfFood tof = new TypeOfFood(typeName);
                             for (int k = 0; k < amountList.length(); k++) {
-//                                int a = (int)amountList.get(k);
-//                                tof.addAmount(a);
-
                                 tof.addAmount(amountList.getInt(k));
                             }
                             for (int k = 0; k < ingredientList.length(); k++) {
-//                                tof.addIngredient((String) ingredientList.get(k));
-
                                 tof.addIngredient(ingredientList.getString(k));
                             }
                             for (int k = 0; k < preperationList.length(); k++) {
-//                                tof.addIngredient((String) preperationList.get(k));
-
                                 tof.addPrep(preperationList.getString(k));
                             }
                             typeOfFoods.add(tof);
                         }
-                        Recipe recipes = new Recipe(category, typeOfFoods, recipeName, image, video,diff,prepTime);
+                        Recipe recipes = new Recipe(category, typeOfFoods, recipeName, image, video, diff, prepTime);
 
-                        Log.d(TAG, "onDataChange: "+recipes.getTof());
+                        Log.d(TAG, "onDataChange: " + recipes.getTof());
                         for (int j = 0; j < allergensList.length(); j++) {
                             recipes.addAllergy(allergensList.getString(j));
                         }
                         recipeList.add(recipes);
-                        typeOfFoods.clear();
+
                     }
                     initRecyclerView();
 
@@ -192,16 +182,16 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         Log.d(TAG, "onActivityResult called");
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
             String result = data.getStringExtra("result");
             Log.d(TAG, result);
 
             String[] cols = result.split(",");
-            for(String s: cols){
+            for (String s : cols) {
                 adapter.getFilter().filter(s);
             }
         }
-        if(resultCode == Activity.RESULT_CANCELED){
+        if (resultCode == Activity.RESULT_CANCELED) {
             onStart();
         }
     }
