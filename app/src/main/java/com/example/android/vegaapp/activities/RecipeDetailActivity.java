@@ -26,6 +26,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
     private TextView category;
     private Context mContext;
     private ImageView playButton;
+    private Button recipebutton;
+
     private static String TAG = RecipeDetailActivity.class.getName();
 
     @Override
@@ -45,6 +47,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         name = findViewById(R.id.recipeName);
         category = findViewById(R.id.categoryrecipe);
         playButton = findViewById(R.id.playButton);
+        recipebutton = findViewById(R.id.readrecipebtn);
 
 
         //start new intent when you click on the play button
@@ -57,7 +60,13 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
             }
         });
 
-
+      recipebutton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent int1= new Intent(RecipeDetailActivity.this, RecipepreperationMethodActivity.class);
+        startActivity(int1);
+    }
+});
         category.setText(mcategory);
         name.setText(mname);
         Glide.with(getApplicationContext())

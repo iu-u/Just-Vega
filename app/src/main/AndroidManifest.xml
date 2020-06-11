@@ -16,6 +16,7 @@
         <activity android:name=".activities.ReadWriteActivityDatabaseTest" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.RecipeDetailActivity" />
+        <activity android:name=".activities.RecipepreperationMethodActivity" />
         <activity android:name=".activities.RecipeActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity" />

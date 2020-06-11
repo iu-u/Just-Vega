@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RecipepreperationMethodActivity"
+    android:background="@color/colorBackgroundBlack"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/tool_bar"
+        android:id="@+id/toolbar">
+    </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="0dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:contentDescription="TODO"
+            android:id="@+id/recipeimageview"
+            android:src="@drawable/faded_ingredients_image">
+
+        </ImageView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            >
+
+        </ImageView>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="400dp"
+            android:src="@drawable/ic_arrow_left_green">
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="BACK TO THE RECIPE"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="12sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppins_light"
+            android:text="INGREDIENTS"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="12sp"/>
+        <TextView
+            android:id="@+id/categoryrecipe"
+            android:text="Amuse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="100dp"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/recipeName"
+            android:text="Pastinaak poffertje,
+shittake &amp; daslook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_light"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="120dp"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="25sp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorTextWhite"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="20sp"
+        android:layout_marginStart="150dp"
+        android:text="Recipe"
+        >
+    </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextWhite"
+            android:fontFamily="@font/poppins_light"
+            android:textSize="13sp"
+            android:text="Breng de melk met de boter aan de kook.\n Haal de pan van het vuur. \n Zeef de bloem en voeg dit toe aan de warme melk en roer meteen goed door
+Haal de pan van het vuur. Zet de pan weer even terug op het vuur en blijf goed roeren. \n Dit doe je om het beslag nog een beetje door te garen.
+Laat het beslag. \nVoeg nu een voor een de eieren toe totdat het in zijn geheel opgenomen is en je deeg goed van dikte is."
+            >
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextWhite"
+            android:fontFamily="@font/poppins_light"
+            android:textSize="13sp"
+            android:text="Doe wat zonnebloemolie in een bakpan en zorg dat deze heet wordt."
+            >
+    </TextView>
+</LinearLayout>
+</LinearLayout>
