@@ -73,6 +73,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
             @Override
             public void onClick(View v) {
                 startActivityForResult(new Intent(RecipeActivity.this, FilterPopUp.class), 1);
+                onStart();
             }
         });
     }
