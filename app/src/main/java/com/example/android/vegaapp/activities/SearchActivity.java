@@ -108,7 +108,6 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
                 searchResultView.setVisibility(View.VISIBLE);
                 applyFilter();
 
-
             }
         });
 
@@ -165,7 +164,6 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
             String joined = TextUtils.join(",", strings);
             Log.d(TAG, "joinedList: " + joined);
             mAdapter.getFilter().filter(joined);
-
         }
     }
 
