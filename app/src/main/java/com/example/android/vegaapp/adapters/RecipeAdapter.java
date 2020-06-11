@@ -110,6 +110,7 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             Log.i(TAG, "publishResults called");
+            mRecipes.clear();
             mRecipes.addAll((List)results.values);
 
             notifyDataSetChanged();

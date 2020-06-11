@@ -83,7 +83,8 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
             List<Recipe> filteredList = new ArrayList<>();
 
             String word = constraint.toString();
-
+            Log.d(TAG, "word to String performfiltering: " + word);
+            String[] ingredients = word.split(",");
 
             if(word == null || word.length() == 0){
                 filteredList.clear();
@@ -91,35 +92,82 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
                 String filterPattern = word.toLowerCase();
                 Log.d(TAG, "filterPattern: " + filterPattern);
 
-
-//                Log.d(TAG, mRecipeFull.get(0).getRecipeName());
-//                for(TypeOfFood s: mRecipeFull.get(0).getTof()){
-//                    System.out.println(s.getName());
-//                }
-
-
                 for(Recipe item: mRecipeFull){
                     if(typeOfFilter == 0){
+                        Log.i(TAG, "Search on recipe called");
                         if(item.getRecipeName().toLowerCase().contains(filterPattern)){
                             filteredList.add(item);
                         }
-                        Log.i(TAG, "Recipe search called");
                     } else if(typeOfFilter == 1){
+                        Log.i(TAG, "Search on ingredient called");
                         Log.d(TAG, "Recipe name: " + item.getRecipeName());
                         for(TypeOfFood t: item.getTof()){
-                            System.out.println(t.getName());
+                            Log.i(TAG, "Type of food:" + t.getName());
+                            ArrayList<String> lowerCase = new ArrayList();
+                            for(String s:t.getIngredients()) {
+                                if(s.startsWith("gr,")|| s.startsWith("st,")){
+                                    s = s.substring(3);
+                                    }
+                                lowerCase.add(s.toLowerCase());
+                            }
+                            if(lowerCase.contains(ingredients[0].toLowerCase())){
+                                Log.i(TAG, "Item added:" + item.getRecipeName() + "Type: " + t.getName());
+                                filteredList.add(item);
+                                break;
+                            }
                         }
-                        Log.i(TAG, "Ingredient search called");
+
+
+
                     }
 
+                    }
                 }
-            }
+//            List<Recipe> secondFiltered = filteredList;
+////            Log.d(TAG, "sceondfiltered 1: " + secondFiltered.get(0).getRecipeName());
+////            Log.d(TAG, "sceondfiltered 2: " + secondFiltered.get(1).getRecipeName());
+//            for(int i=0;i<secondFiltered.size();i++){
+//                Log.d(TAG, "secondfilterd: " + secondFiltered.get(i).getRecipeName());
+//            }
+//
+//            if(ingredients.length>1){
+//                Log.d(TAG, "amount of ingredients: " + ingredients.length);
+//                for(int i = 1; i<ingredients.length;i++){
+//                    Log.d(TAG, "inggreident: " + ingredients[i]);
+//                    for(Recipe r: secondFiltered){
+//                        Log.d(TAG, "Recipe called " + r.getRecipeName());
+//                        List<String> allIngredients = new ArrayList<>();
+//                        for(TypeOfFood t: r.getTof()){
+//                            Log.d(TAG, "Type of food:" + t.getName());
+//                            ArrayList<String> ingredientLowerCase = new ArrayList();
+//                            for(String s:t.getIngredients()) {
+//                                if(s.startsWith("gr,")|| s.startsWith("st,")){
+//                                    s = s.substring(3);
+//                                }
+//                                ingredientLowerCase.add(s.toLowerCase());
+//                                allIngredients.add(s.toLowerCase());
+//                            }
+//                            if(ingredientLowerCase.contains(ingredients[i].toLowerCase())){
+//                                Log.d(TAG, "ingredientLowercase contains " + ingredients[i]);
+//                                Log.i(TAG, "Item added:" + r.getRecipeName() + "Type: " + t.getName());
+//                                filteredList.add(r);
+//
+//                            } else{
+//                                Log.d(TAG, "ingredientLowercase does not contain " + ingredients[i]);
+//                            }
+//
+//                        }
+//
+//                    }
+//                }
+//            }
+
 
             FilterResults results = new FilterResults();
             results.values = filteredList;
             results.count = filteredList.size();
 
-            Log.i(TAG, "performFiltering List returned: " + results.values + " | Amount of items: " + results.count);
+//            Log.i(TAG, "performFiltering List returned: " + results.values + " | Amount of items: " + results.count);
 
             return results;
         }
@@ -127,10 +175,15 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             Log.i(TAG, "publishResults called");
+//                mRecipes.clear();
+//                mRecipes.addAll((List)results.values);
             if(typeOfFilter == 0){
+                Log.i(TAG, "typeOfFilter publishResult = 0");
                 mRecipes.clear();
                 mRecipes.addAll((List)results.values);
             } else if(typeOfFilter == 1){
+                Log.i(TAG, "typeOfFilter publishResult = 1");
+                mRecipes.clear();
                 mRecipes.addAll((List)results.values);
             }
 

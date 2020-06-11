@@ -104,9 +104,11 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
                 Log.i(TAG, searchView_ingredient.getText().toString());
                 String ingredient = searchView_ingredient.getText().toString();
                 addIngredientToSearch(view, ingredient);
-                mAdapter.getFilter().filter(ingredient);
                 lastSearchedView.setVisibility(View.GONE);
                 searchResultView.setVisibility(View.VISIBLE);
+                applyFilter();
+
+
             }
         });
 
@@ -155,6 +157,30 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
         });
     }
 
+    public void applyFilter(){
+        List<String> strings = getIngredientFilters();
+        if(strings.isEmpty()){
+            mAdapter.getFilter().filter("");
+        } else {
+            String joined = TextUtils.join(",", strings);
+            Log.d(TAG, "joinedList: " + joined);
+            mAdapter.getFilter().filter(joined);
+
+        }
+    }
+
+    public List<String> getIngredientFilters(){
+        List<String> ingredientFilters = new ArrayList<>();
+        View v = null;
+        for(int i=0; i<layout_ingredient_items.getChildCount();i++){
+            Button b = (Button)layout_ingredient_items.getChildAt(i);
+            String text = b.getText().toString();
+            Log.i(TAG, "Button text: " + text);
+            ingredientFilters.add(text);
+        }
+        return ingredientFilters;
+    }
+
     public void addIngredientToSearch(View view, String ingredient){
         Button button = new Button(this);
         button.setTextSize(13);
@@ -172,6 +198,7 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
             @Override
             public void onClick(View v) {
                 layout_ingredient_items.removeView(v);
+                applyFilter();
             }
         });
     }

@@ -35,7 +35,7 @@ public class FilterPopUp extends AppCompatActivity {
     private LinearLayout linearLayoutCategory1;
     private LinearLayout linearLayoutCategory2;
     private CheckBox amuse, starters, entrees, mainCourse, dessertAndDelicatesses;
-    private CheckBox sugarFree, dairyFree, raw, whole, vegan;
+//    private CheckBox sugarFree, dairyFree, raw, whole, vegan;
     private List<String> checkedList;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class FilterPopUp extends AppCompatActivity {
 //        Picasso.get().load(R.drawable.filter_background).into(filterImage);
 
         linearLayoutCategory1 =findViewById(R.id.layout_Category1);
-        linearLayoutCategory1 = findViewById(R.id.layout_Category2);
+//        linearLayoutCategory2 = findViewById(R.id.layout_Category2);
 
         closePopUp = findViewById(R.id.close_filterPopUp);
         resetFilter = findViewById(R.id.resetFilter);
@@ -64,11 +64,11 @@ public class FilterPopUp extends AppCompatActivity {
         entrees = findViewById(R.id.entree);
         mainCourse = findViewById(R.id.mainCourse);
         dessertAndDelicatesses = findViewById(R.id.dessert);
-        sugarFree = findViewById(R.id.sugarFree);
-        dairyFree = findViewById(R.id.dairyFree);
-        whole = findViewById(R.id.whole);
-        vegan = findViewById(R.id.vegan);
-        raw = findViewById(R.id.raw);
+//        sugarFree = findViewById(R.id.sugarFree);
+//        dairyFree = findViewById(R.id.dairyFree);
+//        whole = findViewById(R.id.whole);
+//        vegan = findViewById(R.id.vegan);
+//        raw = findViewById(R.id.raw);
         applyFilters = findViewById(R.id.applyFilters);
 
         resetFilter.setOnClickListener(new View.OnClickListener() {
@@ -100,9 +100,9 @@ public class FilterPopUp extends AppCompatActivity {
                         checkedList.add("Dessert");
                         checkedList.add("Friandise");
                     }
-                    if(sugarFree.isChecked()){
-                        checkedList.add("");
-                    }
+//                    if(sugarFree.isChecked()){
+//                        checkedList.add("");
+//                    }
 
 
                     for(String s: checkedList){
@@ -146,11 +146,11 @@ public class FilterPopUp extends AppCompatActivity {
         entrees.setChecked(false);
         mainCourse.setChecked(false);
         dessertAndDelicatesses.setChecked(false);
-        sugarFree.setChecked(false);
-        dairyFree.setChecked(false);
-        raw.setChecked(false);
-        whole.setChecked(false);
-        vegan.setChecked(false);
+//        sugarFree.setChecked(false);
+//        dairyFree.setChecked(false);
+//        raw.setChecked(false);
+//        whole.setChecked(false);
+//        vegan.setChecked(false);
     }
 
 
