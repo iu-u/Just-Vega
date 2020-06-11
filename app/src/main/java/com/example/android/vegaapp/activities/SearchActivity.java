@@ -43,6 +43,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SearchActivity extends AppCompatActivity implements RecipeSmallOnClickHandler {
 
@@ -55,7 +57,6 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
     AutoCompleteTextView searchView_ingredient;
     Button add_ingredient;
     TextView amountOfResults;
-
     SearchView searchView_recipe;
     Button goToSearchIngredients;
     ImageButton backToRecipeSearch;
@@ -63,12 +64,8 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
     RelativeLayout searchIngredientView;
     private List<Recipe> recipeList = new ArrayList<>();
     private List<Recipe> recipeListAll = new ArrayList<>();
-    private List<TypeOfFood> typeOfFoods = new ArrayList<>();
     private ArrayAdapter<String> ingredientAdapter;
-
     private RecipeSmallAdapter mAdapter;
-
-
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
@@ -101,7 +98,6 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
         searchRecipeView.setVisibility(View.VISIBLE);
         searchIngredientView.setVisibility(View.GONE);
 
-
         searchView_ingredient.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -113,7 +109,6 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
                 searchResultView.setVisibility(View.VISIBLE);
             }
         });
-
 
 
         searchView_recipe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -145,8 +140,6 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
                 searchIngredientView.setVisibility(View.VISIBLE);
                 mAdapter.setTypeOfFilter("ingredient");
                 mAdapter.getFilter().filter("");
-
-
             }
         });
 
@@ -160,7 +153,6 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
                 searchView_ingredient.setText("");
             }
         });
-
     }
 
     public void addIngredientToSearch(View view, String ingredient){
@@ -194,11 +186,11 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
                 HashMap<String, String> m = (HashMap<String, String>) dataSnapshot.getValue();
                 JSONObject result = new JSONObject(m);
                 recipeList.clear();
-                typeOfFoods.clear();
                 try {
                     JSONArray receptList = result.getJSONArray("recipes");
 
                     for (int i = 0; i < receptList.length(); i++) {
+                        List<TypeOfFood> typeOfFoods = new ArrayList<>();
                         JSONObject recipe = (JSONObject) receptList.get(i);
                         String recipeName =recipe.getString("name");
                         String category = recipe.getString("category");
@@ -213,6 +205,7 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
 
 
                         for (int j = 0; j < typeList.length(); j++) {
+
                             JSONObject type = (JSONObject) typeList.get(j);
                             String typeName = type.getString("name");
 
@@ -222,24 +215,19 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
 
                             TypeOfFood tof = new TypeOfFood(typeName);
                             for (int k = 0; k < amountList.length(); k++) {
-//                                int a = (int)amountList.get(k);
-//                                tof.addAmount(a);
-
                                 tof.addAmount(amountList.getInt(k));
                             }
                             for (int k = 0; k < ingredientList.length(); k++) {
-//                                tof.addIngredient((String) ingredientList.get(k));
-
                                 tof.addIngredient(ingredientList.getString(k));
                             }
                             for (int k = 0; k < preperationList.length(); k++) {
-//                                tof.addIngredient((String) preperationList.get(k));
-
                                 tof.addPrep(preperationList.getString(k));
                             }
                             typeOfFoods.add(tof);
+
                         }
                         Recipe recipes = new Recipe(category, typeOfFoods, recipeName, image, video,diff,prepTime);
+                        Log.d(TAG, "onDataChange: "+recipes.getTof());
                         for (int j = 0; j < allergensList.length(); j++) {
                             Log.d(TAG, "onDataChange: "+allergensList.getString(j));
                             recipes.addAllergy(allergensList.getString(j));

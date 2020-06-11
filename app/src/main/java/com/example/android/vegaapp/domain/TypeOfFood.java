@@ -25,6 +25,16 @@ public class TypeOfFood {
         return ingredients;
     }
 
+    @Override
+    public String toString() {
+        return "TypeOfFood{" +
+                "name='" + name + '\'' +
+                ", ingredients=" + ingredients +
+                ", amount=" + amount +
+                ", preperation=" + preperation +
+                '}';
+    }
+
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
