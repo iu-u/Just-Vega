@@ -137,6 +137,12 @@
                 android:shadowDy="0"
                 android:shadowRadius="5" />
 
+
+            <RelativeLayout
+                android:id="@+id/layout_forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
             <Button
                 android:id="@+id/btn_forgot_password"
                 android:text="@string/forgot_password"
@@ -144,8 +150,10 @@
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:background="@color/fui_transparent" />
+            </RelativeLayout>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
