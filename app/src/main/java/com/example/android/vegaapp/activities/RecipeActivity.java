@@ -186,10 +186,12 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
             String result = data.getStringExtra("result");
             Log.d(TAG, result);
 
-            String[] cols = result.split(",");
-            for (String s : cols) {
-                adapter.getFilter().filter(s);
-            }
+            adapter.getFilter().filter(result);
+
+//            String[] cols = result.split(",");
+//            for (String s : cols) {
+//                adapter.getFilter().filter(s);
+//            }
         }
         if (resultCode == Activity.RESULT_CANCELED) {
             onStart();

@@ -75,6 +75,7 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
             List<Recipe> filteredList = new ArrayList<>();
 
             String word = constraint.toString();
+            String[] filters = word.split(",");
 
 
             if(word == null || word.length() == 0){
@@ -85,15 +86,14 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
 
                 for(Recipe item: mRecipeFull){
                     Log.d(TAG, "item allergen: " + item.getAllergies());
-                    //case-method change set de incoming String to dutch filterPattern
-                        if(item.getCategory().toLowerCase().contains(filterPattern)){
+                    for(String s: filters){
+                        if(item.getCategory().toLowerCase().contains(s.toLowerCase())){
                             filteredList.add(item);
                         }
-                        if(filteredList.equals("Dairy-free")){
-                            if(!item.getAllergies().contains("Melk")){
-                                filteredList.add(item);
-                            }
-                        }
+                    }
+                    //case-method change set de incoming String to dutch filterPattern
+
+
                         Log.i(TAG, "Recipe search called");
                     }
                 }
