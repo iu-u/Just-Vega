@@ -105,57 +105,58 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_Category2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/layout_Category2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                >-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Category2"
-                    android:textColor="@color/colorTextWhite"
-                    android:textSize="20sp"/>
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/Category2"-->
+<!--                    android:textColor="@color/colorTextWhite"-->
+<!--                    android:textSize="20sp"/>-->
 
-                <CheckBox
-                    android:id="@+id/sugarFree"
-                    android:text="@string/Category2_1"
-                    style="@style/checkBox"
-                    android:buttonTint="@color/colorVagueGreen"
-                    />
+<!--                <CheckBox-->
+<!--                    android:id="@+id/sugarFree"-->
+<!--                    android:text="@string/Category2_1"-->
+<!--                    style="@style/checkBox"-->
+<!--                    android:buttonTint="@color/colorVagueGreen"-->
+<!--                    />-->
 
-                <CheckBox
-                    android:id="@+id/dairyFree"
-                    android:text="@string/Category2_2"
-                    style="@style/checkBox"
-                    android:buttonTint="@color/colorVagueGreen"
-                    />
+<!--                <CheckBox-->
+<!--                    android:id="@+id/dairyFree"-->
+<!--                    android:text="@string/Category2_2"-->
+<!--                    style="@style/checkBox"-->
+<!--                    android:buttonTint="@color/colorVagueGreen"-->
+<!--                    />-->
 
-                <CheckBox
-                    android:id="@+id/raw"
-                    android:text="@string/Category2_3"
-                    style="@style/checkBox"
-                    android:buttonTint="@color/colorVagueGreen"
-                    />
+<!--                <CheckBox-->
+<!--                    android:id="@+id/raw"-->
+<!--                    android:text="@string/Category2_3"-->
+<!--                    style="@style/checkBox"-->
+<!--                    android:buttonTint="@color/colorVagueGreen"-->
+<!--                    />-->
 
-                <CheckBox
-                    android:id="@+id/whole"
-                    android:text="@string/Category2_4"
-                    style="@style/checkBox"
-                    android:buttonTint="@color/colorVagueGreen"
-                    />
+<!--                <CheckBox-->
+<!--                    android:id="@+id/whole"-->
+<!--                    android:text="@string/Category2_4"-->
+<!--                    style="@style/checkBox"-->
+<!--                    android:buttonTint="@color/colorVagueGreen"-->
+<!--                    />-->
 
-                <CheckBox
-                    android:id="@+id/vegan"
-                    android:text="@string/Category2_5"
-                    style="@style/checkBox"
-                    android:buttonTint="@color/colorVagueGreen"
-                    />
+<!--                <CheckBox-->
+<!--                    android:id="@+id/vegan"-->
+<!--                    android:text="@string/Category2_5"-->
+<!--                    style="@style/checkBox"-->
+<!--                    android:buttonTint="@color/colorVagueGreen"-->
+<!--                    />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -89,6 +89,11 @@ public class RecipeAdapter  extends RecyclerView.Adapter<RecipeAdapter.ViewHolde
                         if(item.getCategory().toLowerCase().contains(filterPattern)){
                             filteredList.add(item);
                         }
+                        if(filteredList.equals("Dairy-free")){
+                            if(!item.getAllergies().contains("Melk")){
+                                filteredList.add(item);
+                            }
+                        }
                         Log.i(TAG, "Recipe search called");
                     }
                 }
