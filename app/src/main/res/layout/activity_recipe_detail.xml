@@ -16,18 +16,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         android:paddingBottom="0dp"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
             android:contentDescription="TODO"
             android:id="@+id/recipeimageview"
-            android:src="@drawable/fade_ingredients">
+            android:src="@drawable/search_by_recipe_bg_pic"
+            android:scaleType="fitStart">
 
         </ImageView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fade"/>
+        
         <Button
             android:id="@+id/detail_return_button"
             android:layout_width="wrap_content"
@@ -66,7 +73,8 @@
                 android:id="@+id/categoryrecipe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amuse"
+                android:hint="Category"
+                android:textColorHint="@color/colorVagueGreen"
                 android:textColor="@color/colorTextLightGreen"
                 android:layout_gravity="center"
                 android:textSize="20sp"
@@ -79,21 +87,17 @@
                 android:layout_marginLeft="60dp"
                 android:gravity="center"
                 android:layout_height="wrap_content"
-                android:text="Pastinaak poffertje, shiitake, daslook"
+                android:hint="Title"
+                android:textColorHint="@color/colorVagueGreen"
                 android:textColor="@color/colorTextWhite"
                 android:textSize="25sp"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sugar-free, whole grain"
+                android:hint="Allergies"
+                android:textColorHint="@color/colorVagueGreen"
                 android:textColor="@color/colorTextLightGreen"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorVagueGreen"
-                android:layout_marginTop="20dp"/>
 
         </LinearLayout>
 
@@ -102,59 +106,122 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/colorBlack">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.40"
+            android:background="@color/colorVagueGreen"
+
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.35"
             android:layout_height="wrap_content"
-            android:src="@drawable/applicationframehost_2"
-            android:layout_marginStart="140dp"
-            android:background="@color/colorBlack">
-        </ImageView>
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/applicationframehost_1"
-    android:layout_marginEnd="140dp"
-    android:id="@+id/playButton"
-    android:background="@color/colorBlack"
-    android:clickable="true"
-   >
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            >
+            <FrameLayout
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle_fave_icon_2"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="4dp"
+                android:visibility="visible"
+                android:layout_margin="5dp">
 
-</ImageView>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_favorite_icon"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/playButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/circle_youtube_vid"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="4dp"
+                android:visibility="visible"
+                android:layout_margin="5dp"
+               >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play_arrow_red"
+                    />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="0.40"
+            android:layout_height="1dp"
+            android:background="@color/colorVagueGreen"
+            android:layout_marginTop="20dp"/>
+
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="0dp">
-        <ImageView
-            android:id="@+id/timer_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="40dip"
-            android:layout_marginTop="30dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/clocksicon"/>
-        <TextView
-            android:text="45 min"
-            android:layout_width="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.30"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="5dp"
-            android:fontFamily="@font/poppins_light"
-            android:textColor="@color/colorTextLightGrey"
-            android:textSize="20sp"/>
+            android:orientation="horizontal"
+            android:paddingBottom="0dp">
+            <ImageView
+                android:id="@+id/timer_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_clock_green"/>
+            <TextView
+                android:text="... min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/poppins_light"
+                android:textColor="@color/colorTextLightGrey"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.70"
+            android:orientation="horizontal">
+
+        </LinearLayout>
 
     </LinearLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="0dp"
+        android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <Button
@@ -162,14 +229,16 @@
             android:text="Read recipe"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="70dp"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:padding="30dp"
             android:background="@drawable/buttonshape"
             android:shadowColor="#A8A8A8"
-            android:shadowRadius="5" />
+            android:shadowRadius="5"
+            android:drawableRight="@drawable/ic_arrow_up"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </LinearLayout>

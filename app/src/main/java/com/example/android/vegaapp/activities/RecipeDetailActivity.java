@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
     private TextView name;
     private TextView category;
     private Context mContext;
-    private ImageView playButton;
+    private FrameLayout playButton;
     private Button recipebutton;
 
     private static String TAG = RecipeDetailActivity.class.getName();
@@ -48,6 +49,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         category = findViewById(R.id.categoryrecipe);
         playButton = findViewById(R.id.playButton);
         recipebutton = findViewById(R.id.readrecipebtn);
+
 
 
         //start new intent when you click on the play button
