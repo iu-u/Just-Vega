@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.example.android.vegaapp.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class RecipepreperationMethodActivity extends AppCompatActivity {
     private static String TAG = RecipepreperationMethodActivity.class.getName();
@@ -25,6 +27,7 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
     private TextView mCategory;
     private TextView mRecipeName;
     private TextView mAllergies;
+    private TextView mPreparation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +41,9 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
         String title = intent.getExtras().getString("name");
         String category = intent.getExtras().getString("category");
         String image = intent.getExtras().getString("image");
+        String preparation = intent.getExtras().getString("preparation");
         ArrayList<String> allergieList = intent.getStringArrayListExtra("allergies");
+        HashMap<String, List<String>> mPrepMap = (HashMap<String, List<String>>)intent.getSerializableExtra("prepMap");
 
         mRecipeImage = findViewById(R.id.recipeimageview);
         mGoToRecipe = findViewById(R.id.btn_back_to_recipe);
@@ -46,6 +51,7 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
         mCategory = findViewById(R.id.category);
         mRecipeName = findViewById(R.id.recipeName);
         mAllergies = findViewById(R.id.allergies);
+        mPreparation = findViewById(R.id.textView_preparation);
 
         mGoToRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +78,16 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
             sb.append(s).append(", ");
         }
         mAllergies.setText(sb.toString());
+        Log.d(TAG, "preparationMethod: " + preparation);
+        mPreparation.setText(preparation);
 
+
+//        for(String s: mPrepMap.keySet()){
+//            System.out.println("current key: " + s);
+//            for(String b: mPrepMap.get(s)){
+//                System.out.println(b.toString());
+//            }
+//        }
 
     }
 }

@@ -217,16 +217,32 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         String image = recipeList.get(itemIndex).getImage();
         String video = recipeList.get(itemIndex).getVideo();
         String category = recipeList.get(itemIndex).getCategory();
+        String preperation = recipeList.get(itemIndex).getPreperationMethod();
+
+        List<TypeOfFood> prep = recipeList.get(itemIndex).getTof();
+        HashMap<String, List<String>> hashMap = new HashMap<String, List<String>>();
+        for(TypeOfFood p: prep){
+            List<String> prepList = new ArrayList<>();
+            String key = p.getName();
+            for(String s: p.getPreperation()){
+                prepList.add(s);
+            }
+            hashMap.put(key, prepList);
+        }
+
         List<String> getAllergies = recipeList.get(itemIndex).getAllergies();
         ArrayList<String> allergies = new ArrayList<>();
         allergies.addAll(getAllergies);
         int preparationTime = recipeList.get(itemIndex).getPreparationTime();
+
         intent.putExtra("image", image);
         intent.putExtra("name", name);
         intent.putExtra("category", category);
         intent.putExtra("video", video);
         intent.putExtra("prepTime", preparationTime);
         intent.putStringArrayListExtra("allergies", allergies);
+        intent.putExtra("prepMap", hashMap);
+        intent.putExtra("preparation", preperation);
 
         startActivity(intent);
 

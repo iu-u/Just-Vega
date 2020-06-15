@@ -22,6 +22,8 @@ import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.adapters.RecipeOnClickHandler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnClickHandler {
     private ImageView image;
@@ -48,6 +50,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         final String mcategory = intent.getExtras().getString("category");
         final String mvideo = intent.getExtras().getString("video");
         final String mimage = intent.getExtras().getString("image");
+        final String mpreparation = intent.getExtras().getString("preparation");
+        final HashMap<String, List<String>> mPrepMap = (HashMap<String, List<String>>)intent.getSerializableExtra("prepMap");
         final ArrayList<String> allergieList = intent.getExtras().getStringArrayList("allergies");
         int mPrepTime = intent.getExtras().getInt("prepTime");
         image = findViewById(R.id.recipeimageview);
@@ -77,6 +81,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         intent.putExtra("name", mname);
         intent.putExtra("category", mcategory);
         intent.putStringArrayListExtra("allergies", allergieList);
+        intent.putExtra("preparation", mpreparation);
+        intent.putExtra("prepMap", mPrepMap);
         startActivity(intent);
     }
 });

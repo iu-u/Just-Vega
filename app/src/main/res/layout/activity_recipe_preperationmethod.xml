@@ -142,6 +142,7 @@
                 android:layout_marginRight="2dp"/>
 
             <TextView
+                android:id="@+id/textView_preparation"
                 android:layout_width="0dp"
                 android:layout_weight="0.76"
                 android:layout_height="wrap_content"
@@ -149,7 +150,6 @@
                 android:fontFamily="@font/poppins_light"
                 android:textSize="13sp"
                 android:padding="10dp"
-                android:text="Breng de melk met de boter aan de kook.\n Haal de pan van het vuur. \n Zeef de bloem en voeg dit toe aan de warme melk en roer meteen goed door \n Haal de pan van het vuur. Zet de pan weer even terug op het vuur en blijf goed roeren. \n Dit doe je om het beslag nog een beetje door te garen. Laat het beslag. \nVoeg nu een voor een de eieren toe totdat het in zijn geheel opgenomen is en je deeg goed van dikte is."
             >
             </TextView>
 
