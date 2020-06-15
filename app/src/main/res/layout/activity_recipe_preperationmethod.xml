@@ -28,9 +28,15 @@
             android:contentDescription="TODO"
             android:id="@+id/recipeimageview"
             android:src="@drawable/fade_ingredients">
-
         </ImageView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fade"/>
+
         <Button
+            android:id="@+id/btn_back_to_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -43,6 +49,7 @@
 
         </Button>
         <Button
+            android:id="@+id/btn_go_to_ingredients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -64,28 +71,34 @@
             android:orientation="vertical">
 
         <TextView
+            android:id="@+id/category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amuse"
+            android:hint="Category"
+            android:textColorHint="@color/colorVagueGreen"
             android:textColor="@color/colorTextLightGreen"
             android:layout_gravity="center"
             android:textSize="20sp"
             />
 
         <TextView
+            android:id="@+id/recipeName"
             android:layout_width="wrap_content"
             android:layout_marginRight="60dp"
             android:layout_marginLeft="60dp"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:text="Pastinaak poffertje, shiitake, daslook"
+            android:hint="Title"
+            android:textColorHint="@color/colorVagueGreen"
             android:textColor="@color/colorTextWhite"
             android:textSize="25sp"
             />
         <TextView
+            android:id="@+id/allergies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sugar-free, whole grain"
+            android:hint="Allergies"
+            android:textColorHint="@color/colorVagueGreen"
             android:textColor="@color/colorTextLightGreen"/>
 
             <View

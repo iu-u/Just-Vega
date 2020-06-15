@@ -211,19 +211,26 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
     @Override
     public void onElementClick(View view, int itemIndex) {
         Intent intent = new Intent(RecipeActivity.this, RecipeDetailActivity.class);
-
+        Intent intent2 = new Intent(RecipeActivity.this, RecipepreperationMethodActivity.class);
         //hier kan je data meegeven naar recepidetailactivity
         String name = recipeList.get(itemIndex).getRecipeName();
         String image = recipeList.get(itemIndex).getImage();
         String video = recipeList.get(itemIndex).getVideo();
         String category = recipeList.get(itemIndex).getCategory();
+        List<String> getAllergies = recipeList.get(itemIndex).getAllergies();
+        ArrayList<String> allergies = new ArrayList<>();
+        allergies.addAll(getAllergies);
         int preparationTime = recipeList.get(itemIndex).getPreparationTime();
         intent.putExtra("image", image);
         intent.putExtra("name", name);
         intent.putExtra("category", category);
         intent.putExtra("video", video);
         intent.putExtra("prepTime", preparationTime);
+        intent.putStringArrayListExtra("allergies", allergies);
+
         startActivity(intent);
+
+
     }
 
 

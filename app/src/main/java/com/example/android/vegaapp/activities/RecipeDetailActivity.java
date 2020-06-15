@@ -21,6 +21,8 @@ import com.example.android.vegaapp.MainActivity;
 import com.example.android.vegaapp.R;
 import com.example.android.vegaapp.adapters.RecipeOnClickHandler;
 
+import java.util.ArrayList;
+
 public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnClickHandler {
     private ImageView image;
     private TextView name;
@@ -29,6 +31,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
     private FrameLayout playButton;
     private Button recipebutton;
     private TextView prepTime;
+    private TextView allergie;
 
     private static String TAG = RecipeDetailActivity.class.getName();
 
@@ -41,10 +44,11 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(mToolbar);
         Intent intent = getIntent();
-        String mname = intent.getExtras().getString("name");
-        String mcategory = intent.getExtras().getString("category");
+        final String mname = intent.getExtras().getString("name");
+        final String mcategory = intent.getExtras().getString("category");
         final String mvideo = intent.getExtras().getString("video");
-        String mimage = intent.getExtras().getString("image");
+        final String mimage = intent.getExtras().getString("image");
+        final ArrayList<String> allergieList = intent.getExtras().getStringArrayList("allergies");
         int mPrepTime = intent.getExtras().getInt("prepTime");
         image = findViewById(R.id.recipeimageview);
         name = findViewById(R.id.recipeName);
@@ -52,6 +56,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         playButton = findViewById(R.id.playButton);
         recipebutton = findViewById(R.id.readrecipebtn);
         prepTime = findViewById(R.id.prepTime);
+        allergie = findViewById(R.id.textView_allergies);
 
         //start new intent when you click on the play button
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -66,8 +71,13 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
       recipebutton.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent int1= new Intent(RecipeDetailActivity.this, RecipepreperationMethodActivity.class);
-        startActivity(int1);
+        Intent intent= new Intent(RecipeDetailActivity.this, RecipepreperationMethodActivity.class);
+
+        intent.putExtra("image", mimage);
+        intent.putExtra("name", mname);
+        intent.putExtra("category", mcategory);
+        intent.putStringArrayListExtra("allergies", allergieList);
+        startActivity(intent);
     }
 });
         category.setText(mcategory);
@@ -76,6 +86,11 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         Glide.with(getApplicationContext())
                 .asBitmap().load(mimage)
                 .into(image);
+        StringBuilder sb = new StringBuilder("");
+        for(String s: allergieList){
+            sb.append(s).append(", ");
+        }
+        allergie.setText(sb.toString());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
