@@ -297,4 +297,10 @@ public class LoginActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
+
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
 }
