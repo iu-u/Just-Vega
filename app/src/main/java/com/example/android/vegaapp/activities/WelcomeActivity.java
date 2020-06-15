@@ -35,6 +35,12 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
+
 
 
     @Override

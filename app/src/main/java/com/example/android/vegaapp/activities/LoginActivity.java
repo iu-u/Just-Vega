@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.MainActivity;
@@ -79,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         setContentView(R.layout.activity_login);
+
 
         txt_email = (EditText)findViewById(R.id.txt_email);
         txt_password = (EditText)findViewById(R.id.txt_password);
@@ -222,6 +224,12 @@ public class LoginActivity extends AppCompatActivity {
     private void signInWithGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 
     private void handleFacebookToken(AccessToken accessToken) {

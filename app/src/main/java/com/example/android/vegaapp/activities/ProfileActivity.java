@@ -246,6 +246,8 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
             }
         });
 
+
+
 //        findViewById(R.id.logoutButton).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -294,6 +296,12 @@ public class ProfileActivity extends AppCompatActivity implements PopupMenu.OnMe
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 
     //    private void showTermsOfConditionDialog(){

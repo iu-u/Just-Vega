@@ -276,6 +276,12 @@ public class RegisterActivity extends AppCompatActivity {
         }
         alertDialog.show();
     }
+
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

@@ -291,6 +291,12 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
         startActivity(intent);
     }
 
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
+
     public void goToSearchRecipe(View view) {
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);

@@ -95,6 +95,12 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         startActivity(intent);
     }
 
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(RecipeActivity.this, WelcomeActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onStart() {
         Log.i(TAG, "onStart called");
@@ -199,6 +205,8 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
     }
 
 
+
+
     @Override
     public void onElementClick(View view, int itemIndex) {
         Intent intent = new Intent(RecipeActivity.this, RecipeDetailActivity.class);
@@ -214,6 +222,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         intent.putExtra("video", video);
         startActivity(intent);
     }
+
 
 
 }
