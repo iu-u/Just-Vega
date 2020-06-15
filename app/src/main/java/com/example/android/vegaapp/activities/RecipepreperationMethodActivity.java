@@ -86,12 +86,6 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
 
         setElements(mPrepMap);
 
-//        for(String s: mPrepMap.keySet()){
-//            System.out.println("current key: " + s);
-//            for(String b: mPrepMap.get(s)){
-//                System.out.println(b.toString());
-//            }
-//        }
 
     }
 
@@ -131,7 +125,6 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
             for(String string: map.get(s)){
                 sb.append(string).append('\n');
             }
-            Log.d(TAG, "preparation string: " + sb.toString());
             prep.setText(sb.toString());
 
             //Make LinearLayout for button for wrapperLayout
