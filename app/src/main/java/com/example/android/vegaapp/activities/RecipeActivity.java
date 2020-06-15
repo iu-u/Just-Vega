@@ -217,10 +217,12 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         String image = recipeList.get(itemIndex).getImage();
         String video = recipeList.get(itemIndex).getVideo();
         String category = recipeList.get(itemIndex).getCategory();
+        int preparationTime = recipeList.get(itemIndex).getPreparationTime();
         intent.putExtra("image", image);
         intent.putExtra("name", name);
         intent.putExtra("category", category);
         intent.putExtra("video", video);
+        intent.putExtra("prepTime", preparationTime);
         startActivity(intent);
     }
 

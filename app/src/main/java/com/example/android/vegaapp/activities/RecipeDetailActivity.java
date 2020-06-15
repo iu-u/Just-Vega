@@ -28,6 +28,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
     private Context mContext;
     private FrameLayout playButton;
     private Button recipebutton;
+    private TextView prepTime;
 
     private static String TAG = RecipeDetailActivity.class.getName();
 
@@ -44,13 +45,13 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         String mcategory = intent.getExtras().getString("category");
         final String mvideo = intent.getExtras().getString("video");
         String mimage = intent.getExtras().getString("image");
+        int mPrepTime = intent.getExtras().getInt("prepTime");
         image = findViewById(R.id.recipeimageview);
         name = findViewById(R.id.recipeName);
         category = findViewById(R.id.categoryrecipe);
         playButton = findViewById(R.id.playButton);
         recipebutton = findViewById(R.id.readrecipebtn);
-
-
+        prepTime = findViewById(R.id.prepTime);
 
         //start new intent when you click on the play button
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +71,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
     }
 });
         category.setText(mcategory);
+        prepTime.setText(mPrepTime + " min");
         name.setText(mname);
         Glide.with(getApplicationContext())
                 .asBitmap().load(mimage)
