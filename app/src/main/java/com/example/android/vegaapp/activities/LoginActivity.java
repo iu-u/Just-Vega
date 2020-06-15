@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.android.vegaapp.MainActivity;
@@ -62,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences.Editor loginPrefsEditor;
     private CheckBox rememberMeCheckbox;
     private Boolean rememberLogin;
+    private Button forgotPass;
+//    private RelativeLayout layout_forgot_password;
 
 
 
@@ -81,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-
         txt_email = (EditText)findViewById(R.id.txt_email);
         txt_password = (EditText)findViewById(R.id.txt_password);
         Button btn_fb_login = (Button)findViewById(R.id.btn_fb_login);
@@ -89,6 +90,9 @@ public class LoginActivity extends AppCompatActivity {
         Button btn_register = (Button)findViewById(R.id.btn_register);
         Button btn_email_login = (Button)findViewById(R.id.btn_email_login);
         Button btn_forgot = (Button) findViewById(R.id.btn_forgot_password) ;
+        forgotPass = findViewById(R.id.btn_forgot_password);
+        forgotPass.setVisibility(View.GONE);
+//        layout_forgot_password = findViewById(R.id.layout_forgot_password);
 
         //buttons for remember me
         rememberMeCheckbox = (CheckBox) findViewById(R.id.checkBox);
@@ -132,6 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(txt_email.getText().toString().equals("")||txt_password.getText().toString().equals("")){
                     Toast.makeText(LoginActivity.this, "empty fields", Toast.LENGTH_SHORT).show();
+
                 }else{
                     signInWithEmail();
 
@@ -216,6 +221,7 @@ public class LoginActivity extends AppCompatActivity {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginActivity.this, "Wrong email or password",
                                     Toast.LENGTH_SHORT).show();
+                            forgotPass.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -224,12 +230,6 @@ public class LoginActivity extends AppCompatActivity {
     private void signInWithGoogle() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-    //click on toolbar to go to profile
-    public void goToWelcome(View view) {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
     }
 
     private void handleFacebookToken(AccessToken accessToken) {

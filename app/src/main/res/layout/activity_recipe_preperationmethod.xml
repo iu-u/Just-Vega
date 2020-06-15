@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RecipepreperationMethodActivity"
+    android:background="@color/colorBlack"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/tool_bar"
+        android:id="@+id/toolbar">
+    </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:paddingBottom="0dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:contentDescription="TODO"
+            android:id="@+id/recipeimageview"
+            android:src="@drawable/fade_ingredients">
+
+        </ImageView>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="BACK TO RECIPES"
+            android:textSize="15sp"
+            android:background="@color/fui_transparent"
+            android:textColor="@color/colorTextGreen"
+            android:drawableLeft="@drawable/ic_arrow_left_green"
+            >
+
+        </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Ingredients"
+            android:background="@drawable/loginbuttonshape"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="15sp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:drawableRight="@drawable/ic_arrow_right_green"
+            >
+        </Button>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amuse"
+            android:textColor="@color/colorTextLightGreen"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginRight="60dp"
+            android:layout_marginLeft="60dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Pastinaak poffertje, shiitake, daslook"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="25sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sugar-free, whole grain"
+            android:textColor="@color/colorTextLightGreen"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorVagueGreen"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorTextWhite"
+        android:fontFamily="@font/poppins_light"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Recipe"
+        >
+    </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.12"
+                android:layout_height="wrap_content"
+                android:text="1."
+                android:textColor="@color/colorTextGreen"
+                android:gravity="right"
+                android:layout_marginRight="2dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.76"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="13sp"
+                android:padding="10dp"
+                android:text="Breng de melk met de boter aan de kook.\n Haal de pan van het vuur. \n Zeef de bloem en voeg dit toe aan de warme melk en roer meteen goed door \n Haal de pan van het vuur. Zet de pan weer even terug op het vuur en blijf goed roeren. \n Dit doe je om het beslag nog een beetje door te garen. Laat het beslag. \nVoeg nu een voor een de eieren toe totdat het in zijn geheel opgenomen is en je deeg goed van dikte is."
+            >
+            </TextView>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.12"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_fave_icon"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorVagueGreen"
+            android:layout_marginTop="20dp"/>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.12"
+                android:layout_height="wrap_content"
+                android:text="2."
+                android:textColor="@color/colorTextGreen"
+                android:gravity="right"
+                android:layout_marginRight="2dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.76"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextWhite"
+                android:fontFamily="@font/poppins_light"
+                android:textSize="13sp"
+                android:padding="10dp"
+                android:text="Doe wat zonnebloemolie in een bakpan en zorg dat deze heet wordt.">
+            </TextView>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="0.12"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_fave_icon"
+                />
+
+        </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>
+</ScrollView>
