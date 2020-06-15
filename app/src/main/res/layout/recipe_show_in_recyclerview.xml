@@ -28,7 +28,7 @@
 
     </TextView>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -38,6 +38,8 @@
         >
 
         <LinearLayout
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -47,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-                android:text="Lorem Ibsum"
+                android:text="A vry long title for testing the layout"
                 android:textColor="@color/colorTextWhite"
                 android:textStyle="bold"
                 android:textSize="25sp"/>
@@ -62,9 +64,14 @@
 
         </LinearLayout>
 
+
+
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            >
 
             <FrameLayout
                 android:layout_width="50dp"
@@ -74,7 +81,7 @@
                 android:focusable="true"
                 android:padding="4dp"
                 android:visibility="visible"
-                android:layout_alignParentRight="true"
+
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="12dp">
 
@@ -86,6 +93,7 @@
                     />
             </FrameLayout>
         </RelativeLayout>
-    </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
