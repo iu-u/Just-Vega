@@ -99,6 +99,7 @@
     <string name="applyFilters">APPLY FILTERS</string>
     <string name="filterReset">RESET</string>
 
-    <!-- Favorites page -->
-    <string name="recipeList_fav_recipe">favourite</string>
+    <!-- shopping list page -->
+    <string name="shopping_list_activity_title">Shopping list</string>
+
 </resources>

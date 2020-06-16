@@ -10,7 +10,7 @@
         layout="@layout/tool_bar"
         android:id="@+id/toolbar">
     </include>
-    
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -18,12 +18,12 @@
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/poppins_light"
         android:gravity="center"
-        android:text="@string/recipeList_fav_recipe"
+        android:text="@string/shopping_list_activity_title"
         android:textColor="@color/colorTextWhite"
         android:textSize="32dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recipeRecyclerView"
+        android:id="@+id/shoppingListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
