@@ -30,7 +30,9 @@ import androidx.core.content.ContextCompat;
 import com.bumptech.glide.Glide;
 import com.example.android.vegaapp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -281,6 +283,7 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
                     Toast.makeText(RecipepreperationMethodActivity.this, "Timer reset", Toast.LENGTH_SHORT).show();
                     animator.cancel();
                     mTimeRunning = false;
+
                     playButton.setBackground(ContextCompat.getDrawable(RecipepreperationMethodActivity.this, R.drawable.ic_play_arrow_green));
                     textView.setText(timeLeftFormatted);
                 } else{
@@ -291,13 +294,28 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
                             progressBar.setProgress((Integer)animation.getAnimatedValue());
                         }
                     });
+
+                    new CountDownTimer(mStartTimeInMillis, 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                           textView.setText("seconds remaining: " +new SimpleDateFormat("mm:ss").format(new Date( millisUntilFinished)));
+                        }
+
+                        public void onFinish() {
+                            textView.setText("done!");
+                        }
+                    }.start();
+
                     animator.start();
-                    textView.setText("Started");
+
+                    textView.setText("Started" + textView);
                     mTimeRunning = true;
                     playButton.setBackground(ContextCompat.getDrawable(RecipepreperationMethodActivity.this, R.drawable.ic_close_green_small));
                 }
             }
         });
+
+
 
         LinearLayout lnTime = new LinearLayout(this);
 
