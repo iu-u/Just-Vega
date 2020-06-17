@@ -32,6 +32,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
     private Context mContext;
     private FrameLayout playButton;
     private Button recipebutton;
+    private Button goToIngredients;
     private TextView prepTime;
     private TextView allergie;
 
@@ -52,6 +53,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         final String mimage = intent.getExtras().getString("image");
         final String mpreparation = intent.getExtras().getString("preparation");
         final HashMap<String, List<String>> mPrepMap = (HashMap<String, List<String>>)intent.getSerializableExtra("prepMap");
+        final HashMap<String, List<String>> mIngredientList = (HashMap<String, List<String>>)intent.getSerializableExtra("ingredients");
         final ArrayList<String> allergieList = intent.getExtras().getStringArrayList("allergies");
         int mPrepTime = intent.getExtras().getInt("prepTime");
         image = findViewById(R.id.recipeimageview);
@@ -61,6 +63,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         recipebutton = findViewById(R.id.readrecipebtn);
         prepTime = findViewById(R.id.prepTime);
         allergie = findViewById(R.id.textView_allergies);
+        goToIngredients = findViewById(R.id.btn_ingredients);
 
         //start new intent when you click on the play button
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +71,22 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mvideo));
                 intent.setDataAndType(Uri.parse(mvideo), "video/mp4");
+                startActivity(intent);
+            }
+        });
+
+        goToIngredients.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(RecipeDetailActivity.this, IngredientActivity.class);
+
+                intent.putExtra("image", mimage);
+                intent.putExtra("name", mname);
+                intent.putExtra("category", mcategory);
+                intent.putStringArrayListExtra("allergies", allergieList);
+                intent.putExtra("preparation", mpreparation);
+                intent.putExtra("prepMap", mPrepMap);
+                intent.putExtra("ingredientList", mIngredientList);
                 startActivity(intent);
             }
         });

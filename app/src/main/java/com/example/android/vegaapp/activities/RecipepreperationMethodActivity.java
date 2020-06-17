@@ -86,7 +86,6 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
         mAllergies = findViewById(R.id.allergies);
         mLinearLayout = findViewById(R.id.prepLayout);
 
-
         mGoToRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

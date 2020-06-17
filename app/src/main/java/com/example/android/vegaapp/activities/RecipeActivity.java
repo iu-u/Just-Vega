@@ -211,7 +211,6 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
     @Override
     public void onElementClick(View view, int itemIndex) {
         Intent intent = new Intent(RecipeActivity.this, RecipeDetailActivity.class);
-        Intent intent2 = new Intent(RecipeActivity.this, RecipepreperationMethodActivity.class);
         //hier kan je data meegeven naar recepidetailactivity
         String name = recipeList.get(itemIndex).getRecipeName();
         String image = recipeList.get(itemIndex).getImage();
@@ -230,6 +229,16 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
             hashMap.put(key, prepList);
         }
 
+        HashMap<String, List<String>> ingredientList = new HashMap<>();
+        for(TypeOfFood t: prep){
+            List<String> ingredients = new ArrayList<>();
+            String key = t.getName();
+            for(String string: t.getIngredients()){
+                ingredients.add(string);
+            }
+            ingredientList.put(key, ingredients);
+        }
+
         List<String> getAllergies = recipeList.get(itemIndex).getAllergies();
         ArrayList<String> allergies = new ArrayList<>();
         allergies.addAll(getAllergies);
@@ -243,6 +252,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         intent.putStringArrayListExtra("allergies", allergies);
         intent.putExtra("prepMap", hashMap);
         intent.putExtra("preparation", preperation);
+        intent.putExtra("ingredients", ingredientList);
 
         startActivity(intent);
 
