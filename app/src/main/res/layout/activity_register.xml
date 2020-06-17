@@ -186,24 +186,24 @@
 
                     <Button
                         android:id="@+id/btn_g_register"
-                        android:background="@drawable/facebook_shape"
-                        android:textColor="#3B5998"
+                        android:background="@drawable/google_shape"
+                        android:textColor="#DD4C39"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Register"
-                        android:drawableLeft="@drawable/facebook_sign_in"
+                        android:drawableLeft="@drawable/google_sign_in"
                         android:paddingLeft="5dp"
                         android:paddingRight="1dp"/>
 
                     <Button
                         android:id="@+id/btn_fb_register"
-                        android:background="@drawable/google_shape"
-                        android:textColor="#DD4C39"
+                        android:background="@drawable/facebook_shape"
+                        android:textColor="#3B5998"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="50dp"
                         android:text="Register"
-                        android:drawableLeft="@drawable/google_sign_in"
+                        android:drawableLeft="@drawable/facebook_sign_in"
                         android:paddingLeft="5dp"
                         android:paddingRight="1dp"/>
 

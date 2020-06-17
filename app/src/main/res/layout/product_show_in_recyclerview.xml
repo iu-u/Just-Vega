@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/colorBackgroundBlack">
+
+    <TextView
+        android:id="@+id/shopping_list_product_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lorum ip sum"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/colorTextGreen"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_light">
+
+    </TextView>
+
+   <TextView
+       android:id="@+id/shopping_list_product_amount"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="40dp"
+       android:layout_marginLeft="50dp"
+       android:text="lorum ipsum"
+       android:textSize="20sp"
+       android:textColor="@color/colorTextWhite">
+   </TextView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="370dp"
+        android:clickable="true"
+        android:src="@drawable/ic_check_shopping_list_24dp">
+
+    </ImageView>
+
+
+</RelativeLayout>

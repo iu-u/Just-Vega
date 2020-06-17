@@ -93,4 +93,5 @@
 
     <string name="applyFilters">APPLY FILTERS</string>
     <string name="filterReset">RESET</string>
+    <string name="shoppinglist_activity_title">Liste de courses</string>
 </resources>
