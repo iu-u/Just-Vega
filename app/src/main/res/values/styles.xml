@@ -108,4 +108,26 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="progressBarTimer" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/custom_progress_bar</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">100dp</item>
+<!--        <item name="android:indeterminate">true</item>-->
+        <item name="backgroundColor">@color/colorBlack</item>
+    </style>
+
+    <style name="TimerButton" parent="Widget.AppCompat.Button">
+        <item name="backgroundColor">@color/fui_transparent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">20dp</item>
+        <item name="android:drawableLeft">@drawable/ic_play_arrow_green</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="TimerTextView">
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">70dp</item>
+        <item name="android:background">@color/colorVagueGreen</item>
+    </style>
+
 </resources>

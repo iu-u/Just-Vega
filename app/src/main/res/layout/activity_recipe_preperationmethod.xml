@@ -129,62 +129,41 @@
         >
     </TextView>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
+     <RelativeLayout
+         android:id="@+id/timerLayout"
+         android:layout_width="70dp"
+         android:layout_height="30dp">
 
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_weight="0.12"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="1."-->
-<!--                android:textColor="@color/colorTextGreen"-->
-<!--                android:gravity="right"-->
-<!--                android:layout_marginRight="2dp"/>-->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/custom_progress_bar"
+            android:indeterminateDrawable="@drawable/ic_arrow_up"
+            />
+         <TextView
+             android:id="@+id/amountOfTime"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:text="00:00"
+             android:textColor="#58A873"
+             android:layout_alignParentRight="true"
+             android:gravity="center"
+             android:layout_marginLeft="15dp"
+             />
+         <Button
+             android:id="@+id/timerButton"
+             android:layout_width="20dp"
+             android:layout_height="wrap_content"
+             android:drawableLeft="@drawable/ic_play_arrow_green"
+             android:textColor="@color/colorTextWhite"
+             android:background="@color/fui_transparent"
+             android:textSize="12sp"
+             android:layout_alignParentLeft="true"/>
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_weight="0.76"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
+     </RelativeLayout>
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tof_name"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textColor="@color/colorTextWhite"-->
-<!--                    />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/textView_preparation"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:textColor="@color/colorTextLightGrey"-->
-<!--                    android:fontFamily="@font/poppins_light"-->
-<!--                    android:textSize="13sp"-->
-<!--                    android:padding="10dp"-->
-<!--                >-->
-<!--                </TextView>-->
-
-<!--            </LinearLayout>-->
-
-<!--            <Button-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_weight="0.12"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/circle_fave_icon"-->
-<!--                />-->
-
-<!--        </LinearLayout>-->
-
-<!--        <View-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="1dp"-->
-<!--            android:background="@color/colorVagueGreen"-->
-<!--            android:layout_marginTop="20dp"/>-->
-
-
-</LinearLayout>
+    </LinearLayout>
 </LinearLayout>
 </ScrollView>
