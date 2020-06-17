@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +24,8 @@ public class IngredientActivity extends AppCompatActivity {
     private static String TAG = IngredientActivity.class.getName();
     private ImageView mImage;
     private LinearLayout linearLayout;
+    private ImageView backToRecipe;
+    private TextView backToRecipe2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,28 @@ public class IngredientActivity extends AppCompatActivity {
 
         mImage = findViewById(R.id.recipe_ingredients_image);
         linearLayout = findViewById(R.id.ingredientScreen_layout);
+        backToRecipe = findViewById(R.id.btn_back_to_recipe);
+        backToRecipe2 = findViewById(R.id.backToRecipe);
 
         Glide.with(getApplicationContext())
                 .asBitmap().load(image)
                 .into(mImage);
 
         setLayouts(mIngredientList);
+
+        backToRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        backToRecipe2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void setLayouts(HashMap<String, List<String>> map){
@@ -82,8 +101,6 @@ public class IngredientActivity extends AppCompatActivity {
 
                 ImageView bulletPoint = new ImageView(this);
                 bulletPoint.setImageDrawable(getResources().getDrawable(R.drawable.bullet_point));
-//                bulletPoint.setMaxHeight(15);
-//                bulletPoint.setMaxWidth(15);
 
                 final ImageView checkList = new ImageView(this);
                 checkList.setImageDrawable(getResources().getDrawable(R.drawable.ic_add_green));

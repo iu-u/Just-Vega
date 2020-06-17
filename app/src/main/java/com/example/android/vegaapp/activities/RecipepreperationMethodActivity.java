@@ -74,9 +74,10 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String title = intent.getExtras().getString("name");
         String category = intent.getExtras().getString("category");
-        String image = intent.getExtras().getString("image");
+        final String image = intent.getExtras().getString("image");
         ArrayList<String> allergieList = intent.getStringArrayListExtra("allergies");
         HashMap<String, List<String>> mPrepMap = (HashMap<String, List<String>>)intent.getSerializableExtra("prepMap");
+        final HashMap<String, List<String>> mIngredientList = (HashMap<String, List<String>>)intent.getSerializableExtra("ingredientList");
 
         mRecipeImage = findViewById(R.id.recipeimageview);
         mGoToRecipe = findViewById(R.id.btn_back_to_recipe);
@@ -93,12 +94,16 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
             }
         });
 
-        mGoToIngredients.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        mGoToIngredients.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent= new Intent(RecipepreperationMethodActivity.this, IngredientActivity.class);
+//
+//                intent.putExtra("image", image);
+//                intent.putExtra("ingredientList", mIngredientList);
+//                startActivity(intent);
+//            }
+//        });
 
         Log.d(TAG, "title: " + title);
         mRecipeName.setText(title);
