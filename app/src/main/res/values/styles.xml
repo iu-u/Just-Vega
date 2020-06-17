@@ -130,4 +130,8 @@
         <item name="android:background">@color/colorVagueGreen</item>
     </style>
 
+    <style name="preparationCheckBox">
+        <item name="android:button">@drawable/loginbuttonshape</item>
+    </style>
+
 </resources>

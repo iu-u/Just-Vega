@@ -14,6 +14,7 @@ import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -84,8 +85,6 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
         mRecipeName = findViewById(R.id.recipeName);
         mAllergies = findViewById(R.id.allergies);
         mLinearLayout = findViewById(R.id.prepLayout);
-        progressBar = findViewById(R.id.progress_bar);
-        relativeLayout = findViewById(R.id.timerLayout);
 
 
         mGoToRecipe.setOnClickListener(new View.OnClickListener() {
@@ -170,10 +169,20 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
 
 
             //Make button for LinearLayout
-            Button checkButton = new Button(this);
+            final ImageView checkButton = new ImageView(this);
             checkButton.setBackground(getResources().getDrawable(R.drawable.circle_fave_icon));
-            checkButton.setHeight(20);
-            checkButton.setWidth(20);
+//            checkButton.setHeight(20);
+//            checkButton.setWidth(20);
+            final Drawable img = ContextCompat.getDrawable(this, R.drawable.ic_check_green_small);
+
+            checkButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   checkButton.setImageDrawable(img);
+                }
+            });
+
+            final CheckBox checkBox = new CheckBox(this, null, R.style.preparationCheckBox);
 
             buttonLayout.addView(checkButton);
 
