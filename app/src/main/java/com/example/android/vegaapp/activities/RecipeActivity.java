@@ -239,6 +239,17 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
             ingredientList.put(key, ingredients);
         }
 
+        HashMap<String, List<Integer>> amountList = new HashMap<>();
+        for(TypeOfFood type: prep){
+            List<Integer> amount = new ArrayList<>();
+            String key = type.getName();
+            for(int i: type.getAmount()){
+                amount.add(i);
+            }
+            amountList.put(key, amount);
+        }
+
+
         List<String> getAllergies = recipeList.get(itemIndex).getAllergies();
         ArrayList<String> allergies = new ArrayList<>();
         allergies.addAll(getAllergies);
@@ -253,6 +264,7 @@ public class RecipeActivity extends AppCompatActivity implements RecipeOnClickHa
         intent.putExtra("prepMap", hashMap);
         intent.putExtra("preparation", preperation);
         intent.putExtra("ingredients", ingredientList);
+        intent.putExtra("amountList", amountList);
 
         startActivity(intent);
 

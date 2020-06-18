@@ -26,6 +26,8 @@ public class IngredientActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
     private ImageView backToRecipe;
     private TextView backToRecipe2;
+    private HashMap<String, List<Integer>> amountList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,15 @@ public class IngredientActivity extends AppCompatActivity {
         String image = intent.getExtras().getString("image");
         ArrayList<String> allergieList = intent.getStringArrayListExtra("allergies");
         HashMap<String, List<String>> mIngredientList = (HashMap<String, List<String>>)intent.getSerializableExtra("ingredientList");
+        HashMap<String, List<Integer>> mAmountList = (HashMap<String, List<Integer>>)intent.getSerializableExtra("amountList");
+        amountList = mAmountList;
+
+//        for(String s: mAmountList.keySet()){
+//            Log.d(TAG, "key: " + s);
+//            for(int amount: mAmountList.get(s)){
+//                Log.d(TAG, "amount: " + amount);
+//            }
+//        }
 
         mImage = findViewById(R.id.recipe_ingredients_image);
         linearLayout = findViewById(R.id.ingredientScreen_layout);
@@ -70,6 +81,7 @@ public class IngredientActivity extends AppCompatActivity {
 //        LinearLayout ingredientWrapper = null;
 
         for(String s: map.keySet()){
+            int i = 0;
             Log.d(TAG, "key= " + s);
 
             LinearLayout wrapper = new LinearLayout(this);
@@ -124,14 +136,21 @@ public class IngredientActivity extends AppCompatActivity {
 
                 if(ingredient.startsWith("gr,")){
                     ingName = ingredient.substring(3);
-                    ingAmount = "gram";
+                    ingAmount = amountList.get(s).get(i) + " gram";
 
                 } else if(ingredient.startsWith("st")){
                     ingName = ingredient.substring(3);
-                    ingAmount = "stuks";
+                    ingAmount = amountList.get(s).get(i) +" stuks";
                 } else{
                     ingName = ingredient;
+                    ingAmount = amountList.get(s).get(i) + "";
                 }
+
+                if(amountList.get(s).get(i) == 0){
+                    ingAmount = "";
+                }
+
+                i++;
 
                 ingredientName.setText(ingName);
                 ingredientAmount.setText(ingAmount);

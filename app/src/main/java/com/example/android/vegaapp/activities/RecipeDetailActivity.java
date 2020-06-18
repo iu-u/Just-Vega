@@ -54,6 +54,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         final String mpreparation = intent.getExtras().getString("preparation");
         final HashMap<String, List<String>> mPrepMap = (HashMap<String, List<String>>)intent.getSerializableExtra("prepMap");
         final HashMap<String, List<String>> mIngredientList = (HashMap<String, List<String>>)intent.getSerializableExtra("ingredients");
+        final HashMap<String, List<Integer>> mAmountList = (HashMap<String, List<Integer>>)intent.getSerializableExtra("amountList");
         final ArrayList<String> allergieList = intent.getExtras().getStringArrayList("allergies");
         int mPrepTime = intent.getExtras().getInt("prepTime");
         image = findViewById(R.id.recipeimageview);
@@ -87,6 +88,7 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
                 intent.putExtra("preparation", mpreparation);
                 intent.putExtra("prepMap", mPrepMap);
                 intent.putExtra("ingredientList", mIngredientList);
+                intent.putExtra("amountList", mAmountList);
                 startActivity(intent);
             }
         });
