@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBlack">
 <LinearLayout
-    android:id="@+id/ingredientScreen_layout"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlack"
@@ -115,7 +115,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="220dp"
                 android:fontFamily="@font/poppins_light"
-                android:text="2 People"
+                android:text="1 Person"
                 android:textColor="@color/colorTextGreen"
                 android:textSize="15sp"></TextView>
 
@@ -170,6 +170,14 @@
 
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ingredientScreen_layout"
+        android:orientation="vertical">
+
+    </LinearLayout>
 
 
 

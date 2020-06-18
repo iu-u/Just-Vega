@@ -27,6 +27,12 @@ public class IngredientActivity extends AppCompatActivity {
     private ImageView backToRecipe;
     private TextView backToRecipe2;
     private HashMap<String, List<Integer>> amountList;
+    LinearLayout layout;
+
+    private TextView amountOfPeopleText;
+    private int amountOfPeople;
+    private ImageView increaseAmount;
+    private ImageView decreaseAmount;
 
 
     @Override
@@ -39,16 +45,14 @@ public class IngredientActivity extends AppCompatActivity {
         String category = intent.getExtras().getString("category");
         String image = intent.getExtras().getString("image");
         ArrayList<String> allergieList = intent.getStringArrayListExtra("allergies");
-        HashMap<String, List<String>> mIngredientList = (HashMap<String, List<String>>)intent.getSerializableExtra("ingredientList");
+        final HashMap<String, List<String>> mIngredientList = (HashMap<String, List<String>>)intent.getSerializableExtra("ingredientList");
         HashMap<String, List<Integer>> mAmountList = (HashMap<String, List<Integer>>)intent.getSerializableExtra("amountList");
         amountList = mAmountList;
 
-//        for(String s: mAmountList.keySet()){
-//            Log.d(TAG, "key: " + s);
-//            for(int amount: mAmountList.get(s)){
-//                Log.d(TAG, "amount: " + amount);
-//            }
-//        }
+        amountOfPeopleText = findViewById(R.id.ingredients_textview_people);
+        amountOfPeople = Integer.parseInt(amountOfPeopleText.getText().toString().substring(0,1));
+        increaseAmount = findViewById(R.id.ingredients_increase_people_butt);
+        decreaseAmount = findViewById(R.id.ingredients_decrease_people_butt);
 
         mImage = findViewById(R.id.recipe_ingredients_image);
         linearLayout = findViewById(R.id.ingredientScreen_layout);
@@ -74,11 +78,39 @@ public class IngredientActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        increaseAmount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                amountOfPeople++;
+                amountOfPeopleText.setText((amountOfPeople + " people"));
+                linearLayout.removeAllViews();
+                setLayouts(mIngredientList);
+            }
+        });
+
+        decreaseAmount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(amountOfPeople !=1){
+                    amountOfPeople--;
+                    if(amountOfPeople == 1){
+                        amountOfPeopleText.setText(amountOfPeople + " person");
+                    }else {
+                        amountOfPeopleText.setText(amountOfPeople + " people");
+                    }
+                    linearLayout.removeAllViews();
+                    setLayouts(mIngredientList);
+                }
+            }
+        });
     }
 
     public void setLayouts(HashMap<String, List<String>> map){
         Log.d(TAG, "setLayouts called");
 //        LinearLayout ingredientWrapper = null;
+        layout = new LinearLayout(this);
+//        layout.setOrientation(LinearLayout.HORIZONTAL);
 
         for(String s: map.keySet()){
             int i = 0;
@@ -136,14 +168,14 @@ public class IngredientActivity extends AppCompatActivity {
 
                 if(ingredient.startsWith("gr,")){
                     ingName = ingredient.substring(3);
-                    ingAmount = amountList.get(s).get(i) + " gram";
+                    ingAmount = (amountList.get(s).get(i) * amountOfPeople) + " gram";
 
                 } else if(ingredient.startsWith("st")){
                     ingName = ingredient.substring(3);
-                    ingAmount = amountList.get(s).get(i) +" stuks";
+                    ingAmount = (amountList.get(s).get(i) * amountOfPeople) +" stuks";
                 } else{
                     ingName = ingredient;
-                    ingAmount = amountList.get(s).get(i) + "";
+                    ingAmount = (amountList.get(s).get(i) * amountOfPeople) + "";
                 }
 
                 if(amountList.get(s).get(i) == 0){
@@ -185,11 +217,13 @@ public class IngredientActivity extends AppCompatActivity {
             }
 
             LinearLayout.LayoutParams params =new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(80,50,80,50);
+            params.setMargins(80,50,80,10);
             wrapper.setLayoutParams(params);
 
             linearLayout.addView(wrapper);
+
         }
+
     }
 
     //click on toolbar to go to profile
