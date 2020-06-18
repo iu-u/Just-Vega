@@ -241,7 +241,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="130dp"
-                    android:text="@string/dont_have_an_account"
+                    android:text="Already have an account?"
                     android:textColor="#FFFFFF" />
 
                 <Button
