@@ -83,7 +83,7 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
 
         mRecipeImage = findViewById(R.id.recipeimageview);
         mGoToRecipe = findViewById(R.id.btn_back_to_recipe);
-        mGoToIngredients = findViewById(R.id.btn_go_to_ingredients);
+        mGoToIngredients = findViewById(R.id.btn_to_ingredients);
         mCategory = findViewById(R.id.category);
         mRecipeName = findViewById(R.id.recipeName);
         mAllergies = findViewById(R.id.allergies);
