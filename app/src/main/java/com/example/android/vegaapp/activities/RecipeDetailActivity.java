@@ -104,6 +104,8 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
         intent.putStringArrayListExtra("allergies", allergieList);
         intent.putExtra("preparation", mpreparation);
         intent.putExtra("prepMap", mPrepMap);
+        intent.putExtra("ingredientList", mIngredientList);
+        intent.putExtra("amountList", mAmountList);
         startActivity(intent);
     }
 });
