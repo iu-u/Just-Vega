@@ -45,10 +45,7 @@
             android:id="@+id/textMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lorem ipsum dolor sit amet,
-        cotidieque disputando vix at, cum ea saepe vitae ocurreret.
-     Vocibus molestiae scribentur ea his, ceteros omittantur neglegentur ne has.
-        Alii primis gubergren sed ei, debitis molestiae splendide et duo. Duo no assentior neglegentur."
+            android:text="Tijdens het gebruik van de app worden de inloggegevens bewaard in de database. Je moet een account hebben om gebruik te maken van de applicatie."
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
