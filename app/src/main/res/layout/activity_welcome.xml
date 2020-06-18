@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/colorTextLightGrey"
-                android:text="@string/welcome_AboutUs"
+                android:text="Over Ons"
                 android:textSize="17sp"
                 android:gravity="center">
             </TextView>
@@ -97,7 +97,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-                android:text="@string/welcome_AboutUs_text"
+                android:text="Just Vega is een applicatie ontwikkeld door de volgende personen:
+Hoang Nguyen
+Afrash Ramjit
+Jimmy Balgobiend
+Thirza van Hemert
+Angelo van Peer
+Niek Wijsman
+"
                 android:textSize="11sp">
 
             </TextView>
@@ -109,7 +116,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome_Purpose"
+                android:text="Over Applicatie"
                 android:layout_marginTop="20dp"
                 android:textSize="17sp"
                 android:textColor="@color/colorTextLightGrey"
@@ -123,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-                android:text="@string/welcome_Purpose_text"
+                android:text="Just Vega is een handige app om vegetarische gerechten op te zoeken en te bekijken. Als gebruiker kun je gerechten sorteren en filteren op specfieke keuzes en kun je ook de ingrediënten bekijken van de geselecteerde recept."
                 android:textSize="11sp">
 
             </TextView>
