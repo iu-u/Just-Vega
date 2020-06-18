@@ -209,6 +209,7 @@ public class RecipeSmallAdapter extends RecyclerView.Adapter<RecipeSmallAdapter.
             //set onclick
             parentLayout.setOnClickListener(this);
 
+
         }
 
         @Override

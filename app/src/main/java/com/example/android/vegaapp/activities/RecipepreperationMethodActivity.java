@@ -127,6 +127,22 @@ public class RecipepreperationMethodActivity extends AppCompatActivity {
 
     }
 
+    public void goToProfile(View view){
+        Intent intent= new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    //click on toolbar to go to profile
+    public void goToWelcome(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToSearchRecipe(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
+
     public void setElements(HashMap<String, List<String>> map){
         int currentNumber = 1;
 

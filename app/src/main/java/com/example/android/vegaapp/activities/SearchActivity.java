@@ -303,17 +303,62 @@ public class SearchActivity extends AppCompatActivity implements RecipeSmallOnCl
     @Override
     public void onElementClick(View view, int itemIndex) {
         Intent intent= new Intent(SearchActivity.this, RecipeDetailActivity.class);
-        Log.d(TAG, "onElementClick called");
 
         //hier kan je data meegeven naar recepidetailactivity
         String name = recipeList.get(itemIndex).getRecipeName();
         String image = recipeList.get(itemIndex).getImage();
         String video = recipeList.get(itemIndex).getVideo();
         String category = recipeList.get(itemIndex).getCategory();
+        String preperation = recipeList.get(itemIndex).getPreperationMethod();
+
+        List<TypeOfFood> prep = recipeList.get(itemIndex).getTof();
+        HashMap<String, List<String>> hashMap = new HashMap<String, List<String>>();
+        for(TypeOfFood p: prep){
+            List<String> prepList = new ArrayList<>();
+            String key = p.getName();
+            for(String s: p.getPreperation()){
+                prepList.add(s);
+            }
+            hashMap.put(key, prepList);
+        }
+
+        HashMap<String, List<String>> ingredientList = new HashMap<>();
+        for(TypeOfFood t: prep){
+            List<String> ingredients = new ArrayList<>();
+            String key = t.getName();
+            for(String string: t.getIngredients()){
+                ingredients.add(string);
+            }
+            ingredientList.put(key, ingredients);
+        }
+
+        HashMap<String, List<Integer>> amountList = new HashMap<>();
+        for(TypeOfFood type: prep){
+            List<Integer> amount = new ArrayList<>();
+            String key = type.getName();
+            for(int i: type.getAmount()){
+                amount.add(i);
+            }
+            amountList.put(key, amount);
+        }
+
+
+        List<String> getAllergies = recipeList.get(itemIndex).getAllergies();
+        ArrayList<String> allergies = new ArrayList<>();
+        allergies.addAll(getAllergies);
+        int preparationTime = recipeList.get(itemIndex).getPreparationTime();
+
         intent.putExtra("image", image);
         intent.putExtra("name", name);
         intent.putExtra("category", category);
         intent.putExtra("video", video);
+        intent.putExtra("prepTime", preparationTime);
+        intent.putStringArrayListExtra("allergies", allergies);
+        intent.putExtra("prepMap", hashMap);
+        intent.putExtra("preparation", preperation);
+        intent.putExtra("ingredients", ingredientList);
+        intent.putExtra("amountList", amountList);
+
         startActivity(intent);
     }
 }

@@ -116,9 +116,11 @@ public class RecipeDetailActivity extends AppCompatActivity implements RecipeOnC
                 .asBitmap().load(mimage)
                 .into(image);
         StringBuilder sb = new StringBuilder("");
+
         for(String s: allergieList){
             sb.append(s).append(", ");
         }
+
         allergie.setText(sb.toString());
 
         button.setOnClickListener(new View.OnClickListener() {
